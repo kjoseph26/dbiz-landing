@@ -48,4 +48,10 @@ export const versions: Version[] = [
     tagline: 'Architectural tiles, stacked display, Pentagram-scale type',
     status: 'ready',
   },
+  {
+    slug: 'v8',
+    name: 'V8 — Broadsheet (Sans)',
+    tagline: 'V6 broadsheet structure, rendered entirely in DM Sans',
+    status: 'ready',
+  },
 ]

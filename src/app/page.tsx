@@ -18,6 +18,8 @@ export default function Home() {
           <li key={version.slug}>
             <Link
               href={`/${version.slug}`}
+              target='_blank'
+              rel='noopener'
               className='flex items-center justify-between gap-6 py-4 transition-colors hover:bg-neutral-50'
             >
               <div>
@@ -33,6 +35,8 @@ export default function Home() {
         <li>
           <Link
             href='/styleguide'
+            target='_blank'
+            rel='noopener'
             className='flex items-center justify-between gap-6 py-4 transition-colors hover:bg-neutral-50'
           >
             <div>

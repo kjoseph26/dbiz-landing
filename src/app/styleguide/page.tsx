@@ -195,7 +195,7 @@ export default function StyleguidePage() {
               color: 'var(--brand-text)',
             }}
           >
-            The DBiz brand, <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--brand-orange)', fontWeight: 400 }}>distilled.</em>
+            The DBiz brand, <span style={{ color: 'var(--brand-orange)' }}>distilled.</span>
           </h1>
           <p
             style={{
@@ -304,7 +304,7 @@ export default function StyleguidePage() {
           <SectionHeader
             kicker='02 — Typography'
             title='DM Sans is the voice.'
-            description='DM Sans is the primary typeface — everywhere, across all variants. Instrument Serif (italic) is the one accent reserved for emotional or editorial moments. DM Mono is for labels, metadata, and code.'
+            description='DM Sans is the primary typeface — everywhere, across all variants. DM Mono is for labels, metadata, and code.'
           />
 
           <div
@@ -339,16 +339,7 @@ export default function StyleguidePage() {
                   }}
                 >
                   Your enterprise.{' '}
-                  <em
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontStyle: 'italic',
-                      color: 'var(--brand-orange)',
-                      fontWeight: 400,
-                    }}
-                  >
-                    Agent-operated.
-                  </em>
+                  <span style={{ color: 'var(--brand-orange)' }}>Agent-operated.</span>
                 </div>
               </div>
 
@@ -449,31 +440,6 @@ export default function StyleguidePage() {
                 </div>
               </div>
 
-              <div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.68rem',
-                    color: 'var(--brand-text-3)',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    marginBottom: 10,
-                  }}
-                >
-                  Editorial accent — Instrument Serif italic
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                    fontSize: '2rem',
-                    color: 'var(--brand-orange)',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  every enterprise hits.
-                </div>
-              </div>
             </div>
           </div>
         </section>
