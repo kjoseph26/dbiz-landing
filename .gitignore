@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local working scratch — screenshots, candidates, MCP caches
+.playwright-mcp/
+/*.jpeg
+/*.jpg
+/*.png

@@ -30,6 +30,18 @@ export default function Home() {
             </Link>
           </li>
         ))}
+        <li>
+          <Link
+            href='/styleguide'
+            className='flex items-center justify-between gap-6 py-4 transition-colors hover:bg-neutral-50'
+          >
+            <div>
+              <div className='font-semibold text-neutral-900'>Brand Styleguide</div>
+              <div className='text-neutral-500'>Colors, typography, and core patterns</div>
+            </div>
+            <span className='text-xs uppercase tracking-wider text-neutral-400'>ref</span>
+          </Link>
+        </li>
       </ul>
 
       <footer className='mt-16 text-xs text-neutral-400'>

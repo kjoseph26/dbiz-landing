@@ -1,5 +1,61 @@
 @import 'tailwindcss';
 
+/* ==========================================================================
+   DBiz Brand Tokens
+   Source of truth for colors + typography across all homepage variants.
+   Extracted from the original dbiz-landing reference.
+   ========================================================================== */
+
+:root {
+  /* Brand — Navy (primary anchor) */
+  --brand-navy: #0d1b3e;
+  --brand-navy-deep: #070f22;
+  --brand-navy-light: #1a2d5a;
+
+  /* Brand — Orange (accent) */
+  --brand-orange: #e86a2a;
+  --brand-orange-hover: #d45a1a;
+  --brand-orange-glow: rgba(232, 106, 42, 0.1);
+
+  /* Neutrals — Light surface */
+  --brand-bg: #fafafa;
+  --brand-bg-card: #ffffff;
+  --brand-bg-warm: #f3f0ec;
+
+  /* Borders */
+  --brand-border: rgba(0, 0, 0, 0.06);
+  --brand-border-hover: rgba(0, 0, 0, 0.12);
+
+  /* Text */
+  --brand-text: #111111;
+  --brand-text-2: #555555;
+  --brand-text-3: #999999;
+
+  /* Radii */
+  --brand-r: 16px;
+  --brand-r-lg: 24px;
+  --brand-r-sm: 10px;
+
+  /* Typography families (wired up in root layout via next/font) */
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+}
+
+/* Dark mode tokens — same brand, inverted surface */
+[data-theme='dark'] {
+  --brand-bg: #070f22;
+  --brand-bg-card: #0d1b3e;
+  --brand-bg-warm: #1a2d5a;
+
+  --brand-border: rgba(255, 255, 255, 0.08);
+  --brand-border-hover: rgba(255, 255, 255, 0.16);
+
+  --brand-text: #ffffff;
+  --brand-text-2: rgba(255, 255, 255, 0.6);
+  --brand-text-3: rgba(255, 255, 255, 0.35);
+}
+
 *,
 *::before,
 *::after {
@@ -12,8 +68,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-family: var(--font-sans);
 }
 
 body {
   min-height: 100dvh;
+  font-family: var(--font-sans);
 }
