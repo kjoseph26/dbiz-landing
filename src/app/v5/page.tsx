@@ -1,54 +1,4 @@
-const capabilities = [
-  {
-    num: '01',
-    kicker: 'Start here',
-    title: 'Strategy & Architecture',
-    sub: 'Futures Studio · TechOffice Foundry',
-    body: 'Your business priorities become an AI and technology roadmap. Use case prioritisation, readiness assessment, architecture blueprint, data governance and security posture.',
-  },
-  {
-    num: '02',
-    kicker: 'Cloud',
-    title: 'AI-Ready Infrastructure',
-    sub: 'Multi-hyperscaler · Purpose-built',
-    body: 'Cloud built for AI workloads, not retrofitted for them. Environments for agents, data pipelines, and AI models — with governance, cost controls, and observability enterprise IT requires.',
-  },
-  {
-    num: '03',
-    kicker: 'Data & AI',
-    title: 'The Intelligence Layer',
-    sub: 'FactWeavers™ · Domain Data Cloud',
-    body: 'Every AI initiative stalls on the same thing: the data isn\u2019t ready. FactWeavers\u2122 cleans, unifies, and activates enterprise data — pre-modelled for your industry, ready for agents from day one.',
-  },
-  {
-    num: '04',
-    kicker: 'Business Apps & Integration',
-    title: 'Connected Systems, Not Silos',
-    sub: 'No rip and replace',
-    body: 'CRM, ERP, and platform investments don\u2019t need replacing — they need unlocking. We connect existing systems so AI agents can read, write, and act across your entire application landscape.',
-  },
-  {
-    num: '05',
-    kicker: 'Product & Experience',
-    title: 'What People Actually Use',
-    sub: 'AI-native · Perpetual Engineering',
-    body: 'AI-native applications, digital twins, and next-gen experiences that evolve with the business. Designed for the new interaction patterns between humans and agents.',
-  },
-  {
-    num: '06',
-    kicker: 'Managed Services',
-    title: 'AI-First Operations',
-    sub: 'The team that built it runs it',
-    body: 'AI-first monitoring, governance, and continuous improvement across your entire stack. Not a support contract from a team that\u2019s never seen the architecture.',
-  },
-  {
-    num: '07',
-    kicker: 'Governance',
-    title: 'Security & AI Risk',
-    sub: 'Built in, not bolted on',
-    body: 'Data sovereignty, AI governance frameworks, hallucination risk management, model drift monitoring, and compliance-ready architecture — embedded into every layer from day one.',
-  },
-]
+import { LayersSection } from './layers-section'
 
 const stackLayers = [
   {
@@ -257,6 +207,249 @@ const stats = [
   { coord: '[A·05]', val: '6', lbl: 'Countries' },
 ]
 
+function DataFlowDiagram() {
+  return (
+    <svg viewBox='0 0 340 240' xmlns='http://www.w3.org/2000/svg' className='v5-mini-diagram'>
+      <defs>
+        <filter id='v5-mini-glow'>
+          <feGaussianBlur stdDeviation='2' result='coloredBlur' />
+          <feMerge>
+            <feMergeNode in='coloredBlur' />
+            <feMergeNode in='SourceGraphic' />
+          </feMerge>
+        </filter>
+        <pattern id='v5-mini-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+        </pattern>
+      </defs>
+
+      {/* Background grid */}
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-mini-grid)' opacity='0.6' />
+
+      {/* Frame */}
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+
+      {/* Title */}
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·D-01</text>
+
+      {/* Data nodes - aligned to 20px grid */}
+      <g className='v5-mini-node' style={{ '--node-delay': '0s' } as React.CSSProperties}>
+        <rect x='30' y='50' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
+        <rect x='30' y='50' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <circle cx='38' cy='58' r='3.5' fill='var(--v5-paper)' />
+        <circle cx='38' cy='58' r='2.5' fill='#e86a2a' />
+        <text x='70' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>INPUT</text>
+        <text x='70' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>SOURCE</text>
+      </g>
+
+      <g className='v5-mini-node' style={{ '--node-delay': '0.3s' } as React.CSSProperties}>
+        <rect x='230' y='50' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
+        <rect x='230' y='50' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <circle cx='238' cy='58' r='3.5' fill='var(--v5-paper)' />
+        <circle cx='238' cy='58' r='2.5' fill='#e86a2a' />
+        <text x='270' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>PROCESS</text>
+        <text x='270' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>AGENT</text>
+      </g>
+
+      <g className='v5-mini-node' style={{ '--node-delay': '0.6s' } as React.CSSProperties}>
+        <rect x='130' y='150' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
+        <rect x='130' y='150' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <circle cx='138' cy='158' r='3.5' fill='var(--v5-paper)' />
+        <circle cx='138' cy='158' r='2.5' fill='#e86a2a' />
+        <text x='170' y='167' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>RESULT</text>
+        <text x='170' y='182' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>OUTPUT</text>
+      </g>
+
+      {/* Connection lines with annotations - aligned to grid */}
+      <g>
+        <path d='M 110 70 L 230 70' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='170' y='66' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle'>API</text>
+      </g>
+
+      <g>
+        <path d='M 70 90 L 170 150' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='110' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle' transform='rotate(-28 110 115)'>STREAM</text>
+      </g>
+
+      <g>
+        <path d='M 270 90 L 170 150' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='230' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle' transform='rotate(28 230 115)'>SYNC</text>
+      </g>
+
+      {/* Data flow blobs */}
+      <circle cx='170' cy='70' r='4.5' fill='var(--v5-paper)' />
+      <circle cx='170' cy='70' r='3.5' fill='#e86a2a' className='v5-mini-blob' filter='url(#v5-mini-glow)' />
+      <circle cx='120' cy='120' r='4' fill='var(--v5-paper)' />
+      <circle cx='120' cy='120' r='3' fill='rgba(232,106,42,0.8)' className='v5-mini-blob' style={{ '--blob-delay': '0.5s' } as React.CSSProperties} />
+      <circle cx='220' cy='120' r='4' fill='var(--v5-paper)' />
+      <circle cx='220' cy='120' r='3' fill='rgba(232,106,42,0.8)' className='v5-mini-blob' style={{ '--blob-delay': '0.7s' } as React.CSSProperties} />
+
+      {/* Measurements - aligned to grid */}
+      <line x1='30' y1='210' x2='110' y2='210' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
+      <line x1='30' y1='207' x2='30' y2='213' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
+      <line x1='110' y1='207' x2='110' y2='213' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
+      <text x='70' y='218' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(255,255,255,0.3)' textAnchor='middle'>80px · 4 CELLS</text>
+    </svg>
+  )
+}
+
+function NetworkDiagram() {
+  const nodes = [
+    { label: 'AWS', angle: 0 },
+    { label: 'AZURE', angle: 60 },
+    { label: 'DATA', angle: 120 },
+    { label: 'API', angle: 180 },
+    { label: 'AGENT', angle: 240 },
+    { label: 'APP', angle: 300 },
+  ]
+
+  return (
+    <svg viewBox='0 0 340 240' xmlns='http://www.w3.org/2000/svg' className='v5-mini-diagram'>
+      <defs>
+        <pattern id='v5-net-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+        </pattern>
+        <filter id='v5-hub-glow'>
+          <feGaussianBlur stdDeviation='3' result='coloredBlur' />
+          <feMerge>
+            <feMergeNode in='coloredBlur' />
+            <feMergeNode in='SourceGraphic' />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Background grid */}
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-net-grid)' opacity='0.6' />
+
+      {/* Frame */}
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+
+      {/* Title */}
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·G-01</text>
+
+      {/* Orbital circles - aligned to grid multiples */}
+      <circle cx='170' cy='130' r='80' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
+      <circle cx='170' cy='130' r='60' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
+      <circle cx='170' cy='130' r='40' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
+
+      {/* Central hub - grid aligned */}
+      <circle cx='170' cy='130' r='24' fill='var(--v5-paper)' stroke='none' />
+      <circle cx='170' cy='130' r='24' fill='rgba(232,106,42,0.12)' stroke='rgba(232,106,42,0.6)' strokeWidth='2.5' className='v5-mini-hub' />
+      <circle cx='170' cy='130' r='12' fill='#e86a2a' className='v5-mini-hub-core' filter='url(#v5-hub-glow)' />
+      <text x='170' y='135' fontFamily='var(--font-mono)' fontSize='8' fill='#fff' textAnchor='middle' fontWeight='700'>HUB</text>
+
+      {/* Satellite nodes - aligned to grid */}
+      {nodes.map((node, i) => {
+        const angle = (node.angle - 90) * Math.PI / 180
+        const x = 170 + Math.cos(angle) * 80
+        const y = 130 + Math.sin(angle) * 80
+        return (
+          <g key={i}>
+            <line x1='170' y1='130' x2={x} y2={y} stroke='rgba(232,106,42,0.4)' strokeWidth='1.5' className='v5-mini-spoke' style={{ '--spoke-delay': `${i * 0.1}s` } as React.CSSProperties} />
+            <circle cx={x} cy={y} r='8' fill='var(--v5-paper)' stroke='none' />
+            <circle cx={x} cy={y} r='8' fill='rgba(232,106,42,0.8)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' className='v5-mini-satellite' style={{ '--sat-delay': `${i * 0.15}s` } as React.CSSProperties} />
+            <text x={x} y={y + (node.angle === 0 ? -14 : node.angle === 180 ? 20 : node.angle < 180 ? -12 : 18)} fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.8)' textAnchor='middle' letterSpacing='1'>{node.label}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+function ProcessDiagram() {
+  const steps = [
+    { num: 5, label: 'ALIGN', sublabel: 'ASSESS' },
+    { num: 15, label: 'SPECIFY', sublabel: 'VALIDATE' },
+    { num: 90, label: 'DEPLOY', sublabel: 'SCALE' },
+  ]
+
+  return (
+    <svg viewBox='0 0 340 240' xmlns='http://www.w3.org/2000/svg' className='v5-mini-diagram'>
+      <defs>
+        <marker id='v5-arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'>
+          <polygon points='0 0, 10 5, 0 10' fill='rgba(232,106,42,0.7)' />
+        </marker>
+        <pattern id='v5-proc-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+        </pattern>
+      </defs>
+
+      {/* Background grid */}
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-proc-grid)' opacity='0.6' />
+
+      {/* Frame */}
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+
+      {/* Title */}
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·F-01</text>
+
+      {/* Timeline - grid aligned */}
+      <line x1='30' y1='50' x2='310' y2='50' stroke='rgba(232,106,42,0.3)' strokeWidth='1.2' strokeDasharray='5 5' />
+
+      {/* Steps - aligned to 20px grid */}
+      {steps.map((step, i) => (
+        <g key={i} className='v5-mini-step' style={{ '--step-delay': `${i * 0.2}s` } as React.CSSProperties}>
+          <rect x={30 + i * 100} y='70' width='80' height='100' fill='var(--v5-paper)' stroke='none' />
+          <rect x={30 + i * 100} y='70' width='80' height='100' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+
+          {/* Day number at top */}
+          <text x={70 + i * 100} y='98' fontFamily='var(--font-mono)' fontSize='24' fill='#e86a2a' textAnchor='middle' fontWeight='800'>{step.num}</text>
+          <text x={70 + i * 100} y='112' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>DAYS</text>
+
+          {/* Divider - grid aligned */}
+          <line x1={35 + i * 100} y1='120' x2={105 + i * 100} y2='120' stroke='rgba(232,106,42,0.3)' strokeWidth='0.6' strokeDasharray='2 2' />
+
+          {/* Labels */}
+          <text x={70 + i * 100} y='138' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.label}</text>
+          <text x={70 + i * 100} y='151' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='0.5'>&</text>
+          <text x={70 + i * 100} y='162' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.sublabel}</text>
+
+          {/* Connection dot on timeline - grid aligned */}
+          <circle cx={70 + i * 100} cy='50' r='4.5' fill='var(--v5-paper)' />
+          <circle cx={70 + i * 100} cy='50' r='3.5' fill='#e86a2a' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+          <line x1={70 + i * 100} y1='54' x2={70 + i * 100} y2='70' stroke='rgba(232,106,42,0.4)' strokeWidth='1.2' strokeDasharray='2 2' />
+
+          {i < 2 && (
+            <>
+              <path d={`M ${110 + i * 100} 120 L ${130 + i * 100} 120`} stroke='rgba(232,106,42,0.6)' strokeWidth='2.5' markerEnd='url(#v5-arrow)' className='v5-mini-arrow' />
+            </>
+          )}
+        </g>
+      ))}
+
+      {/* Total timeline annotation - grid aligned */}
+      <line x1='30' y1='200' x2='310' y2='200' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
+      <line x1='30' y1='196' x2='30' y2='204' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
+      <line x1='310' y1='196' x2='310' y2='204' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
+      <text x='170' y='215' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(255,255,255,0.3)' textAnchor='middle' letterSpacing='1'>110 DAYS · TOTAL</text>
+    </svg>
+  )
+}
+
 function HeroDiagram() {
   const layers = [
     { label: 'STRATEGY', code: 'S·01' },
@@ -268,7 +461,7 @@ function HeroDiagram() {
     { label: 'OPS', code: 'S·07' },
   ]
   return (
-    <svg viewBox='0 0 520 560' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+    <svg viewBox='0 0 520 560' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' className='v5-hero-svg'>
       <defs>
         <pattern id='v5-hatch' patternUnits='userSpaceOnUse' width='6' height='6' patternTransform='rotate(45)'>
           <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(232,106,42,0.35)' strokeWidth='1' />
@@ -276,6 +469,13 @@ function HeroDiagram() {
         <pattern id='v5-dot' patternUnits='userSpaceOnUse' width='10' height='10'>
           <circle cx='1' cy='1' r='0.8' fill='rgba(255,255,255,0.22)' />
         </pattern>
+        <filter id='v5-glow'>
+          <feGaussianBlur stdDeviation='2' result='coloredBlur' />
+          <feMerge>
+            <feMergeNode in='coloredBlur' />
+            <feMergeNode in='SourceGraphic' />
+          </feMerge>
+        </filter>
       </defs>
 
       {/* frame rule marks */}
@@ -305,7 +505,7 @@ function HeroDiagram() {
         const y = 90 + i * 56
         const skew = 26
         return (
-          <g key={layer.code}>
+          <g key={layer.code} className='v5-layer' style={{ '--layer-index': i } as React.CSSProperties}>
             {/* top face */}
             <polygon
               points={`${140},${y} ${360},${y} ${360 + skew},${y - 14} ${140 + skew},${y - 14}`}
@@ -350,8 +550,9 @@ function HeroDiagram() {
               stroke='rgba(232,106,42,0.65)'
               strokeWidth='0.8'
               strokeDasharray='2 2'
+              className='v5-callout-line'
             />
-            <circle cx={360 + skew} cy={y + 8} r='1.6' fill='#e86a2a' />
+            <circle cx={360 + skew} cy={y + 8} r='1.6' fill='#e86a2a' className='v5-callout-dot' />
             <text
               x='454'
               y={y + 11}
@@ -362,6 +563,28 @@ function HeroDiagram() {
             >
               {layer.code}
             </text>
+            {/* communication blobs between layers */}
+            {i < layers.length - 1 && (
+              <>
+                <circle
+                  cx='250'
+                  cy={y + 38}
+                  r='2.5'
+                  fill='#e86a2a'
+                  className='v5-comm-blob'
+                  style={{ '--blob-delay': `${i * 0.8}s`, '--blob-index': i } as React.CSSProperties}
+                  filter='url(#v5-glow)'
+                />
+                <circle
+                  cx='200'
+                  cy={y + 42}
+                  r='1.8'
+                  fill='rgba(232,106,42,0.6)'
+                  className='v5-comm-blob'
+                  style={{ '--blob-delay': `${i * 0.8 + 0.4}s`, '--blob-index': i } as React.CSSProperties}
+                />
+              </>
+            )}
           </g>
         )
       })}
@@ -510,37 +733,8 @@ export default function V5Page() {
         </div>
       </section>
 
-      {/* AI GAP / CAPABILITIES */}
-      <section className='v5-section' id='solutions'>
-        <div className='v5-container'>
-          <div className='v5-section-head'>
-            <div className='v5-kicker'>[B·01] Capabilities</div>
-            <h2>
-              The AI gap every enterprise hits. <em>And how we close it.</em>
-            </h2>
-            <p className='lead'>
-              We translate your priorities into an AI and technology roadmap. Then deliver
-              against it — across every layer, with industry-leading partners at each step.
-              Engage us for one capability or the full transformation.
-            </p>
-          </div>
-
-          <div className='v5-caps-grid'>
-            {capabilities.map((cap) => (
-              <div key={cap.num} className='v5-cap'>
-                <div className='num'>
-                  {cap.num} · {cap.kicker}
-                </div>
-                <h3>{cap.title}</h3>
-                <div className='sub'>{cap.sub}</div>
-                <p>{cap.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className='v5-caps-badge'>▲ The Frontier Organisation</div>
-        </div>
-      </section>
+      {/* LAYERS / CAPABILITIES */}
+      <LayersSection />
 
       {/* STACK DIAGRAM */}
       <section className='v5-section'>
@@ -580,12 +774,17 @@ export default function V5Page() {
       {/* PROVEN */}
       <section className='v5-section' id='work'>
         <div className='v5-container'>
-          <div className='v5-section-head'>
-            <div className='v5-kicker'>[D·01] Proof of delivery</div>
-            <h2>
-              Proven <em>where it matters.</em>
-            </h2>
-            <p className='lead'>50+ enterprise deployments across 11 industries.</p>
+          <div className='v5-section-head v5-with-diagram'>
+            <div>
+              <div className='v5-kicker'>[D·01] Proof of delivery</div>
+              <h2>
+                Proven <em>where it matters.</em>
+              </h2>
+              <p className='lead'>50+ enterprise deployments across 11 industries.</p>
+            </div>
+            <div>
+              <DataFlowDiagram />
+            </div>
           </div>
 
           <div className='v5-proven-group'>
@@ -674,15 +873,20 @@ export default function V5Page() {
       {/* HOW WE WORK */}
       <section className='v5-section'>
         <div className='v5-container'>
-          <div className='v5-section-head'>
-            <div className='v5-kicker'>[F·01] Cadence</div>
-            <h2>
-              How we work. <em>Built for pace, not paperwork.</em>
-            </h2>
-            <p className='lead'>
-              Every engagement is time-boxed. Milestones are fixed. Ambiguity gets eliminated
-              early.
-            </p>
+          <div className='v5-section-head v5-with-diagram'>
+            <div>
+              <div className='v5-kicker'>[F·01] Cadence</div>
+              <h2>
+                How we work. <em>Built for pace, not paperwork.</em>
+              </h2>
+              <p className='lead'>
+                Every engagement is time-boxed. Milestones are fixed. Ambiguity gets eliminated
+                early.
+              </p>
+            </div>
+            <div>
+              <ProcessDiagram />
+            </div>
           </div>
 
           <div className='v5-phases'>
@@ -709,11 +913,16 @@ export default function V5Page() {
       {/* WHY */}
       <section className='v5-section' id='about'>
         <div className='v5-container'>
-          <div className='v5-section-head'>
-            <div className='v5-kicker'>[G·01] Rationale</div>
-            <h2>
-              Why enterprises <em>choose DBiz.</em>
-            </h2>
+          <div className='v5-section-head v5-with-diagram'>
+            <div>
+              <div className='v5-kicker'>[G·01] Rationale</div>
+              <h2>
+                Why enterprises <em>choose DBiz.</em>
+              </h2>
+            </div>
+            <div>
+              <NetworkDiagram />
+            </div>
           </div>
 
           <div className='v5-why-grid'>

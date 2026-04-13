@@ -294,6 +294,263 @@
 .v5-scope .v5-hero-diagram::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
 .v5-scope .v5-hero-diagram::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 .v5-scope .v5-hero-diagram svg { display: block; width: 100%; height: 100%; }
+
+/* Hero diagram animations */
+.v5-scope .v5-hero-svg .v5-layer {
+  opacity: 0;
+  animation: v5-layer-appear 0.6s ease-out forwards;
+  animation-delay: calc(var(--layer-index) * 0.15s + 0.3s);
+}
+
+.v5-scope .v5-hero-svg .v5-callout-line {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+  animation: v5-line-draw 0.8s ease-out forwards;
+  animation-delay: calc(var(--layer-index) * 0.15s + 0.6s);
+}
+
+.v5-scope .v5-hero-svg .v5-callout-dot {
+  transform-origin: center;
+  animation: v5-dot-pulse 2s ease-in-out infinite;
+  animation-delay: calc(var(--layer-index) * 0.15s + 0.8s);
+}
+
+.v5-scope .v5-hero-svg .v5-comm-blob {
+  opacity: 0;
+  animation: v5-blob-pulse 3s ease-in-out infinite;
+  animation-delay: var(--blob-delay);
+}
+
+@keyframes v5-layer-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes v5-line-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes v5-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+@keyframes v5-blob-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(20px) scale(0.6);
+  }
+}
+
+/* Mini diagram styles */
+.v5-scope .v5-mini-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 480px;
+  max-width: 520px;
+  opacity: 0;
+  animation: v5-diagram-fade-in 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  flex-shrink: 0;
+}
+
+.v5-scope .v5-mini-node {
+  opacity: 0;
+  animation: v5-node-appear 0.5s ease-out forwards;
+  animation-delay: var(--node-delay);
+}
+
+.v5-scope .v5-mini-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: v5-mini-line-draw 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.v5-scope .v5-mini-blob {
+  animation: v5-mini-blob-move 2.5s ease-in-out infinite;
+  animation-delay: var(--blob-delay, 0s);
+}
+
+.v5-scope .v5-mini-hub {
+  transform-origin: center;
+  animation: v5-hub-pulse 3s ease-in-out infinite;
+}
+
+.v5-scope .v5-mini-hub-core {
+  animation: v5-core-glow 2s ease-in-out infinite;
+}
+
+.v5-scope .v5-mini-spoke {
+  opacity: 0;
+  animation: v5-spoke-draw 0.6s ease-out forwards;
+  animation-delay: var(--spoke-delay);
+}
+
+.v5-scope .v5-mini-satellite {
+  opacity: 0;
+  transform-origin: center;
+  animation: v5-satellite-pop 0.5s ease-out forwards;
+  animation-delay: var(--sat-delay);
+}
+
+.v5-scope .v5-mini-step {
+  opacity: 0;
+  animation: v5-step-appear 0.6s ease-out forwards;
+  animation-delay: var(--step-delay);
+}
+
+.v5-scope .v5-mini-arrow {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: v5-arrow-draw 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes v5-diagram-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes v5-node-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes v5-mini-line-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes v5-mini-blob-move {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(5px, 5px);
+  }
+}
+
+@keyframes v5-hub-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes v5-core-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes v5-spoke-draw {
+  from {
+    opacity: 0;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  to {
+    opacity: 1;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes v5-satellite-pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes v5-step-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes v5-arrow-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive adjustments for mini diagrams */
+@media (max-width: 1024px) {
+  .v5-scope .v5-mini-diagram {
+    min-width: 200px;
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .v5-scope .v5-section-head[style*='display: flex'] {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .v5-scope .v5-mini-diagram {
+    min-width: 180px;
+    max-width: 200px;
+  }
+}
 .v5-scope .v5-hero-diagram-label {
   position: absolute;
   top: 12px;
@@ -328,9 +585,22 @@
   border-bottom: 1px solid var(--v5-hair);
 }
 .v5-scope .v5-section-head {
-  max-width: 860px;
+  max-width: 1200px;
   margin-bottom: 80px;
   position: relative;
+}
+.v5-scope .v5-section-head.v5-with-diagram {
+  display: flex;
+  gap: 100px;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.v5-scope .v5-section-head.v5-with-diagram > div:first-child {
+  flex: 1;
+  max-width: 640px;
+}
+.v5-scope .v5-section-head.v5-with-diagram > div:last-child {
+  margin-top: -8px;
 }
 .v5-scope .v5-kicker {
   font-family: var(--font-mono);
@@ -475,81 +745,168 @@
   .v5-scope .v5-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .v5-scope .v5-stat { border-bottom: 1px solid var(--v5-hair); }
   .v5-scope .v5-stat:nth-child(even) { border-right: none; }
+  .v5-scope .v5-stat:nth-last-child(-n+2) { border-bottom: none; }
 }
 
 /* ============ CAPABILITIES ============ */
-.v5-scope .v5-caps-grid {
+/* --- Layers (one-at-a-time capabilities) --- */
+.v5-scope .v5-layers {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 260px 1fr;
   gap: 0;
   border: 1px solid var(--v5-hair);
+  min-height: 420px;
 }
-.v5-scope .v5-cap {
-  padding: 32px 28px 36px;
-  border-right: 1px solid var(--v5-hair);
-  border-bottom: 1px solid var(--v5-hair);
-  position: relative;
+.v5-scope .v5-layers-nav {
   display: flex;
   flex-direction: column;
+  border-right: 1px solid var(--v5-hair);
+}
+.v5-scope .v5-layers-tab {
+  display: flex;
+  align-items: center;
   gap: 14px;
-  min-height: 280px;
-  transition: background 0.3s ease;
-}
-.v5-scope .v5-cap:hover {
-  background: rgba(232, 106, 42, 0.04);
-}
-.v5-scope .v5-cap:nth-child(3n) { border-right: none; }
-.v5-scope .v5-cap:nth-last-child(-n+1) { border-bottom: none; }
-.v5-scope .v5-cap::before,
-.v5-scope .v5-cap::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 1px solid var(--v5-orange-hair);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.v5-scope .v5-cap::before { top: 6px; left: 6px; border-right: none; border-bottom: none; }
-.v5-scope .v5-cap::after { bottom: 6px; right: 6px; border-left: none; border-top: none; }
-.v5-scope .v5-cap:hover::before,
-.v5-scope .v5-cap:hover::after { opacity: 1; }
-.v5-scope .v5-cap .num {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  color: var(--v5-accent);
-  text-transform: uppercase;
-}
-.v5-scope .v5-cap .kicker {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  padding: 18px 24px;
+  border: none;
+  border-bottom: 1px solid var(--v5-hair);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease, color 0.2s ease;
   color: var(--v5-ink-3);
-  text-transform: uppercase;
 }
-.v5-scope .v5-cap h3 {
-  font-size: 1.24rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+.v5-scope .v5-layers-tab:last-child { border-bottom: none; }
+.v5-scope .v5-layers-tab:hover {
+  background: rgba(232, 106, 42, 0.04);
   color: var(--v5-ink);
 }
-.v5-scope .v5-cap .sub {
+.v5-scope .v5-layers-tab.active {
+  background: rgba(232, 106, 42, 0.06);
+  color: var(--v5-ink);
+  border-left: 2px solid var(--v5-accent);
+  padding-left: 22px;
+}
+.v5-scope .v5-layers-tab .num {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--v5-accent);
+  flex-shrink: 0;
+}
+.v5-scope .v5-layers-tab .label {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+}
+.v5-scope .v5-layers-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 56px;
+  animation: v5-layer-in 0.35s ease;
+}
+@keyframes v5-layer-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.v5-scope .v5-layers-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+}
+.v5-scope .v5-layers-detail h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--v5-ink);
+}
+.v5-scope .v5-layers-detail h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--v5-accent);
+}
+.v5-scope .v5-layers-detail p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--v5-ink-2);
+  max-width: 480px;
+}
+.v5-scope .v5-layers-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.v5-scope .v5-layers-tag {
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  color: var(--v5-accent);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-.v5-scope .v5-cap p {
-  font-size: 0.88rem;
-  line-height: 1.6;
+  padding: 7px 16px;
+  border: 1px solid var(--v5-hair);
   color: var(--v5-ink-2);
 }
+/* geometric icon (right-center aligned) */
+.v5-scope .v5-layers-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 24px;
+}
+.v5-scope .v5-layers-icon-ring {
+  width: 140px;
+  height: 140px;
+  border: 1px solid var(--v5-orange-hair);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--v5-accent);
+  position: relative;
+}
+.v5-scope .v5-layers-icon-ring::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--v5-hair);
+  border-radius: 50%;
+}
 @media (max-width: 960px) {
-  .v5-scope .v5-caps-grid { grid-template-columns: 1fr; }
-  .v5-scope .v5-cap { border-right: none; }
+  .v5-scope .v5-layers {
+    grid-template-columns: 1fr;
+  }
+  .v5-scope .v5-layers-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--v5-hair);
+  }
+  .v5-scope .v5-layers-tab {
+    white-space: nowrap;
+    border-bottom: none;
+    border-right: 1px solid var(--v5-hair);
+    padding: 14px 18px;
+  }
+  .v5-scope .v5-layers-tab.active {
+    border-left: none;
+    border-bottom: 2px solid var(--v5-accent);
+    padding-left: 18px;
+  }
+  .v5-scope .v5-layers-tab .label {
+    font-size: 0.76rem;
+  }
+  .v5-scope .v5-layers-content {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+  .v5-scope .v5-layers-icon {
+    display: none;
+  }
 }
 .v5-scope .v5-caps-badge {
   display: inline-flex;
@@ -736,6 +1093,7 @@
 @media (max-width: 900px) {
   .v5-scope .v5-proven-grid { grid-template-columns: 1fr; }
   .v5-scope .v5-proven-card { border-right: none; border-bottom: 1px solid var(--v5-hair); }
+  .v5-scope .v5-proven-card:last-child { border-bottom: none; }
 }
 
 .v5-scope .v5-tech-grid {
@@ -879,7 +1237,7 @@
 .v5-scope .v5-phases::before {
   content: '';
   position: absolute;
-  top: 78px;
+  top: 95px;
   left: 0;
   right: 0;
   height: 1px;
@@ -887,7 +1245,7 @@
   opacity: 0.6;
 }
 .v5-scope .v5-phase {
-  padding: 40px 32px;
+  padding: 48px 32px 40px;
   border-right: 1px solid var(--v5-hair);
   position: relative;
   display: flex;
@@ -914,7 +1272,7 @@
 }
 .v5-scope .v5-phase .marker {
   position: absolute;
-  top: 70px;
+  top: 87px;
   left: 32px;
   width: 16px;
   height: 16px;
@@ -948,6 +1306,7 @@
   .v5-scope .v5-phases { grid-template-columns: 1fr; }
   .v5-scope .v5-phases::before { display: none; }
   .v5-scope .v5-phase { border-right: none; border-bottom: 1px solid var(--v5-hair); }
+  .v5-scope .v5-phase:last-child { border-bottom: none; }
 }
 .v5-scope .v5-phases-note {
   margin-top: 28px;
