@@ -66,4 +66,10 @@ export const versions: Version[] = [
     tagline: 'Blueprint ethos on v8 warm broadsheet — newsletter voice',
     status: 'draft',
   },
+  {
+    slug: 'v11',
+    name: 'V11 — Frontier',
+    tagline: 'V5 Blueprint ethos, V4 content, cycling capabilities, horizontal framework',
+    status: 'draft',
+  },
 ]
