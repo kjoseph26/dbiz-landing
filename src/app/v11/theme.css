@@ -229,7 +229,7 @@
 
 /* section */
 .v11-scope .bp-section {
-  padding: clamp(72px, 9vw, 120px) 0;
+  padding: clamp(96px, 11vw, 168px) 0;
   border-bottom: 1px solid var(--bp-hair);
   position: relative;
 }

@@ -12,7 +12,7 @@ const logos = [
 ] as const
 
 export const TrustBar = () => (
-  <section className='bp-section' style={{ paddingTop: 48, paddingBottom: 48 }}>
+  <section className='bp-section' style={{ paddingTop: 'clamp(64px, 7vw, 96px)', paddingBottom: 'clamp(64px, 7vw, 96px)' }}>
     <div className='bp-container'>
       <div className='flex items-center justify-between mb-6 flex-wrap gap-4'>
         <span className='bp-mono-accent'>N·02 · TRUSTED BY</span>
