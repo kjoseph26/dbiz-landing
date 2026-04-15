@@ -3,7 +3,7 @@ import { HeroSection } from './_components/HeroSection'
 import { TrustBar } from './_components/TrustBar'
 import { StatsSection } from './_components/StatsSection'
 import { AiFrameworkSection } from './_components/AiFrameworkSection'
-import { ExpertiseSection } from './_components/ExpertiseSection'
+import { CapabilitiesSection } from './_components/CapabilitiesSection'
 import { TestimonialSection } from './_components/TestimonialSection'
 import { HowWeWork } from './_components/HowWeWork'
 import { WhyDbiz } from './_components/WhyDbiz'
@@ -18,7 +18,7 @@ export default function V11Page() {
       <TrustBar />
       <StatsSection />
       <AiFrameworkSection />
-      <ExpertiseSection />
+      <CapabilitiesSection />
       <TestimonialSection />
       <HowWeWork />
       <WhyDbiz />
