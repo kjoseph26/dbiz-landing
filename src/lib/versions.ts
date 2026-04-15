@@ -54,4 +54,16 @@ export const versions: Version[] = [
     tagline: 'V6 broadsheet structure, rendered entirely in DM Sans',
     status: 'ready',
   },
+  {
+    slug: 'v9',
+    name: 'V9 — Foundry',
+    tagline: 'v5 illustrations, v4 content, navy/light handshake',
+    status: 'draft',
+  },
+  {
+    slug: 'v10',
+    name: 'V10 — Dispatch',
+    tagline: 'Blueprint ethos on v8 warm broadsheet — newsletter voice',
+    status: 'draft',
+  },
 ]

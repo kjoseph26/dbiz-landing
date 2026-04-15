@@ -13,6 +13,32 @@
   --v5-orange-hair: rgba(232, 106, 42, 0.55);
   --v5-orange-hair-soft: rgba(232, 106, 42, 0.28);
 
+  /* ===== SVG ink tokens — pre-blended solids against navy-deep paper =====
+     Use these inside SVG markup instead of rgba(); overlapping layers
+     no longer compound their alpha. All values flattened against #070F22. */
+  --v5-ink-grid: #10182a;            /* pattern grid (absorbs former rect opacity=0.6) */
+  --v5-ink-dot: #1d2435;             /* dot pattern (absorbs former rect opacity=0.4) */
+  --v5-ink-frame: #454b59;           /* frame border, rule marks — white@25 */
+  --v5-ink-measure: #393f4e;         /* measurement tick lines — white@20 */
+  --v5-ink-dim: #515764;             /* dimension caption — white@30 */
+  --v5-ink-label: #6a6f7a;           /* label muted — white@40 */
+  --v5-ink-label-strong: #838791;    /* label — white@50 */
+  --v5-ink-layer-right: #0c1426;     /* isometric right-face — white@02 */
+
+  --v5-ink-layer-fill: #101322;      /* orange@04 — hero layer front */
+  --v5-ink-node-fill: #191623;       /* orange@08 — node tint, process bar */
+  --v5-ink-hub: #221a23;             /* orange@12 — hub core fill */
+  --v5-ink-orbit: #291d23;           /* orange@15 — orbit rings */
+  --v5-ink-divider-soft: #4b2a24;    /* orange@30 — dashed dividers */
+  --v5-ink-hatch: #562f25;           /* orange@35 — hatch stripe */
+  --v5-ink-spoke: #613325;           /* orange@40 — spokes */
+  --v5-ink-connector: #783d26;       /* orange@50 — connectors */
+  --v5-ink-hair: #834126;            /* orange@55 — dashed hairline, spine */
+  --v5-ink-corner: #8e4627;          /* orange@60 — angle-bracket corners, borders */
+  --v5-ink-callout: #994a27;         /* orange@65 — hero callout line */
+  --v5-ink-text-accent: #a54f28;     /* orange@70 — diagram labels, arrowhead */
+  --v5-ink-blob: #bb5828;            /* orange@80 — comm blobs, satellite */
+
   background: var(--v5-paper);
   color: var(--v5-ink);
   font-family: var(--font-sans);

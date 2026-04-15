@@ -219,84 +219,84 @@ function DataFlowDiagram() {
           </feMerge>
         </filter>
         <pattern id='v5-mini-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
-          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='var(--v5-ink-grid)' strokeWidth='0.5' />
         </pattern>
       </defs>
 
       {/* Background grid */}
-      <rect x='10' y='10' width='320' height='220' fill='url(#v5-mini-grid)' opacity='0.6' />
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-mini-grid)' />
 
       {/* Frame */}
-      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
-      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='var(--v5-ink-frame)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
 
       {/* Title */}
-      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·D-01</text>
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='var(--v5-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG·D-01</text>
 
       {/* Data nodes - aligned to 20px grid */}
       <g className='v5-mini-node' style={{ '--node-delay': '0s' } as React.CSSProperties}>
         <rect x='30' y='50' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
-        <rect x='30' y='50' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <rect x='30' y='50' width='80' height='40' fill='var(--v5-ink-node-fill)' stroke='var(--v5-ink-corner)' strokeWidth='1.8' />
         <circle cx='38' cy='58' r='3.5' fill='var(--v5-paper)' />
         <circle cx='38' cy='58' r='2.5' fill='#e86a2a' />
-        <text x='70' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>INPUT</text>
+        <text x='70' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v5-ink-label)' textAnchor='middle' letterSpacing='1'>INPUT</text>
         <text x='70' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>SOURCE</text>
       </g>
 
       <g className='v5-mini-node' style={{ '--node-delay': '0.3s' } as React.CSSProperties}>
         <rect x='230' y='50' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
-        <rect x='230' y='50' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <rect x='230' y='50' width='80' height='40' fill='var(--v5-ink-node-fill)' stroke='var(--v5-ink-corner)' strokeWidth='1.8' />
         <circle cx='238' cy='58' r='3.5' fill='var(--v5-paper)' />
         <circle cx='238' cy='58' r='2.5' fill='#e86a2a' />
-        <text x='270' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>PROCESS</text>
+        <text x='270' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v5-ink-label)' textAnchor='middle' letterSpacing='1'>PROCESS</text>
         <text x='270' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>AGENT</text>
       </g>
 
       <g className='v5-mini-node' style={{ '--node-delay': '0.6s' } as React.CSSProperties}>
         <rect x='130' y='150' width='80' height='40' fill='var(--v5-paper)' stroke='none' />
-        <rect x='130' y='150' width='80' height='40' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+        <rect x='130' y='150' width='80' height='40' fill='var(--v5-ink-node-fill)' stroke='var(--v5-ink-corner)' strokeWidth='1.8' />
         <circle cx='138' cy='158' r='3.5' fill='var(--v5-paper)' />
         <circle cx='138' cy='158' r='2.5' fill='#e86a2a' />
-        <text x='170' y='167' fontFamily='var(--font-mono)' fontSize='9' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>RESULT</text>
+        <text x='170' y='167' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v5-ink-label)' textAnchor='middle' letterSpacing='1'>RESULT</text>
         <text x='170' y='182' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>OUTPUT</text>
       </g>
 
       {/* Connection lines with annotations - aligned to grid */}
       <g>
-        <path d='M 110 70 L 230 70' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
-        <text x='170' y='66' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle'>API</text>
+        <path d='M 110 70 L 230 70' stroke='var(--v5-ink-connector)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='170' y='66' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-text-accent)' textAnchor='middle'>API</text>
       </g>
 
       <g>
-        <path d='M 70 90 L 170 150' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
-        <text x='110' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle' transform='rotate(-28 110 115)'>STREAM</text>
+        <path d='M 70 90 L 170 150' stroke='var(--v5-ink-connector)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='110' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-text-accent)' textAnchor='middle' transform='rotate(-28 110 115)'>STREAM</text>
       </g>
 
       <g>
-        <path d='M 270 90 L 170 150' stroke='rgba(232,106,42,0.5)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
-        <text x='230' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.7)' textAnchor='middle' transform='rotate(28 230 115)'>SYNC</text>
+        <path d='M 270 90 L 170 150' stroke='var(--v5-ink-connector)' strokeWidth='1.8' strokeDasharray='5 4' className='v5-mini-line' />
+        <text x='230' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-text-accent)' textAnchor='middle' transform='rotate(28 230 115)'>SYNC</text>
       </g>
 
       {/* Data flow blobs */}
       <circle cx='170' cy='70' r='4.5' fill='var(--v5-paper)' />
       <circle cx='170' cy='70' r='3.5' fill='#e86a2a' className='v5-mini-blob' filter='url(#v5-mini-glow)' />
       <circle cx='120' cy='120' r='4' fill='var(--v5-paper)' />
-      <circle cx='120' cy='120' r='3' fill='rgba(232,106,42,0.8)' className='v5-mini-blob' style={{ '--blob-delay': '0.5s' } as React.CSSProperties} />
+      <circle cx='120' cy='120' r='3' fill='var(--v5-ink-blob)' className='v5-mini-blob' style={{ '--blob-delay': '0.5s' } as React.CSSProperties} />
       <circle cx='220' cy='120' r='4' fill='var(--v5-paper)' />
-      <circle cx='220' cy='120' r='3' fill='rgba(232,106,42,0.8)' className='v5-mini-blob' style={{ '--blob-delay': '0.7s' } as React.CSSProperties} />
+      <circle cx='220' cy='120' r='3' fill='var(--v5-ink-blob)' className='v5-mini-blob' style={{ '--blob-delay': '0.7s' } as React.CSSProperties} />
 
       {/* Measurements - aligned to grid */}
-      <line x1='30' y1='210' x2='110' y2='210' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
-      <line x1='30' y1='207' x2='30' y2='213' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
-      <line x1='110' y1='207' x2='110' y2='213' stroke='rgba(255,255,255,0.2)' strokeWidth='0.5' />
-      <text x='70' y='218' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(255,255,255,0.3)' textAnchor='middle'>80px · 4 CELLS</text>
+      <line x1='30' y1='210' x2='110' y2='210' stroke='var(--v5-ink-measure)' strokeWidth='0.5' />
+      <line x1='30' y1='207' x2='30' y2='213' stroke='var(--v5-ink-measure)' strokeWidth='0.5' />
+      <line x1='110' y1='207' x2='110' y2='213' stroke='var(--v5-ink-measure)' strokeWidth='0.5' />
+      <text x='70' y='218' fontFamily='var(--font-mono)' fontSize='6' fill='var(--v5-ink-dim)' textAnchor='middle'>80px · 4 CELLS</text>
     </svg>
   )
 }
@@ -315,7 +315,7 @@ function NetworkDiagram() {
     <svg viewBox='0 0 340 240' xmlns='http://www.w3.org/2000/svg' className='v5-mini-diagram'>
       <defs>
         <pattern id='v5-net-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
-          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='var(--v5-ink-grid)' strokeWidth='0.5' />
         </pattern>
         <filter id='v5-hub-glow'>
           <feGaussianBlur stdDeviation='3' result='coloredBlur' />
@@ -327,30 +327,30 @@ function NetworkDiagram() {
       </defs>
 
       {/* Background grid */}
-      <rect x='10' y='10' width='320' height='220' fill='url(#v5-net-grid)' opacity='0.6' />
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-net-grid)' />
 
       {/* Frame */}
-      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
-      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='var(--v5-ink-frame)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
 
       {/* Title */}
-      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·G-01</text>
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='var(--v5-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG·G-01</text>
 
       {/* Orbital circles - aligned to grid multiples */}
-      <circle cx='170' cy='130' r='80' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
-      <circle cx='170' cy='130' r='60' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
-      <circle cx='170' cy='130' r='40' fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='0.6' strokeDasharray='4 4' />
+      <circle cx='170' cy='130' r='80' fill='none' stroke='var(--v5-ink-orbit)' strokeWidth='0.6' strokeDasharray='4 4' />
+      <circle cx='170' cy='130' r='60' fill='none' stroke='var(--v5-ink-orbit)' strokeWidth='0.6' strokeDasharray='4 4' />
+      <circle cx='170' cy='130' r='40' fill='none' stroke='var(--v5-ink-orbit)' strokeWidth='0.6' strokeDasharray='4 4' />
 
       {/* Central hub - grid aligned */}
       <circle cx='170' cy='130' r='24' fill='var(--v5-paper)' stroke='none' />
-      <circle cx='170' cy='130' r='24' fill='rgba(232,106,42,0.12)' stroke='rgba(232,106,42,0.6)' strokeWidth='2.5' className='v5-mini-hub' />
+      <circle cx='170' cy='130' r='24' fill='var(--v5-ink-hub)' stroke='var(--v5-ink-corner)' strokeWidth='2.5' className='v5-mini-hub' />
       <circle cx='170' cy='130' r='12' fill='#e86a2a' className='v5-mini-hub-core' filter='url(#v5-hub-glow)' />
       <text x='170' y='135' fontFamily='var(--font-mono)' fontSize='8' fill='#fff' textAnchor='middle' fontWeight='700'>HUB</text>
 
@@ -361,10 +361,10 @@ function NetworkDiagram() {
         const y = 130 + Math.sin(angle) * 80
         return (
           <g key={i}>
-            <line x1='170' y1='130' x2={x} y2={y} stroke='rgba(232,106,42,0.4)' strokeWidth='1.5' className='v5-mini-spoke' style={{ '--spoke-delay': `${i * 0.1}s` } as React.CSSProperties} />
+            <line x1='170' y1='130' x2={x} y2={y} stroke='var(--v5-ink-spoke)' strokeWidth='1.5' className='v5-mini-spoke' style={{ '--spoke-delay': `${i * 0.1}s` } as React.CSSProperties} />
             <circle cx={x} cy={y} r='8' fill='var(--v5-paper)' stroke='none' />
-            <circle cx={x} cy={y} r='8' fill='rgba(232,106,42,0.8)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' className='v5-mini-satellite' style={{ '--sat-delay': `${i * 0.15}s` } as React.CSSProperties} />
-            <text x={x} y={y + (node.angle === 0 ? -14 : node.angle === 180 ? 20 : node.angle < 180 ? -12 : 18)} fontFamily='var(--font-mono)' fontSize='7' fill='rgba(232,106,42,0.8)' textAnchor='middle' letterSpacing='1'>{node.label}</text>
+            <circle cx={x} cy={y} r='8' fill='var(--v5-ink-blob)' stroke='var(--v5-ink-corner)' strokeWidth='1.8' className='v5-mini-satellite' style={{ '--sat-delay': `${i * 0.15}s` } as React.CSSProperties} />
+            <text x={x} y={y + (node.angle === 0 ? -14 : node.angle === 180 ? 20 : node.angle < 180 ? -12 : 18)} fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-blob)' textAnchor='middle' letterSpacing='1'>{node.label}</text>
           </g>
         )
       })}
@@ -383,69 +383,69 @@ function ProcessDiagram() {
     <svg viewBox='0 0 340 240' xmlns='http://www.w3.org/2000/svg' className='v5-mini-diagram'>
       <defs>
         <marker id='v5-arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'>
-          <polygon points='0 0, 10 5, 0 10' fill='rgba(232,106,42,0.7)' />
+          <polygon points='0 0, 10 5, 0 10' fill='var(--v5-ink-text-accent)' />
         </marker>
         <pattern id='v5-proc-grid' patternUnits='userSpaceOnUse' width='20' height='20' x='10' y='10'>
-          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.5' />
+          <path d='M 0 0 L 20 0 M 0 0 L 0 20' fill='none' stroke='var(--v5-ink-grid)' strokeWidth='0.5' />
         </pattern>
       </defs>
 
       {/* Background grid */}
-      <rect x='10' y='10' width='320' height='220' fill='url(#v5-proc-grid)' opacity='0.6' />
+      <rect x='10' y='10' width='320' height='220' fill='url(#v5-proc-grid)' />
 
       {/* Frame */}
-      <rect x='10' y='10' width='320' height='220' fill='none' stroke='rgba(255,255,255,0.25)' strokeWidth='1.2' />
-      <line x1='10' y1='10' x2='26' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='10' x2='10' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='314' y2='10' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='10' x2='330' y2='26' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='26' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='10' y1='230' x2='10' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='314' y2='230' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
-      <line x1='330' y1='230' x2='330' y2='214' stroke='rgba(232,106,42,0.6)' strokeWidth='2' />
+      <rect x='10' y='10' width='320' height='220' fill='none' stroke='var(--v5-ink-frame)' strokeWidth='1.2' />
+      <line x1='10' y1='10' x2='26' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='10' x2='10' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='314' y2='10' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='10' x2='330' y2='26' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='26' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='10' y1='230' x2='10' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='314' y2='230' stroke='var(--v5-ink-corner)' strokeWidth='2' />
+      <line x1='330' y1='230' x2='330' y2='214' stroke='var(--v5-ink-corner)' strokeWidth='2' />
 
       {/* Title */}
-      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='2'>DWG·F-01</text>
+      <text x='170' y='32' fontFamily='var(--font-mono)' fontSize='8' fill='var(--v5-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG·F-01</text>
 
       {/* Timeline - grid aligned */}
-      <line x1='30' y1='50' x2='310' y2='50' stroke='rgba(232,106,42,0.3)' strokeWidth='1.2' strokeDasharray='5 5' />
+      <line x1='30' y1='50' x2='310' y2='50' stroke='var(--v5-ink-divider-soft)' strokeWidth='1.2' strokeDasharray='5 5' />
 
       {/* Steps - aligned to 20px grid */}
       {steps.map((step, i) => (
         <g key={i} className='v5-mini-step' style={{ '--step-delay': `${i * 0.2}s` } as React.CSSProperties}>
           <rect x={30 + i * 100} y='70' width='80' height='100' fill='var(--v5-paper)' stroke='none' />
-          <rect x={30 + i * 100} y='70' width='80' height='100' fill='rgba(232,106,42,0.08)' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
+          <rect x={30 + i * 100} y='70' width='80' height='100' fill='var(--v5-ink-node-fill)' stroke='var(--v5-ink-corner)' strokeWidth='1.8' />
 
           {/* Day number at top */}
           <text x={70 + i * 100} y='98' fontFamily='var(--font-mono)' fontSize='24' fill='#e86a2a' textAnchor='middle' fontWeight='800'>{step.num}</text>
-          <text x={70 + i * 100} y='112' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(255,255,255,0.4)' textAnchor='middle' letterSpacing='1'>DAYS</text>
+          <text x={70 + i * 100} y='112' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-label)' textAnchor='middle' letterSpacing='1'>DAYS</text>
 
           {/* Divider - grid aligned */}
-          <line x1={35 + i * 100} y1='120' x2={105 + i * 100} y2='120' stroke='rgba(232,106,42,0.3)' strokeWidth='0.6' strokeDasharray='2 2' />
+          <line x1={35 + i * 100} y1='120' x2={105 + i * 100} y2='120' stroke='var(--v5-ink-divider-soft)' strokeWidth='0.6' strokeDasharray='2 2' />
 
           {/* Labels */}
           <text x={70 + i * 100} y='138' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.label}</text>
-          <text x={70 + i * 100} y='151' fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.5)' textAnchor='middle' letterSpacing='0.5'>&</text>
+          <text x={70 + i * 100} y='151' fontFamily='var(--font-mono)' fontSize='8' fill='var(--v5-ink-label-strong)' textAnchor='middle' letterSpacing='0.5'>&</text>
           <text x={70 + i * 100} y='162' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.sublabel}</text>
 
           {/* Connection dot on timeline - grid aligned */}
           <circle cx={70 + i * 100} cy='50' r='4.5' fill='var(--v5-paper)' />
-          <circle cx={70 + i * 100} cy='50' r='3.5' fill='#e86a2a' stroke='rgba(232,106,42,0.6)' strokeWidth='1.8' />
-          <line x1={70 + i * 100} y1='54' x2={70 + i * 100} y2='70' stroke='rgba(232,106,42,0.4)' strokeWidth='1.2' strokeDasharray='2 2' />
+          <circle cx={70 + i * 100} cy='50' r='3.5' fill='#e86a2a' stroke='var(--v5-ink-corner)' strokeWidth='1.8' />
+          <line x1={70 + i * 100} y1='54' x2={70 + i * 100} y2='70' stroke='var(--v5-ink-spoke)' strokeWidth='1.2' strokeDasharray='2 2' />
 
           {i < 2 && (
             <>
-              <path d={`M ${110 + i * 100} 120 L ${130 + i * 100} 120`} stroke='rgba(232,106,42,0.6)' strokeWidth='2.5' markerEnd='url(#v5-arrow)' className='v5-mini-arrow' />
+              <path d={`M ${110 + i * 100} 120 L ${130 + i * 100} 120`} stroke='var(--v5-ink-corner)' strokeWidth='2.5' markerEnd='url(#v5-arrow)' className='v5-mini-arrow' />
             </>
           )}
         </g>
       ))}
 
       {/* Total timeline annotation - grid aligned */}
-      <line x1='30' y1='200' x2='310' y2='200' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
-      <line x1='30' y1='196' x2='30' y2='204' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
-      <line x1='310' y1='196' x2='310' y2='204' stroke='rgba(255,255,255,0.2)' strokeWidth='0.6' />
-      <text x='170' y='215' fontFamily='var(--font-mono)' fontSize='7' fill='rgba(255,255,255,0.3)' textAnchor='middle' letterSpacing='1'>110 DAYS · TOTAL</text>
+      <line x1='30' y1='200' x2='310' y2='200' stroke='var(--v5-ink-measure)' strokeWidth='0.6' />
+      <line x1='30' y1='196' x2='30' y2='204' stroke='var(--v5-ink-measure)' strokeWidth='0.6' />
+      <line x1='310' y1='196' x2='310' y2='204' stroke='var(--v5-ink-measure)' strokeWidth='0.6' />
+      <text x='170' y='215' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v5-ink-dim)' textAnchor='middle' letterSpacing='1'>110 DAYS · TOTAL</text>
     </svg>
   )
 }
@@ -464,10 +464,10 @@ function HeroDiagram() {
     <svg viewBox='0 0 520 560' xmlns='http://www.w3.org/2000/svg' aria-hidden='true' className='v5-hero-svg'>
       <defs>
         <pattern id='v5-hatch' patternUnits='userSpaceOnUse' width='6' height='6' patternTransform='rotate(45)'>
-          <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(232,106,42,0.35)' strokeWidth='1' />
+          <line x1='0' y1='0' x2='0' y2='6' stroke='var(--v5-ink-hatch)' strokeWidth='1' />
         </pattern>
         <pattern id='v5-dot' patternUnits='userSpaceOnUse' width='10' height='10'>
-          <circle cx='1' cy='1' r='0.8' fill='rgba(255,255,255,0.22)' />
+          <circle cx='1' cy='1' r='0.8' fill='var(--v5-ink-dot)' />
         </pattern>
         <filter id='v5-glow'>
           <feGaussianBlur stdDeviation='2' result='coloredBlur' />
@@ -479,7 +479,7 @@ function HeroDiagram() {
       </defs>
 
       {/* frame rule marks */}
-      <g stroke='rgba(255,255,255,0.25)' strokeWidth='0.6'>
+      <g stroke='var(--v5-ink-frame)' strokeWidth='0.6'>
         <line x1='20' y1='20' x2='40' y2='20' />
         <line x1='20' y1='20' x2='20' y2='40' />
         <line x1='500' y1='20' x2='480' y2='20' />
@@ -491,14 +491,14 @@ function HeroDiagram() {
       </g>
 
       {/* ruler ticks left */}
-      <g stroke='rgba(255,255,255,0.25)' strokeWidth='0.6'>
+      <g stroke='var(--v5-ink-frame)' strokeWidth='0.6'>
         {Array.from({ length: 14 }).map((_, i) => (
           <line key={i} x1='40' y1={60 + i * 32} x2={i % 2 === 0 ? 48 : 44} y2={60 + i * 32} />
         ))}
       </g>
 
       {/* background dot fill */}
-      <rect x='60' y='60' width='400' height='440' fill='url(#v5-dot)' opacity='0.4' />
+      <rect x='60' y='60' width='400' height='440' fill='url(#v5-dot)' />
 
       {/* 7 isometric stacked layers */}
       {layers.map((layer, i) => {
@@ -510,7 +510,7 @@ function HeroDiagram() {
             <polygon
               points={`${140},${y} ${360},${y} ${360 + skew},${y - 14} ${140 + skew},${y - 14}`}
               fill='none'
-              stroke='rgba(232,106,42,0.6)'
+              stroke='var(--v5-ink-corner)'
               strokeWidth='1'
             />
             {/* front face */}
@@ -519,15 +519,15 @@ function HeroDiagram() {
               y={y}
               width='220'
               height='32'
-              fill={i === 3 ? 'url(#v5-hatch)' : 'rgba(232,106,42,0.04)'}
-              stroke='rgba(232,106,42,0.6)'
+              fill={i === 3 ? 'url(#v5-hatch)' : 'var(--v5-ink-layer-fill)'}
+              stroke='var(--v5-ink-corner)'
               strokeWidth='1'
             />
             {/* right face */}
             <polygon
               points={`${360},${y} ${360 + skew},${y - 14} ${360 + skew},${y + 18} ${360},${y + 32}`}
-              fill='rgba(255,255,255,0.02)'
-              stroke='rgba(232,106,42,0.6)'
+              fill='var(--v5-ink-layer-right)'
+              stroke='var(--v5-ink-corner)'
               strokeWidth='1'
             />
             {/* label on front face */}
@@ -547,7 +547,7 @@ function HeroDiagram() {
               y1={y + 8}
               x2='450'
               y2={y + 8}
-              stroke='rgba(232,106,42,0.65)'
+              stroke='var(--v5-ink-callout)'
               strokeWidth='0.8'
               strokeDasharray='2 2'
               className='v5-callout-line'
@@ -579,7 +579,7 @@ function HeroDiagram() {
                   cx='200'
                   cy={y + 42}
                   r='1.8'
-                  fill='rgba(232,106,42,0.6)'
+                  fill='var(--v5-ink-corner)'
                   className='v5-comm-blob'
                   style={{ '--blob-delay': `${i * 0.8 + 0.4}s`, '--blob-index': i } as React.CSSProperties}
                 />
@@ -590,7 +590,7 @@ function HeroDiagram() {
       })}
 
       {/* vertical spine dimension line */}
-      <g stroke='rgba(232,106,42,0.55)' strokeWidth='0.8'>
+      <g stroke='var(--v5-ink-hair)' strokeWidth='0.8'>
         <line x1='96' y1='76' x2='96' y2='484' />
         <line x1='92' y1='76' x2='100' y2='76' />
         <line x1='92' y1='484' x2='100' y2='484' />
@@ -608,7 +608,7 @@ function HeroDiagram() {
       </text>
 
       {/* bottom dimension */}
-      <g stroke='rgba(255,255,255,0.3)' strokeWidth='0.6'>
+      <g stroke='var(--v5-ink-dim)' strokeWidth='0.6'>
         <line x1='140' y1='520' x2='360' y2='520' />
         <line x1='140' y1='516' x2='140' y2='524' />
         <line x1='360' y1='516' x2='360' y2='524' />
@@ -619,7 +619,7 @@ function HeroDiagram() {
         fontFamily='var(--font-mono)'
         fontSize='8'
         letterSpacing='1.5'
-        fill='rgba(255,255,255,0.5)'
+        fill='var(--v5-ink-label-strong)'
         textAnchor='middle'
       >
         DIM: 7 × LAYER
