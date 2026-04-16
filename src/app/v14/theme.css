@@ -75,8 +75,8 @@
 
 /* ---------- Light surface (V4 style) ---------- */
 .v14-scope [data-surface="light"] {
-  --v14-paper: #FAFAFA;
-  --v14-paper-2: #F3F0EC;
+  --v14-paper: #F5F2ED;
+  --v14-paper-2: #EDE9E2;
   --v14-ink: #111111;
   --v14-ink-2: #555555;
   --v14-ink-3: #999999;
