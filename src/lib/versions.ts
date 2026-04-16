@@ -72,4 +72,10 @@ export const versions: Version[] = [
     tagline: 'V4 grid precision on V5 dark blueprint canvas',
     status: 'draft',
   },
+  {
+    slug: 'v16',
+    name: 'V16 — Swiss Blueprint Complete',
+    tagline: 'Full V14 implementation with all sections and interactions',
+    status: 'ready',
+  },
 ]
