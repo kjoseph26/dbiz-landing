@@ -9,6 +9,7 @@ type CaseStudy = {
   body: string
   image: string
   tag: 'industry' | 'solution' | 'technology'
+  techs?: string[]
 }
 
 const cases: CaseStudy[] = [
@@ -19,6 +20,7 @@ const cases: CaseStudy[] = [
     body: 'Agent-driven risk models cut the underwriting cycle time for a tier-1 lender across retail, SME, and corporate books.',
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=500&fit=crop&q=80',
     tag: 'industry',
+    techs: ['Agent Studio', 'AWS', 'Snowflake'],
   },
   {
     metric: '$14M saved',
@@ -27,6 +29,7 @@ const cases: CaseStudy[] = [
     body: 'A national fleet operator replaced static route planning with agentic scheduling across 12,000 vehicles.',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=500&fit=crop&q=80',
     tag: 'industry',
+    techs: ['Azure', 'Boomi', 'Agent Studio'],
   },
   {
     metric: '6× throughput',
@@ -35,6 +38,7 @@ const cases: CaseStudy[] = [
     body: 'Care teams reclaimed hours per shift with voice-to-record agents compliant with regional reporting standards.',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop&q=80',
     tag: 'industry',
+    techs: ['Claude', 'AWS', 'FactWeavers'],
   },
   {
     metric: '11 domains',
@@ -43,6 +47,7 @@ const cases: CaseStudy[] = [
     body: 'Pre-modelled data products shipped without a six-month clean-up phase.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop&q=80',
     tag: 'solution',
+    techs: ['Snowflake', 'Databricks', 'AWS'],
   },
   {
     metric: '40+ agents',
@@ -51,6 +56,7 @@ const cases: CaseStudy[] = [
     body: 'Cross-system agents running order-to-cash for a Fortune 500 manufacturer.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop&q=80',
     tag: 'solution',
+    techs: ['Claude', 'GPT', 'MuleSoft'],
   },
   {
     metric: '5 days',
@@ -59,6 +65,7 @@ const cases: CaseStudy[] = [
     body: 'Product teams move from brief to production code inside a single sprint.',
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&q=80',
     tag: 'solution',
+    techs: ['Nexus', 'AWS', 'React'],
   },
   {
     metric: '40+',
@@ -67,6 +74,7 @@ const cases: CaseStudy[] = [
     body: 'AWS Advanced, Azure Solutions, GCP — multi-cloud foundations built for AI workloads.',
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=500&fit=crop&q=80',
     tag: 'technology',
+    techs: ['AWS', 'Azure', 'GCP'],
   },
   {
     metric: '200+',
@@ -75,6 +83,7 @@ const cases: CaseStudy[] = [
     body: 'Salesforce, Dynamics 365, Power Platform — connected systems, not silos.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80',
     tag: 'technology',
+    techs: ['Salesforce', 'Dynamics 365', 'Power Platform'],
   },
   {
     metric: '4 platforms',
@@ -83,6 +92,7 @@ const cases: CaseStudy[] = [
     body: 'Snowflake, Databricks, Fabric, BigQuery — with FactWeavers\u2122 built on top.',
     image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop&q=80',
     tag: 'technology',
+    techs: ['Snowflake', 'Databricks', 'BigQuery'],
   },
 ]
 
@@ -164,6 +174,11 @@ export default function ProvenSection() {
                   <span className='v14-proven-kicker'>{c.kicker}</span>
                   <h4>{c.title}</h4>
                   <p>{c.body}</p>
+                  {c.techs && (
+                    <div className='v14-proven-techs'>
+                      {c.techs.map((t) => <span key={t} className='v14-proven-tech-pill'>{t}</span>)}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

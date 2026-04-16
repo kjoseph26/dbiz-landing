@@ -1377,6 +1377,22 @@
   line-height: 1.6;
   color: var(--v14-ink-2);
 }
+.v14-proven-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+.v14-proven-tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--v14-hair-strong);
+  color: var(--v14-ink-3);
+}
 
 /* Card entrance animation */
 .v14-proven-card {
@@ -1721,8 +1737,26 @@
   font-size: 0.92rem;
   line-height: 1.65;
   color: var(--v14-ink-2);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
+.v14-why-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v14-accent);
+  border-bottom: 2px solid var(--v14-accent);
+  padding-bottom: 4px;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+.v14-why-cta:hover { gap: 14px; }
+.v14-why-cta .arrow { font-weight: 400; }
 
 /* Dot navigation */
 .v14-why-detail-nav {

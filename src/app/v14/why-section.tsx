@@ -18,7 +18,6 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
   const nodeR = 30
   const hubR = 36
 
-  /* Compute node positions */
   const nodes = reasons.map((reason, i) => {
     const a = (reason.angle - 90) * Math.PI / 180
     return { ...reason, i, x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r, a }
@@ -28,52 +27,86 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
     <svg viewBox='0 0 440 440' xmlns='http://www.w3.org/2000/svg' className='v14-why-diagram'>
       <defs>
         <filter id='v14-why-glow'>
-          <feGaussianBlur stdDeviation='6' result='coloredBlur' />
+          <feGaussianBlur stdDeviation='4' result='coloredBlur' />
           <feMerge><feMergeNode in='coloredBlur' /><feMergeNode in='SourceGraphic' /></feMerge>
         </filter>
         <filter id='v14-why-glow-sm'>
           <feGaussianBlur stdDeviation='2' result='coloredBlur' />
           <feMerge><feMergeNode in='coloredBlur' /><feMergeNode in='SourceGraphic' /></feMerge>
         </filter>
-        <radialGradient id='v14-why-hub-grad'>
-          <stop offset='0%' stopColor='#E86A2A' stopOpacity='0.25' />
-          <stop offset='60%' stopColor='#E86A2A' stopOpacity='0.06' />
-          <stop offset='100%' stopColor='#E86A2A' stopOpacity='0' />
-        </radialGradient>
-        {/* Clip to keep everything inside the frame */}
-        <clipPath id='v14-why-clip'><rect x='10' y='10' width='420' height='420' rx='4' /></clipPath>
+        {/* Blueprint textures */}
+        <pattern id='v14-why-hatch' patternUnits='userSpaceOnUse' width='6' height='6' patternTransform='rotate(45)'>
+          <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(232,106,42,0.15)' strokeWidth='0.8' />
+        </pattern>
+        <pattern id='v14-why-cross' patternUnits='userSpaceOnUse' width='8' height='8'>
+          <line x1='0' y1='0' x2='8' y2='8' stroke='rgba(13,27,62,0.06)' strokeWidth='0.4' />
+          <line x1='8' y1='0' x2='0' y2='8' stroke='rgba(13,27,62,0.06)' strokeWidth='0.4' />
+        </pattern>
+        <pattern id='v14-why-grid' patternUnits='userSpaceOnUse' width='20' height='20'>
+          <path d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(13,27,62,0.05)' strokeWidth='0.5' />
+        </pattern>
+        <clipPath id='v14-why-clip'><rect x='12' y='12' width='416' height='416' /></clipPath>
       </defs>
 
-      {/* Frame border — subtle */}
-      <rect x='10' y='10' width='420' height='420' fill='none' stroke='rgba(13,27,62,0.12)' strokeWidth='1' rx='4' />
+      {/* Frame */}
+      <rect x='10' y='10' width='420' height='420' fill='url(#v14-why-grid)' stroke='rgba(13,27,62,0.15)' strokeWidth='1' />
       {/* Corner brackets */}
       <g stroke='#E86A2A' strokeWidth='1.5'>
-        <line x1='10' y1='10' x2='26' y2='10' /><line x1='10' y1='10' x2='10' y2='26' />
-        <line x1='430' y1='10' x2='414' y2='10' /><line x1='430' y1='10' x2='430' y2='26' />
-        <line x1='10' y1='430' x2='26' y2='430' /><line x1='10' y1='430' x2='10' y2='414' />
-        <line x1='430' y1='430' x2='414' y2='430' /><line x1='430' y1='430' x2='430' y2='414' />
+        <line x1='10' y1='10' x2='28' y2='10' /><line x1='10' y1='10' x2='10' y2='28' />
+        <line x1='430' y1='10' x2='412' y2='10' /><line x1='430' y1='10' x2='430' y2='28' />
+        <line x1='10' y1='430' x2='28' y2='430' /><line x1='10' y1='430' x2='10' y2='412' />
+        <line x1='430' y1='430' x2='412' y2='430' /><line x1='430' y1='430' x2='430' y2='412' />
       </g>
+      {/* Drawing number */}
+      <text x='220' y='26' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(13,27,62,0.3)' textAnchor='middle' letterSpacing='1.5'>DWG·WHY-01</text>
 
       <g clipPath='url(#v14-why-clip)'>
-        {/* Subtle grid dots */}
-        {Array.from({ length: 20 }).map((_, row) =>
-          Array.from({ length: 20 }).map((_, col) => (
-            <circle key={`d${row}-${col}`} cx={22 + col * 21} cy={22 + row * 21} r='0.5' fill='rgba(13,27,62,0.04)' />
-          ))
-        )}
+        {/* Crosshatch texture fill behind orbit */}
+        <circle cx={cx} cy={cy} r={r + 20} fill='url(#v14-why-cross)' />
 
-        {/* Orbit rings — orange */}
-        <circle cx={cx} cy={cy} r={r + 30} fill='none' stroke='rgba(232,106,42,0.1)' strokeWidth='0.8' strokeDasharray='4 6' />
-        <circle cx={cx} cy={cy} r={r} fill='none' stroke='rgba(232,106,42,0.2)' strokeWidth='1' strokeDasharray='5 4' className='v14-why-orbit' />
-        <circle cx={cx} cy={cy} r={r - 50} fill='none' stroke='rgba(13,27,62,0.12)' strokeWidth='0.8' strokeDasharray='3 5' />
+        {/* Construction lines — light blue */}
+        <line x1={cx} y1='20' x2={cx} y2='420' stroke='rgba(26,45,90,0.08)' strokeWidth='0.5' strokeDasharray='8 4' />
+        <line x1='20' y1={cy} x2='420' y2={cy} stroke='rgba(26,45,90,0.08)' strokeWidth='0.5' strokeDasharray='8 4' />
+        <line x1='20' y1='20' x2='420' y2='420' stroke='rgba(26,45,90,0.04)' strokeWidth='0.5' strokeDasharray='6 6' />
+        <line x1='420' y1='20' x2='20' y2='420' stroke='rgba(26,45,90,0.04)' strokeWidth='0.5' strokeDasharray='6 6' />
 
-        {/* Hub glow */}
-        <circle cx={cx} cy={cy} r='80' fill='url(#v14-why-hub-grad)' className='v14-why-hub-glow' />
+        {/* Ruler ticks — left */}
+        <g stroke='rgba(13,27,62,0.12)' strokeWidth='0.5'>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <line key={`rl${i}`} x1='12' y1={22 + i * 21} x2={i % 5 === 0 ? '24' : '18'} y2={22 + i * 21} />
+          ))}
+        </g>
+        {/* Ruler ticks — top */}
+        <g stroke='rgba(13,27,62,0.12)' strokeWidth='0.5'>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <line key={`rt${i}`} x1={22 + i * 21} y1='12' x2={22 + i * 21} y2={i % 5 === 0 ? '24' : '18'} />
+          ))}
+        </g>
 
-        {/* Spokes — drawn from hub edge to node edge (not through circles) */}
+        {/* Orbit rings */}
+        <circle cx={cx} cy={cy} r={r + 30} fill='none' stroke='rgba(232,106,42,0.08)' strokeWidth='0.6' strokeDasharray='3 6' />
+        <circle cx={cx} cy={cy} r={r} fill='none' stroke='rgba(232,106,42,0.18)' strokeWidth='0.8' strokeDasharray='5 4' className='v14-why-orbit' />
+        <circle cx={cx} cy={cy} r={r - 50} fill='none' stroke='rgba(232,106,42,0.1)' strokeWidth='0.6' strokeDasharray='3 5' />
+
+        {/* Hatched ring between inner orbits */}
+        <path d={`M ${cx} ${cy - r + 50} A ${r - 50} ${r - 50} 0 1 1 ${cx - 0.01} ${cy - r + 50}`} fill='url(#v14-why-hatch)' stroke='none' />
+
+        {/* Dimension annotation — radius */}
+        <g stroke='rgba(13,27,62,0.2)' strokeWidth='0.5'>
+          <line x1={cx} y1={cy} x2={cx + r} y2={cy} strokeDasharray='2 3' />
+          <line x1={cx + r - 4} y1={cy - 3} x2={cx + r + 4} y2={cy + 3} />
+        </g>
+        <text x={cx + r / 2} y={cy - 5} fontFamily='var(--font-mono)' fontSize='5.5' fill='rgba(13,27,62,0.25)' textAnchor='middle'>R={r}</text>
+
+        {/* Section marker — bottom */}
+        <g>
+          <line x1='60' y1='418' x2='380' y2='418' stroke='rgba(13,27,62,0.1)' strokeWidth='0.5' />
+          <text x='220' y='414' fontFamily='var(--font-mono)' fontSize='5' fill='rgba(13,27,62,0.2)' textAnchor='middle' letterSpacing='1'>SECTION A-A</text>
+        </g>
+
+        {/* Spokes */}
         {nodes.map((node) => {
           const isActive = node.i === active
-          /* Start spoke at hub border, end at node border */
           const sx = cx + Math.cos(node.a) * (hubR + 2)
           const sy = cy + Math.sin(node.a) * (hubR + 2)
           const ex = node.x - Math.cos(node.a) * (nodeR + 2)
@@ -81,9 +114,8 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
 
           return (
             <g key={`spoke-${node.idx}`}>
-              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#E86A2A' strokeWidth={isActive ? 1.5 : 1} strokeDasharray='6 4' opacity={isActive ? 0.8 : 0.3} className='v14-why-spoke' />
-              {/* Data pulse */}
-              <circle r='2.5' fill='#E86A2A' opacity={isActive ? 1 : 0.3} filter='url(#v14-why-glow-sm)'>
+              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#E86A2A' strokeWidth={isActive ? 1.5 : 0.8} strokeDasharray='5 4' opacity={isActive ? 0.9 : 0.25} className='v14-why-spoke' />
+              <circle r='2' fill='#E86A2A' opacity={isActive ? 0.9 : 0.2} filter='url(#v14-why-glow-sm)'>
                 <animateMotion dur={`${2.5 + node.i * 0.2}s`} repeatCount='indefinite'>
                   <mpath xlinkHref={`#spoke-path-${node.i}`} />
                 </animateMotion>
@@ -98,24 +130,24 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
           const isActive = node.i === active
           return (
             <g key={node.idx} className={`v14-why-node ${isActive ? 'active' : ''}`} onClick={() => onSelect(node.i)} style={{ cursor: 'pointer' }}>
-              {/* Outer ring for active */}
-              {isActive && <circle cx={node.x} cy={node.y} r={nodeR + 6} fill='none' stroke='#E86A2A' strokeWidth='1' opacity='0.3' strokeDasharray='3 3' className='v14-why-active-ring' />}
-              {/* Node */}
-              <circle cx={node.x} cy={node.y} r={nodeR} fill={isActive ? '#E86A2A' : '#0D1B3E'} stroke={isActive ? '#E86A2A' : '#1A2D5A'} strokeWidth={isActive ? 2.5 : 2} filter={isActive ? 'url(#v14-why-glow)' : 'none'} className='v14-why-node-circle' />
-              {/* Label */}
-              <text x={node.x} y={node.y + 1} fontFamily='var(--font-mono)' fontSize='7' fontWeight='700' fill='#fff' textAnchor='middle' dominantBaseline='middle' letterSpacing='0.8'>{node.label}</text>
-              {/* Index */}
-              <text x={node.x + Math.cos(node.a) * (nodeR + 14)} y={node.y + Math.sin(node.a) * (nodeR + 14)} fontFamily='var(--font-mono)' fontSize='8' fontWeight='600' fill='#E86A2A' textAnchor='middle' dominantBaseline='middle'>{node.idx}</text>
+              {isActive && <circle cx={node.x} cy={node.y} r={nodeR + 6} fill='none' stroke='#E86A2A' strokeWidth='0.8' opacity='0.4' strokeDasharray='3 3' className='v14-why-active-ring' />}
+              {/* Hatched fill for inactive */}
+              {!isActive && <circle cx={node.x} cy={node.y} r={nodeR - 1} fill='url(#v14-why-hatch)' />}
+              <circle cx={node.x} cy={node.y} r={nodeR} fill={isActive ? '#E86A2A' : 'rgba(13,27,62,0.85)'} stroke={isActive ? '#E86A2A' : '#1A2D5A'} strokeWidth={isActive ? 2 : 1.5} filter={isActive ? 'url(#v14-why-glow)' : 'none'} className='v14-why-node-circle' />
+              <text x={node.x} y={node.y + 1} fontFamily='var(--font-mono)' fontSize='6.5' fontWeight='700' fill='#fff' textAnchor='middle' dominantBaseline='middle' letterSpacing='0.6'>{node.label}</text>
+              {/* Callout line + index */}
+              <line x1={node.x + Math.cos(node.a) * nodeR} y1={node.y + Math.sin(node.a) * nodeR} x2={node.x + Math.cos(node.a) * (nodeR + 10)} y2={node.y + Math.sin(node.a) * (nodeR + 10)} stroke='#E86A2A' strokeWidth='0.6' />
+              <text x={node.x + Math.cos(node.a) * (nodeR + 16)} y={node.y + Math.sin(node.a) * (nodeR + 16)} fontFamily='var(--font-mono)' fontSize='7.5' fontWeight='600' fill='#E86A2A' textAnchor='middle' dominantBaseline='middle'>{node.idx}</text>
             </g>
           )
         })}
 
-        {/* Center hub — orange core */}
-        <circle cx={cx} cy={cy} r={hubR} fill='#E86A2A' stroke='rgba(232,106,42,0.4)' strokeWidth='3' />
-        <circle cx={cx} cy={cy} r={hubR + 8} fill='none' stroke='rgba(232,106,42,0.15)' strokeWidth='1' strokeDasharray='3 3' className='v14-why-active-ring' />
-        <circle cx={cx} cy={cy} r='20' fill='#D45A1A' className='v14-why-hub-pulse' />
-        <text x={cx} y={cy - 4} fontFamily='var(--font-mono)' fontSize='7' fontWeight='700' fill='#fff' textAnchor='middle' letterSpacing='1'>WHY</text>
-        <text x={cx} y={cy + 8} fontFamily='var(--font-sans)' fontSize='10' fontWeight='800' fill='#fff' textAnchor='middle' letterSpacing='1'>DBIZ</text>
+        {/* Center hub */}
+        <circle cx={cx} cy={cy} r={hubR} fill='#E86A2A' stroke='rgba(232,106,42,0.5)' strokeWidth='2.5' />
+        <circle cx={cx} cy={cy} r={hubR + 6} fill='none' stroke='rgba(232,106,42,0.12)' strokeWidth='0.8' strokeDasharray='3 3' className='v14-why-active-ring' />
+        <circle cx={cx} cy={cy} r='18' fill='#D45A1A' className='v14-why-hub-pulse' />
+        <text x={cx} y={cy - 4} fontFamily='var(--font-mono)' fontSize='6.5' fontWeight='700' fill='#fff' textAnchor='middle' letterSpacing='0.8'>WHY</text>
+        <text x={cx} y={cy + 7} fontFamily='var(--font-sans)' fontSize='9' fontWeight='800' fill='#fff' textAnchor='middle' letterSpacing='1'>DBIZ</text>
       </g>
     </svg>
   )
@@ -150,9 +182,10 @@ export default function WhySection() {
 
           {/* Detail panel — right */}
           <div className='v14-why-detail' key={active}>
-            <span className='v14-why-detail-idx'>{reason.idx}</span>
+            <span className='v14-why-detail-idx'>{reason.idx} / {reason.label}</span>
             <h3>{reason.title}</h3>
             <p>{reason.body}</p>
+            <a href='#cta' className='v14-why-cta'>Learn more about us <span className='arrow'>→</span></a>
             <div className='v14-why-detail-nav'>
               {reasons.map((_, i) => (
                 <button
