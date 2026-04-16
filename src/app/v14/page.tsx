@@ -10,6 +10,8 @@ const whyReasons = [
   { idx: '02', title: 'Transformation at scale.', body: '50+ enterprise clients. 150+ AI solutions. Six countries. Over a decade of enterprise delivery — not a pitch deck.' },
   { idx: '03', title: 'Time-boxed delivery. Every engagement.', body: 'Outcomes within defined timeframes. Ambiguity is the enemy of delivery — so we don\u2019t allow it.' },
   { idx: '04', title: 'Production platforms. Not presentations.', body: 'NEXUS, Agent Studio, FactWeavers\u2122, DBiz Canvas — production systems deployed in enterprise environments. We recommend what we\u2019ve already built.' },
+  { idx: '05', title: 'Certified at the highest tiers.', body: 'AWS Advanced, Azure Solutions, Salesforce, Dynamics 365, Snowflake, Databricks, Anthropic, Boomi, MuleSoft — we deliver with the industry\u2019s leading technology providers, not around them.' },
+  { idx: '06', title: 'Sector expertise, engineered.', body: 'Deep domain knowledge shaped by 150+ enterprise engagements — Financial Services, Logistics, Real Estate, Aged Care, Automotive, Government, Retail, Construction, Manufacturing — with FactWeavers\u2122 pre-built for every vertical.' },
 ]
 
 const stats = [
@@ -382,7 +384,7 @@ export default function V14Page() {
       <ProvenSection />
 
       {/* TESTIMONIAL — light surface */}
-      <section className='v14-quote-section' data-surface='light'>
+      <section className='v14-quote-section'>
         <div className='v14-container'>
           <div className='v14-quote-frame'>
             <div className='v14-quote-meta'>
@@ -398,52 +400,14 @@ export default function V14Page() {
         </div>
       </section>
 
-      {/* HOW WE WORK — V4 cards + V5 diagram */}
-      <section className='v14-section'>
-        <div className='v14-container'>
-          <div className='v14-section-head v14-with-diagram'>
-            <div>
-              <div className='num'>N°07 / Cadence</div>
-              <h2>How we work.</h2>
-              <p className='lead'>Every engagement is time-boxed. Milestones are fixed. Ambiguity gets eliminated early.</p>
-            </div>
-            <div><ProcessDiagram /></div>
-          </div>
-          <div className='v14-how-grid'>
-            <div className='v14-how-card'>
-              <div className='days'>5<sub>Days</sub></div>
-              <div className='phase'>Align &amp; Assess</div>
-              <h4>Leadership alignment and readiness.</h4>
-              <p>Leadership aligned on AI ambition. Architecture assessed. Readiness gaps surfaced. A costed roadmap and evidence to make investment decisions.</p>
-              <div className='outcome'>Outcome · Board-aligned AI roadmap</div>
-            </div>
-            <div className='v14-how-card'>
-              <div className='days'>15<sub>Days</sub></div>
-              <div className='phase'>Specify &amp; Validate</div>
-              <h4>System shipped, tested with real users.</h4>
-              <p>System specification generated. Data foundations validated. Working system shipped and tested with real users in your environment.</p>
-              <div className='outcome'>Outcome · Validated MVP in production</div>
-            </div>
-            <div className='v14-how-card'>
-              <div className='days'>90<sub>Days</sub></div>
-              <div className='phase'>Industrialise &amp; Scale</div>
-              <h4>Enterprise-grade system, operated.</h4>
-              <p>Enterprise-grade system live. Agents deployed. Data democratised. Operations handed to the team that built it.</p>
-              <div className='outcome'>Outcome · Frontier Organisation operational</div>
-            </div>
-          </div>
-          <p className='v14-how-note'>Timelines are benchmarks based on 50+ enterprise engagements. Scope varies by environment.</p>
-        </div>
-      </section>
-
-      {/* WHY — light surface, V4 grid + V5 diagram */}
-      <section className='v14-section' id='about' data-surface='light'>
+      {/* WHY — V4 grid + V5 diagram */}
+      <section className='v14-section' id='about'>
         <div className='v14-container'>
           <div className='v14-section-head v14-with-diagram'>
             <div>
               <div className='num'>N°08 / Why DBiz</div>
               <h2>Why enterprises choose DBiz.</h2>
-              <p className='lead'>Four reasons — all evidenced by delivery, not brochures.</p>
+              <p className='lead'>Six reasons — all evidenced by delivery, not brochures.</p>
             </div>
             <div><NetworkDiagram /></div>
           </div>
@@ -457,24 +421,6 @@ export default function V14Page() {
                 </div>
               </div>
             ))}
-          </div>
-          <div className='v14-partner-row'>
-            <div className='v14-partner-block'>
-              <div className='v14-mono'>Enterprise Partnerships</div>
-              <h5>Certified at the highest tiers.</h5>
-              <p>We hold advanced certifications with the industry&apos;s leading technology providers — and we deliver with them, not around them.</p>
-              <div className='v14-partner-tags'>
-                AWS Advanced<span>·</span>Azure Solutions<span>·</span>Salesforce<span>·</span>Dynamics 365<span>·</span>Snowflake<span>·</span>Databricks<span>·</span>Anthropic<span>·</span>Boomi<span>·</span>MuleSoft
-              </div>
-            </div>
-            <div className='v14-partner-block'>
-              <div className='v14-mono'>Domain Depth</div>
-              <h5>Sector expertise, engineered.</h5>
-              <p>Deep sector expertise shaped by 150+ enterprise engagements — with FactWeavers™ data models pre-built for every vertical we ship into.</p>
-              <div className='v14-partner-tags'>
-                Financial Services<span>·</span>Logistics &amp; Fleet<span>·</span>Real Estate<span>·</span>Aged Care<span>·</span>Automotive<span>·</span>Government<span>·</span>Retail<span>·</span>Construction<span>·</span>Manufacturing
-              </div>
-            </div>
           </div>
         </div>
       </section>

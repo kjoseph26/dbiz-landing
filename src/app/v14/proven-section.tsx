@@ -7,8 +7,8 @@ type CaseStudy = {
   title: string
   kicker: string
   body: string
-  image: string /* gradient placeholder */
-  tag: 'industry' | 'solution'
+  image: string
+  tag: 'industry' | 'solution' | 'technology'
 }
 
 const cases: CaseStudy[] = [
@@ -60,9 +60,33 @@ const cases: CaseStudy[] = [
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop&q=80',
     tag: 'solution',
   },
+  {
+    metric: '40+',
+    title: 'AWS certified experts across the practice',
+    kicker: 'Cloud & AI',
+    body: 'AWS Advanced, Azure Solutions, GCP — multi-cloud foundations built for AI workloads.',
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=500&fit=crop&q=80',
+    tag: 'technology',
+  },
+  {
+    metric: '200+',
+    title: 'Microsoft certifications across the team',
+    kicker: 'Business Apps',
+    body: 'Salesforce, Dynamics 365, Power Platform — connected systems, not silos.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80',
+    tag: 'technology',
+  },
+  {
+    metric: '4 platforms',
+    title: 'Data platforms unified under one roof',
+    kicker: 'Data Platforms',
+    body: 'Snowflake, Databricks, Fabric, BigQuery — with FactWeavers\u2122 built on top.',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop&q=80',
+    tag: 'technology',
+  },
 ]
 
-type Filter = 'all' | 'industry' | 'solution'
+type Filter = 'all' | 'industry' | 'solution' | 'technology'
 
 export default function ProvenSection() {
   const [filter, setFilter] = useState<Filter>('all')
@@ -94,7 +118,7 @@ export default function ProvenSection() {
   const next = () => setActiveIdx((i) => (i + 1) % filtered.length)
 
   return (
-    <section className='v14-section v14-proven' id='work'>
+    <section className='v14-section v14-proven' id='work' data-surface='light'>
       <div className='v14-container'>
         {/* Header row */}
         <div className='v14-proven-header'>
@@ -105,13 +129,13 @@ export default function ProvenSection() {
           <div className='v14-proven-header-right'>
             <p className='lead'>50+ enterprise deployments across 11 industries. Real outcomes, not slide decks.</p>
             <div className='v14-proven-filters'>
-              {(['all', 'industry', 'solution'] as Filter[]).map((f) => (
+              {(['all', 'industry', 'solution', 'technology'] as Filter[]).map((f) => (
                 <button
                   key={f}
                   className={`v14-proven-filter ${filter === f ? 'active' : ''}`}
                   onClick={() => setFilter(f)}
                 >
-                  {f === 'all' ? 'All' : f === 'industry' ? 'By Industry' : 'By Solution'}
+                  {f === 'all' ? 'All' : f === 'industry' ? 'By Industry' : f === 'solution' ? 'By Solution' : 'By Technology'}
                 </button>
               ))}
             </div>
