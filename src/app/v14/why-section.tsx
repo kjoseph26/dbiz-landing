@@ -36,7 +36,7 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
         </filter>
         {/* Blueprint textures */}
         <pattern id='v14-why-hatch' patternUnits='userSpaceOnUse' width='6' height='6' patternTransform='rotate(45)'>
-          <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(232,106,42,0.15)' strokeWidth='0.8' />
+          <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(240,123,47,0.15)' strokeWidth='0.8' />
         </pattern>
         <pattern id='v14-why-cross' patternUnits='userSpaceOnUse' width='8' height='8'>
           <line x1='0' y1='0' x2='8' y2='8' stroke='rgba(13,27,62,0.06)' strokeWidth='0.4' />
@@ -51,7 +51,7 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
       {/* Frame */}
       <rect x='10' y='10' width='420' height='420' fill='url(#v14-why-grid)' stroke='rgba(13,27,62,0.15)' strokeWidth='1' />
       {/* Corner brackets */}
-      <g stroke='#E86A2A' strokeWidth='1.5'>
+      <g stroke='#F07B2F' strokeWidth='1.5'>
         <line x1='10' y1='10' x2='28' y2='10' /><line x1='10' y1='10' x2='10' y2='28' />
         <line x1='430' y1='10' x2='412' y2='10' /><line x1='430' y1='10' x2='430' y2='28' />
         <line x1='10' y1='430' x2='28' y2='430' /><line x1='10' y1='430' x2='10' y2='412' />
@@ -84,9 +84,9 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
         </g>
 
         {/* Orbit rings */}
-        <circle cx={cx} cy={cy} r={r + 30} fill='none' stroke='rgba(232,106,42,0.08)' strokeWidth='0.6' strokeDasharray='3 6' />
-        <circle cx={cx} cy={cy} r={r} fill='none' stroke='rgba(232,106,42,0.18)' strokeWidth='0.8' strokeDasharray='5 4' className='v14-why-orbit' />
-        <circle cx={cx} cy={cy} r={r - 50} fill='none' stroke='rgba(232,106,42,0.1)' strokeWidth='0.6' strokeDasharray='3 5' />
+        <circle cx={cx} cy={cy} r={r + 30} fill='none' stroke='rgba(240,123,47,0.08)' strokeWidth='0.6' strokeDasharray='3 6' />
+        <circle cx={cx} cy={cy} r={r} fill='none' stroke='rgba(240,123,47,0.18)' strokeWidth='0.8' strokeDasharray='5 4' className='v14-why-orbit' />
+        <circle cx={cx} cy={cy} r={r - 50} fill='none' stroke='rgba(240,123,47,0.1)' strokeWidth='0.6' strokeDasharray='3 5' />
 
         {/* Hatched ring between inner orbits */}
         <path d={`M ${cx} ${cy - r + 50} A ${r - 50} ${r - 50} 0 1 1 ${cx - 0.01} ${cy - r + 50}`} fill='url(#v14-why-hatch)' stroke='none' />
@@ -114,8 +114,8 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
 
           return (
             <g key={`spoke-${node.idx}`}>
-              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#E86A2A' strokeWidth={isActive ? 1.5 : 0.8} strokeDasharray='5 4' opacity={isActive ? 0.9 : 0.25} className='v14-why-spoke' />
-              <circle r='2' fill='#E86A2A' opacity={isActive ? 0.9 : 0.2} filter='url(#v14-why-glow-sm)'>
+              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#F07B2F' strokeWidth={isActive ? 1.5 : 0.8} strokeDasharray='5 4' opacity={isActive ? 0.9 : 0.25} className='v14-why-spoke' />
+              <circle r='2' fill='#F07B2F' opacity={isActive ? 0.9 : 0.2} filter='url(#v14-why-glow-sm)'>
                 <animateMotion dur={`${2.5 + node.i * 0.2}s`} repeatCount='indefinite'>
                   <mpath xlinkHref={`#spoke-path-${node.i}`} />
                 </animateMotion>
@@ -130,22 +130,22 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
           const isActive = node.i === active
           return (
             <g key={node.idx} className={`v14-why-node ${isActive ? 'active' : ''}`} onClick={() => onSelect(node.i)} style={{ cursor: 'pointer' }}>
-              {isActive && <circle cx={node.x} cy={node.y} r={nodeR + 6} fill='none' stroke='#E86A2A' strokeWidth='0.8' opacity='0.4' strokeDasharray='3 3' className='v14-why-active-ring' />}
+              {isActive && <circle cx={node.x} cy={node.y} r={nodeR + 6} fill='none' stroke='#F07B2F' strokeWidth='0.8' opacity='0.4' strokeDasharray='3 3' className='v14-why-active-ring' />}
               {/* Hatched fill for inactive */}
               {!isActive && <circle cx={node.x} cy={node.y} r={nodeR - 1} fill='url(#v14-why-hatch)' />}
-              <circle cx={node.x} cy={node.y} r={nodeR} fill={isActive ? '#E86A2A' : 'rgba(13,27,62,0.85)'} stroke={isActive ? '#E86A2A' : '#1A2D5A'} strokeWidth={isActive ? 2 : 1.5} filter={isActive ? 'url(#v14-why-glow)' : 'none'} className='v14-why-node-circle' />
+              <circle cx={node.x} cy={node.y} r={nodeR} fill={isActive ? '#F07B2F' : 'rgba(13,27,62,0.85)'} stroke={isActive ? '#F07B2F' : '#1A2D5A'} strokeWidth={isActive ? 2 : 1.5} filter={isActive ? 'url(#v14-why-glow)' : 'none'} className='v14-why-node-circle' />
               <text x={node.x} y={node.y + 1} fontFamily='var(--font-mono)' fontSize='6.5' fontWeight='700' fill='#fff' textAnchor='middle' dominantBaseline='middle' letterSpacing='0.6'>{node.label}</text>
               {/* Callout line + index */}
-              <line x1={node.x + Math.cos(node.a) * nodeR} y1={node.y + Math.sin(node.a) * nodeR} x2={node.x + Math.cos(node.a) * (nodeR + 10)} y2={node.y + Math.sin(node.a) * (nodeR + 10)} stroke='#E86A2A' strokeWidth='0.6' />
-              <text x={node.x + Math.cos(node.a) * (nodeR + 16)} y={node.y + Math.sin(node.a) * (nodeR + 16)} fontFamily='var(--font-mono)' fontSize='7.5' fontWeight='600' fill='#E86A2A' textAnchor='middle' dominantBaseline='middle'>{node.idx}</text>
+              <line x1={node.x + Math.cos(node.a) * nodeR} y1={node.y + Math.sin(node.a) * nodeR} x2={node.x + Math.cos(node.a) * (nodeR + 10)} y2={node.y + Math.sin(node.a) * (nodeR + 10)} stroke='#F07B2F' strokeWidth='0.6' />
+              <text x={node.x + Math.cos(node.a) * (nodeR + 16)} y={node.y + Math.sin(node.a) * (nodeR + 16)} fontFamily='var(--font-mono)' fontSize='7.5' fontWeight='600' fill='#F07B2F' textAnchor='middle' dominantBaseline='middle'>{node.idx}</text>
             </g>
           )
         })}
 
         {/* Center hub */}
-        <circle cx={cx} cy={cy} r={hubR} fill='#E86A2A' stroke='rgba(232,106,42,0.5)' strokeWidth='2.5' />
-        <circle cx={cx} cy={cy} r={hubR + 6} fill='none' stroke='rgba(232,106,42,0.12)' strokeWidth='0.8' strokeDasharray='3 3' className='v14-why-active-ring' />
-        <circle cx={cx} cy={cy} r='18' fill='#D45A1A' className='v14-why-hub-pulse' />
+        <circle cx={cx} cy={cy} r={hubR} fill='#F07B2F' stroke='rgba(240,123,47,0.5)' strokeWidth='2.5' />
+        <circle cx={cx} cy={cy} r={hubR + 6} fill='none' stroke='rgba(240,123,47,0.12)' strokeWidth='0.8' strokeDasharray='3 3' className='v14-why-active-ring' />
+        <circle cx={cx} cy={cy} r='18' fill='#E06B1F' className='v14-why-hub-pulse' />
         <text x={cx} y={cy - 4} fontFamily='var(--font-mono)' fontSize='6.5' fontWeight='700' fill='#fff' textAnchor='middle' letterSpacing='0.8'>WHY</text>
         <text x={cx} y={cy + 7} fontFamily='var(--font-sans)' fontSize='9' fontWeight='800' fill='#fff' textAnchor='middle' letterSpacing='1'>DBIZ</text>
       </g>

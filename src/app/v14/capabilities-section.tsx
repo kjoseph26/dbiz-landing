@@ -204,7 +204,7 @@ function StackDiagram() {
         <line x1='32' y1={startY} x2='40' y2={startY} />
         <line x1='32' y1={startY + 6 * gap + slabH + skewY} x2='40' y2={startY + 6 * gap + slabH + skewY} />
       </g>
-      <text x='24' y={startY + 3 * gap} fontFamily='var(--font-mono)' fontSize='6.5' letterSpacing='1.5' fill='#e86a2a' transform={`rotate(-90 24 ${startY + 3 * gap})`} textAnchor='middle'>7 LAYERS</text>
+      <text x='24' y={startY + 3 * gap} fontFamily='var(--font-mono)' fontSize='6.5' letterSpacing='1.5' fill='#F07B2F' transform={`rotate(-90 24 ${startY + 3 * gap})`} textAnchor='middle'>7 LAYERS</text>
 
       {/* Layers — stacked top to bottom */}
       {stackRows.map((row, i) => {
@@ -237,16 +237,16 @@ function StackDiagram() {
 
             {/* Left callout — Product 1 */}
             <line x1={x1} y1={y + skewY + slabH / 2} x2={x1 - 24} y2={y + skewY + slabH / 2} stroke='var(--v14-ink-callout)' strokeWidth='0.8' strokeDasharray='2 2' className='v14-stack-connector' />
-            <circle cx={x1} cy={y + skewY + slabH / 2} r='1.8' fill='#e86a2a' className='v14-stack-dot' />
-            <text x={x1 - 30} y={y + skewY + slabH / 2 - 3} fontFamily='var(--font-sans)' fontSize='9' fontWeight='700' fill='#e86a2a' textAnchor='end'>{row.products[0].name}</text>
+            <circle cx={x1} cy={y + skewY + slabH / 2} r='1.8' fill='#F07B2F' className='v14-stack-dot' />
+            <text x={x1 - 30} y={y + skewY + slabH / 2 - 3} fontFamily='var(--font-sans)' fontSize='9' fontWeight='700' fill='#F07B2F' textAnchor='end'>{row.products[0].name}</text>
             <text x={x1 - 30} y={y + skewY + slabH / 2 + 11} fontFamily='var(--font-sans)' fontSize='6.5' fill='var(--v14-ink-label-strong)' textAnchor='end'>{row.products[0].desc}</text>
 
             {/* Right callout — Product 2 */}
             {row.products[1] && (
               <>
                 <line x1={x2 + skew} y1={y + slabH / 2} x2={x2 + skew + 24} y2={y + slabH / 2} stroke='var(--v14-ink-callout)' strokeWidth='0.8' strokeDasharray='2 2' className='v14-stack-connector' />
-                <circle cx={x2 + skew} cy={y + slabH / 2} r='1.8' fill='#e86a2a' className='v14-stack-dot' />
-                <text x={x2 + skew + 30} y={y + slabH / 2 - 3} fontFamily='var(--font-sans)' fontSize='9' fontWeight='700' fill='#e86a2a'>{row.products[1].name}</text>
+                <circle cx={x2 + skew} cy={y + slabH / 2} r='1.8' fill='#F07B2F' className='v14-stack-dot' />
+                <text x={x2 + skew + 30} y={y + slabH / 2 - 3} fontFamily='var(--font-sans)' fontSize='9' fontWeight='700' fill='#F07B2F'>{row.products[1].name}</text>
                 <text x={x2 + skew + 30} y={y + slabH / 2 + 11} fontFamily='var(--font-sans)' fontSize='6.5' fill='var(--v14-ink-label-strong)'>{row.products[1].desc}</text>
               </>
             )}
@@ -254,7 +254,7 @@ function StackDiagram() {
             {/* Inter-layer flow blobs */}
             {i < stackRows.length - 1 && (
               <>
-                <circle cx={cx - 30} cy={y + skewY + slabH + (gap - slabH) / 2} r='2' fill='#e86a2a' className='v14-stack-blob' style={{ '--blob-delay': `${i * 0.7}s` } as React.CSSProperties} filter='url(#v14-ex-glow)' />
+                <circle cx={cx - 30} cy={y + skewY + slabH + (gap - slabH) / 2} r='2' fill='#F07B2F' className='v14-stack-blob' style={{ '--blob-delay': `${i * 0.7}s` } as React.CSSProperties} filter='url(#v14-ex-glow)' />
                 <circle cx={cx + 40} cy={y + skewY + slabH + (gap - slabH) / 2 + 3} r='1.2' fill='var(--v14-ink-corner)' className='v14-stack-blob' style={{ '--blob-delay': `${i * 0.7 + 0.35}s` } as React.CSSProperties} />
               </>
             )}

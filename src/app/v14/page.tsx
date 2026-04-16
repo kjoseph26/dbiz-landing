@@ -66,11 +66,11 @@ function HeroDiagram() {
             <polygon points={`${360},${y} ${360 + skew},${y - 14} ${360 + skew},${y + 18} ${360},${y + 32}`} fill='var(--v14-ink-layer-right)' stroke='var(--v14-ink-corner)' strokeWidth='1' />
             <text x='156' y={y + 20} fontFamily='var(--font-mono)' fontSize='10' letterSpacing='1.5' fill='#ffffff'>{layer.label}</text>
             <line x1={360 + skew} y1={y + 8} x2='450' y2={y + 8} stroke='var(--v14-ink-callout)' strokeWidth='0.8' strokeDasharray='2 2' className='v14-callout-line' />
-            <circle cx={360 + skew} cy={y + 8} r='1.6' fill='#e86a2a' className='v14-callout-dot' />
-            <text x='454' y={y + 11} fontFamily='var(--font-mono)' fontSize='8.5' letterSpacing='1' fill='#e86a2a'>{layer.code}</text>
+            <circle cx={360 + skew} cy={y + 8} r='1.6' fill='#F07B2F' className='v14-callout-dot' />
+            <text x='454' y={y + 11} fontFamily='var(--font-mono)' fontSize='8.5' letterSpacing='1' fill='#F07B2F'>{layer.code}</text>
             {i < layers.length - 1 && (
               <>
-                <circle cx='250' cy={y + 38} r='2.5' fill='#e86a2a' className='v14-comm-blob' style={{ '--blob-delay': `${i * 0.8}s` } as React.CSSProperties} filter='url(#v14-glow)' />
+                <circle cx='250' cy={y + 38} r='2.5' fill='#F07B2F' className='v14-comm-blob' style={{ '--blob-delay': `${i * 0.8}s` } as React.CSSProperties} filter='url(#v14-glow)' />
                 <circle cx='200' cy={y + 42} r='1.8' fill='var(--v14-ink-corner)' className='v14-comm-blob' style={{ '--blob-delay': `${i * 0.8 + 0.4}s` } as React.CSSProperties} />
               </>
             )}
@@ -82,7 +82,7 @@ function HeroDiagram() {
         <line x1='92' y1='76' x2='100' y2='76' />
         <line x1='92' y1='484' x2='100' y2='484' />
       </g>
-      <text x='80' y='284' fontFamily='var(--font-mono)' fontSize='8.5' letterSpacing='1.5' fill='#e86a2a' transform='rotate(-90 80 284)'>FRONTIER ORG · STACK</text>
+      <text x='80' y='284' fontFamily='var(--font-mono)' fontSize='8.5' letterSpacing='1.5' fill='#F07B2F' transform='rotate(-90 80 284)'>FRONTIER ORG · STACK</text>
       <g stroke='var(--v14-ink-dim)' strokeWidth='0.6'>
         <line x1='140' y1='520' x2='360' y2='520' />
         <line x1='140' y1='516' x2='140' y2='524' />
@@ -119,23 +119,23 @@ function DataFlowDiagram() {
       <g className='v14-mini-node' style={{ '--node-delay': '0s' } as React.CSSProperties}>
         <rect x='30' y='50' width='80' height='40' fill='var(--v14-paper)' stroke='none' />
         <rect x='30' y='50' width='80' height='40' fill='var(--v14-ink-node-fill)' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
-        <circle cx='38' cy='58' r='3.5' fill='var(--v14-paper)' /><circle cx='38' cy='58' r='2.5' fill='#e86a2a' />
+        <circle cx='38' cy='58' r='3.5' fill='var(--v14-paper)' /><circle cx='38' cy='58' r='2.5' fill='#F07B2F' />
         <text x='70' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v14-ink-label)' textAnchor='middle' letterSpacing='1'>INPUT</text>
-        <text x='70' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>SOURCE</text>
+        <text x='70' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#F07B2F' textAnchor='middle' letterSpacing='1' fontWeight='700'>SOURCE</text>
       </g>
       <g className='v14-mini-node' style={{ '--node-delay': '0.3s' } as React.CSSProperties}>
         <rect x='230' y='50' width='80' height='40' fill='var(--v14-paper)' stroke='none' />
         <rect x='230' y='50' width='80' height='40' fill='var(--v14-ink-node-fill)' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
-        <circle cx='238' cy='58' r='3.5' fill='var(--v14-paper)' /><circle cx='238' cy='58' r='2.5' fill='#e86a2a' />
+        <circle cx='238' cy='58' r='3.5' fill='var(--v14-paper)' /><circle cx='238' cy='58' r='2.5' fill='#F07B2F' />
         <text x='270' y='67' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v14-ink-label)' textAnchor='middle' letterSpacing='1'>PROCESS</text>
-        <text x='270' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>AGENT</text>
+        <text x='270' y='82' fontFamily='var(--font-mono)' fontSize='13' fill='#F07B2F' textAnchor='middle' letterSpacing='1' fontWeight='700'>AGENT</text>
       </g>
       <g className='v14-mini-node' style={{ '--node-delay': '0.6s' } as React.CSSProperties}>
         <rect x='130' y='150' width='80' height='40' fill='var(--v14-paper)' stroke='none' />
         <rect x='130' y='150' width='80' height='40' fill='var(--v14-ink-node-fill)' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
-        <circle cx='138' cy='158' r='3.5' fill='var(--v14-paper)' /><circle cx='138' cy='158' r='2.5' fill='#e86a2a' />
+        <circle cx='138' cy='158' r='3.5' fill='var(--v14-paper)' /><circle cx='138' cy='158' r='2.5' fill='#F07B2F' />
         <text x='170' y='167' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v14-ink-label)' textAnchor='middle' letterSpacing='1'>RESULT</text>
-        <text x='170' y='182' fontFamily='var(--font-mono)' fontSize='13' fill='#e86a2a' textAnchor='middle' letterSpacing='1' fontWeight='700'>OUTPUT</text>
+        <text x='170' y='182' fontFamily='var(--font-mono)' fontSize='13' fill='#F07B2F' textAnchor='middle' letterSpacing='1' fontWeight='700'>OUTPUT</text>
       </g>
       <path d='M 110 70 L 230 70' stroke='var(--v14-ink-connector)' strokeWidth='1.8' strokeDasharray='5 4' />
       <text x='170' y='66' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v14-ink-text-accent)' textAnchor='middle'>API</text>
@@ -144,7 +144,7 @@ function DataFlowDiagram() {
       <path d='M 270 90 L 170 150' stroke='var(--v14-ink-connector)' strokeWidth='1.8' strokeDasharray='5 4' />
       <text x='230' y='115' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v14-ink-text-accent)' textAnchor='middle' transform='rotate(28 230 115)'>SYNC</text>
       <circle cx='170' cy='70' r='4.5' fill='var(--v14-paper)' />
-      <circle cx='170' cy='70' r='3.5' fill='#e86a2a' filter='url(#v14-mini-glow)' />
+      <circle cx='170' cy='70' r='3.5' fill='#F07B2F' filter='url(#v14-mini-glow)' />
       <circle cx='120' cy='120' r='4' fill='var(--v14-paper)' />
       <circle cx='120' cy='120' r='3' fill='var(--v14-ink-blob)' />
       <circle cx='220' cy='120' r='4' fill='var(--v14-paper)' />
@@ -193,7 +193,7 @@ function NetworkDiagram() {
       <circle cx='170' cy='130' r='40' fill='none' stroke='var(--v14-ink-orbit)' strokeWidth='0.6' strokeDasharray='4 4' />
       <circle cx='170' cy='130' r='24' fill='var(--v14-paper)' stroke='none' />
       <circle cx='170' cy='130' r='24' fill='var(--v14-ink-hub)' stroke='var(--v14-ink-corner)' strokeWidth='2.5' />
-      <circle cx='170' cy='130' r='12' fill='#e86a2a' filter='url(#v14-hub-glow)' />
+      <circle cx='170' cy='130' r='12' fill='#F07B2F' filter='url(#v14-hub-glow)' />
       <text x='170' y='135' fontFamily='var(--font-mono)' fontSize='8' fill='#fff' textAnchor='middle' fontWeight='700'>HUB</text>
       {nodes.map((node, i) => {
         const angle = (node.angle - 90) * Math.PI / 180
@@ -244,14 +244,14 @@ function ProcessDiagram() {
         <g key={i}>
           <rect x={30 + i * 100} y='70' width='80' height='100' fill='var(--v14-paper)' stroke='none' />
           <rect x={30 + i * 100} y='70' width='80' height='100' fill='var(--v14-ink-node-fill)' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
-          <text x={70 + i * 100} y='98' fontFamily='var(--font-mono)' fontSize='24' fill='#e86a2a' textAnchor='middle' fontWeight='800'>{step.num}</text>
+          <text x={70 + i * 100} y='98' fontFamily='var(--font-mono)' fontSize='24' fill='#F07B2F' textAnchor='middle' fontWeight='800'>{step.num}</text>
           <text x={70 + i * 100} y='112' fontFamily='var(--font-mono)' fontSize='7' fill='var(--v14-ink-label)' textAnchor='middle' letterSpacing='1'>DAYS</text>
           <line x1={35 + i * 100} y1='120' x2={105 + i * 100} y2='120' stroke='var(--v14-ink-divider-soft)' strokeWidth='0.6' strokeDasharray='2 2' />
-          <text x={70 + i * 100} y='138' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.label}</text>
+          <text x={70 + i * 100} y='138' fontFamily='var(--font-mono)' fontSize='10' fill='#F07B2F' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.label}</text>
           <text x={70 + i * 100} y='151' fontFamily='var(--font-mono)' fontSize='8' fill='var(--v14-ink-label-strong)' textAnchor='middle' letterSpacing='0.5'>&</text>
-          <text x={70 + i * 100} y='162' fontFamily='var(--font-mono)' fontSize='10' fill='#e86a2a' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.sublabel}</text>
+          <text x={70 + i * 100} y='162' fontFamily='var(--font-mono)' fontSize='10' fill='#F07B2F' textAnchor='middle' fontWeight='700' letterSpacing='1'>{step.sublabel}</text>
           <circle cx={70 + i * 100} cy='50' r='4.5' fill='var(--v14-paper)' />
-          <circle cx={70 + i * 100} cy='50' r='3.5' fill='#e86a2a' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
+          <circle cx={70 + i * 100} cy='50' r='3.5' fill='#F07B2F' stroke='var(--v14-ink-corner)' strokeWidth='1.8' />
           <line x1={70 + i * 100} y1='54' x2={70 + i * 100} y2='70' stroke='var(--v14-ink-spoke)' strokeWidth='1.2' strokeDasharray='2 2' />
           {i < 2 && <path d={`M ${110 + i * 100} 120 L ${130 + i * 100} 120`} stroke='var(--v14-ink-corner)' strokeWidth='2.5' markerEnd='url(#v14-arrow)' />}
         </g>
@@ -272,9 +272,9 @@ export default function V14Page() {
       {/* NAV — V4 grid structure, V5 dark treatment */}
       <nav className='v14-nav'>
         <div className='v14-nav-inner'>
-          <div className='v14-logo'>
-            dbiz<span className='dot'>.</span><span className='suffix'>ai</span>
-          </div>
+          <a href='/' className='v14-logo'>
+            <img src='/dbiz-logo.svg' alt='DBiz.ai' height='28' />
+          </a>
           <ul className='v14-nav-links'>
             <li><a href='#solutions'>Our Solutions</a></li>
             <li><a href='#work'>Our Work</a></li>
@@ -310,10 +310,10 @@ export default function V14Page() {
               Most enterprises have tried AI. Most of it didn&apos;t scale — not because the technology failed, but because no one connected the ambition to what actually got built. We close that gap. We call the result a Frontier Organisation: human-led, agent-operated, data-powered.
             </p>
             <div className='v14-hero-ctas'>
-              <a href='#cta' className='v14-cta-primary'>
-                Get an architecture assessment <span className='arrow'>→</span>
+              <a href='#solutions' className='v14-cta-primary'>
+                See how we build it <span className='arrow'>→</span>
               </a>
-              <a href='#cta' className='v14-cta-text'>Or talk to our team</a>
+              <a href='#work' className='v14-cta-text'>Explore our AI stack</a>
             </div>
             <div className='v14-hero-diagram'>
               <div className='v14-diagram-label'>
@@ -421,7 +421,7 @@ export default function V14Page() {
         <div className='v14-container'>
           <div className='v14-foot-top'>
             <div className='v14-foot-brand'>
-              <div className='v14-logo'>dbiz<span className='dot'>.</span><span className='suffix'>ai</span></div>
+              <div className='v14-logo'><img src='/dbiz-logo.svg' alt='DBiz.ai' height='24' /></div>
               <div className='tag'>Human-Led &nbsp;|&nbsp; Agent-Operated &nbsp;|&nbsp; Data-Powered</div>
               <div className='meta'>10 offices · 6 countries · 800+ people</div>
             </div>

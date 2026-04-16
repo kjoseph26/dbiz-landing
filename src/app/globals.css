@@ -13,9 +13,9 @@
   --brand-navy-light: #1a2d5a;
 
   /* Brand — Orange (accent) */
-  --brand-orange: #e86a2a;
-  --brand-orange-hover: #d45a1a;
-  --brand-orange-glow: rgba(232, 106, 42, 0.1);
+  --brand-orange: #F07B2F;
+  --brand-orange-hover: #E06B1F;
+  --brand-orange-glow: rgba(240, 123, 47, 0.1);
 
   /* Neutrals — Light surface */
   --brand-bg: #fafafa;

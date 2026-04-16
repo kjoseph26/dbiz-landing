@@ -15,8 +15,8 @@
   --v14-accent: var(--brand-orange);
   --v14-hair: rgba(255, 255, 255, 0.1);
   --v14-hair-strong: rgba(255, 255, 255, 0.2);
-  --v14-orange-hair: rgba(232, 106, 42, 0.55);
-  --v14-orange-hair-soft: rgba(232, 106, 42, 0.28);
+  --v14-orange-hair: rgba(240, 123, 47, 0.55);
+  --v14-orange-hair-soft: rgba(240, 123, 47, 0.28);
 
   /* V5 SVG ink tokens */
   --v14-ink-grid: #10182a;
@@ -81,11 +81,11 @@
   --v14-ink-2: #555555;
   --v14-ink-3: #999999;
   --v14-ink-4: rgba(0, 0, 0, 0.2);
-  --v14-accent: #E86A2A;
+  --v14-accent: #F07B2F;
   --v14-hair: rgba(0, 0, 0, 0.08);
   --v14-hair-strong: rgba(0, 0, 0, 0.16);
-  --v14-orange-hair: rgba(232, 106, 42, 0.4);
-  --v14-orange-hair-soft: rgba(232, 106, 42, 0.15);
+  --v14-orange-hair: rgba(240, 123, 47, 0.4);
+  --v14-orange-hair-soft: rgba(240, 123, 47, 0.15);
   --v14-rule: rgba(0, 0, 0, 0.14);
   --v14-hairline: rgba(0, 0, 0, 0.08);
   --v14-rail: rgba(0, 0, 0, 0.06);
@@ -104,13 +104,13 @@
   --v14-ink-hub: rgba(13, 27, 62, 0.08);
   --v14-ink-orbit: rgba(13, 27, 62, 0.15);
   --v14-ink-divider-soft: rgba(13, 27, 62, 0.15);
-  --v14-ink-hatch: rgba(232, 106, 42, 0.3);
+  --v14-ink-hatch: rgba(240, 123, 47, 0.3);
   --v14-ink-spoke: #1A2D5A;
   --v14-ink-connector: #0D1B3E;
-  --v14-ink-hair: rgba(232, 106, 42, 0.4);
+  --v14-ink-hair: rgba(240, 123, 47, 0.4);
   --v14-ink-corner: #0D1B3E;
-  --v14-ink-callout: #E86A2A;
-  --v14-ink-text-accent: #E86A2A;
+  --v14-ink-callout: #F07B2F;
+  --v14-ink-text-accent: #F07B2F;
   --v14-ink-blob: #0D1B3E;
 
   background-color: var(--v14-paper);
@@ -128,8 +128,8 @@
 
 /* Light surface — stat card accents stay orange */
 .v14-scope [data-surface="light"] .v14-stat .val::before,
-.v14-scope [data-surface="light"] .v14-stat .val::after { background: #E86A2A; }
-.v14-scope [data-surface="light"] .v14-stat::before { border-color: #E86A2A; }
+.v14-scope [data-surface="light"] .v14-stat .val::after { background: #F07B2F; }
+.v14-scope [data-surface="light"] .v14-stat::before { border-color: #F07B2F; }
 
 /* Light surface — stack frame uses navy corners */
 .v14-scope [data-surface="light"] .v14-stack-frame { border-color: rgba(13, 27, 62, 0.16); }
@@ -311,7 +311,7 @@
   margin-bottom: 32px;
   padding: 6px 14px;
   border: 1px solid var(--v14-orange-hair);
-  background: rgba(232, 106, 42, 0.06);
+  background: rgba(240, 123, 47, 0.06);
   width: fit-content;
 }
 .v14-hero-eyebrow .bar { width: 14px; height: 1px; background: var(--v14-accent); }
@@ -704,7 +704,7 @@
 .v14-toggle-btn:hover { color: var(--v14-ink); }
 .v14-toggle-btn.active {
   color: var(--v14-ink);
-  background: rgba(232, 106, 42, 0.06);
+  background: rgba(240, 123, 47, 0.06);
 }
 .v14-toggle-btn.active::after {
   content: '';
@@ -761,7 +761,7 @@
 .v14-cap-tab.active {
   border-left-color: var(--v14-accent);
   color: var(--v14-ink);
-  background: rgba(232, 106, 42, 0.04);
+  background: rgba(240, 123, 47, 0.04);
 }
 .v14-cap-tab .tab-num {
   font-family: var(--font-mono);
@@ -979,7 +979,7 @@
     transition: background 0.2s ease;
   }
   .v14-cap-arrow:last-child { border-right: none; border-left: 1px solid var(--v14-hair); }
-  .v14-cap-arrow:hover { background: rgba(232, 106, 42, 0.08); }
+  .v14-cap-arrow:hover { background: rgba(240, 123, 47, 0.08); }
   .v14-cap-mobile-label {
     flex: 1;
     display: flex;
@@ -1258,7 +1258,7 @@
 .v14-proven-filter:hover { color: var(--v14-ink); }
 .v14-proven-filter.active {
   color: var(--v14-ink);
-  background: rgba(232, 106, 42, 0.06);
+  background: rgba(240, 123, 47, 0.06);
 }
 .v14-proven-filter.active::after {
   content: '';
@@ -1432,7 +1432,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.v14-proven-arrow:hover { background: rgba(232, 106, 42, 0.08); border-color: var(--v14-accent); }
+.v14-proven-arrow:hover { background: rgba(240, 123, 47, 0.08); border-color: var(--v14-accent); }
 .v14-proven-dots {
   display: flex;
   gap: 8px;
@@ -1677,7 +1677,7 @@
   transition: all 0.35s ease;
 }
 .v14-why-node:hover .v14-why-node-circle {
-  stroke: #E86A2A;
+  stroke: #F07B2F;
   stroke-width: 2.5;
   filter: url(#v14-why-glow);
 }
