@@ -390,7 +390,7 @@ export default function V14Page() {
           <span className='v14-corner bl' />
           <span className='v14-corner br' />
           <div className='v14-cta-grid'>
-            <div className='v14-cta-num'>N°09 / Contact</div>
+            <div className='v14-cta-num'>N°07 / Contact</div>
             <div className='v14-cta-body'>
               <h2>Your Frontier Organisation starts with a conversation.</h2>
               <div className='sub'>One partner &nbsp;·&nbsp; Full stack &nbsp;·&nbsp; No handoff</div>

@@ -42,11 +42,11 @@ export default function TestimonialsSection() {
   const t = testimonials[active]
 
   return (
-    <section className='v14-quote-section'>
+    <section className='v14-quote-section' data-surface='light'>
       <div className='v14-container'>
         <div className='v14-quote-frame' key={active}>
           <div className='v14-quote-meta'>
-            <span>N°06 / Testimonial</span>
+            <span>N°04 / Testimonial</span>
             <span>{t.company.toUpperCase()}</span>
           </div>
           <div className='v14-quote-mark' />

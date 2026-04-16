@@ -169,7 +169,7 @@ export default function WhySection() {
     <section className='v14-section' id='about' data-surface='light'>
       <div className='v14-container'>
         <div className='v14-why-head'>
-          <div className='num'>N°08 / Why DBiz</div>
+          <div className='num'>N°06 / Why DBiz</div>
           <h2>Why enterprises choose <em>DBiz.</em></h2>
           <p className='lead'>Six differentiators — all evidenced by delivery, not brochures.</p>
         </div>
