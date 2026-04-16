@@ -4,6 +4,7 @@
 
 import CapabilitiesSection from './capabilities-section'
 import ProvenSection from './proven-section'
+import TestimonialsSection from './testimonials-section'
 import WhySection from './why-section'
 
 const stats = [
@@ -375,22 +376,8 @@ export default function V14Page() {
       {/* PROVEN — tabbed filter cards */}
       <ProvenSection />
 
-      {/* TESTIMONIAL — light surface */}
-      <section className='v14-quote-section'>
-        <div className='v14-container'>
-          <div className='v14-quote-frame'>
-            <div className='v14-quote-meta'>
-              <span>N°06 / Testimonial</span>
-              <span>SOUTHERN CROSS LOGISTICS</span>
-            </div>
-            <div className='v14-quote-mark' />
-            <blockquote>
-              DBiz didn&rsquo;t sell us a roadmap. They delivered one — with the system live in production while the rest of the market was still running POCs.
-            </blockquote>
-            <cite>Priya Nair &nbsp;—&nbsp; Chief Data &amp; AI Officer, Southern Cross Logistics</cite>
-          </div>
-        </div>
-      </section>
+      {/* TESTIMONIALS — carousel */}
+      <TestimonialsSection />
 
       {/* WHY — interactive diagram */}
       <WhySection />
