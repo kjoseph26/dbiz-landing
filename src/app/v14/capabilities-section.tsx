@@ -118,7 +118,7 @@ const stackRows: StackRow[] = [
     ],
   },
   {
-    layer: 'Agentic Engineering',
+    layer: 'AI Engineering',
     idx: '05',
     products: [
       { name: 'Nexus Platform', desc: 'Enterprise AI dev environment' },
