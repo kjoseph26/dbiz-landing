@@ -78,4 +78,10 @@ export const versions: Version[] = [
     tagline: 'Complete Swiss Blueprint with all sections and interactions',
     status: 'ready',
   },
+  {
+    slug: 'v17',
+    name: 'V17 — Swiss Blueprint',
+    tagline: 'Clone of V16 — working copy for further iterations',
+    status: 'draft',
+  },
 ]
