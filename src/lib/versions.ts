@@ -84,4 +84,10 @@ export const versions: Version[] = [
     tagline: 'Clone of V16 — working copy for further iterations',
     status: 'draft',
   },
+  {
+    slug: 'v18',
+    name: 'V18 — Swiss Blueprint',
+    tagline: 'Clone of V17 — working copy for further iterations',
+    status: 'draft',
+  },
 ]
