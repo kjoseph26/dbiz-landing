@@ -39,18 +39,17 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
           <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(240,123,47,0.15)' strokeWidth='0.8' />
         </pattern>
         <pattern id='v14-why-cross' patternUnits='userSpaceOnUse' width='8' height='8'>
-          <line x1='0' y1='0' x2='8' y2='8' stroke='rgba(13,27,62,0.06)' strokeWidth='0.4' />
-          <line x1='8' y1='0' x2='0' y2='8' stroke='rgba(13,27,62,0.06)' strokeWidth='0.4' />
+          <line x1='0' y1='0' x2='8' y2='8' stroke='rgba(26,45,90,0.09)' strokeWidth='0.4' />
+          <line x1='8' y1='0' x2='0' y2='8' stroke='rgba(26,45,90,0.09)' strokeWidth='0.4' />
         </pattern>
         <pattern id='v14-why-grid' patternUnits='userSpaceOnUse' width='20' height='20'>
-          <path d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(13,27,62,0.07)' strokeWidth='0.5' />
+          <path d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(26,45,90,0.1)' strokeWidth='0.5' />
         </pattern>
         <clipPath id='v14-why-clip'><rect x='12' y='12' width='416' height='416' /></clipPath>
       </defs>
 
-      {/* Frame — subtle navy tint */}
-      <rect x='10' y='10' width='420' height='420' fill='rgba(13,27,62,0.03)' stroke='rgba(13,27,62,0.12)' strokeWidth='1' />
-      <rect x='10' y='10' width='420' height='420' fill='url(#v14-why-grid)' />
+      {/* Frame */}
+      <rect x='10' y='10' width='420' height='420' fill='url(#v14-why-grid)' stroke='rgba(26,45,90,0.15)' strokeWidth='1' />
       {/* Corner brackets */}
       <g stroke='#F07B2F' strokeWidth='1.5'>
         <line x1='10' y1='10' x2='28' y2='10' /><line x1='10' y1='10' x2='10' y2='28' />
@@ -59,26 +58,26 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
         <line x1='430' y1='430' x2='412' y2='430' /><line x1='430' y1='430' x2='430' y2='412' />
       </g>
       {/* Drawing number */}
-      <text x='220' y='26' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(13,27,62,0.3)' textAnchor='middle' letterSpacing='1.5'>DWG·WHY-01</text>
+      <text x='220' y='26' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(26,45,90,0.35)' textAnchor='middle' letterSpacing='1.5'>DWG·WHY-01</text>
 
       <g clipPath='url(#v14-why-clip)'>
         {/* Crosshatch texture fill behind orbit */}
         <circle cx={cx} cy={cy} r={r + 20} fill='url(#v14-why-cross)' />
 
         {/* Construction lines — light blue */}
-        <line x1={cx} y1='20' x2={cx} y2='420' stroke='rgba(26,45,90,0.08)' strokeWidth='0.5' strokeDasharray='8 4' />
-        <line x1='20' y1={cy} x2='420' y2={cy} stroke='rgba(26,45,90,0.08)' strokeWidth='0.5' strokeDasharray='8 4' />
-        <line x1='20' y1='20' x2='420' y2='420' stroke='rgba(26,45,90,0.04)' strokeWidth='0.5' strokeDasharray='6 6' />
-        <line x1='420' y1='20' x2='20' y2='420' stroke='rgba(26,45,90,0.04)' strokeWidth='0.5' strokeDasharray='6 6' />
+        <line x1={cx} y1='20' x2={cx} y2='420' stroke='rgba(26,45,90,0.12)' strokeWidth='0.5' strokeDasharray='8 4' />
+        <line x1='20' y1={cy} x2='420' y2={cy} stroke='rgba(26,45,90,0.12)' strokeWidth='0.5' strokeDasharray='8 4' />
+        <line x1='20' y1='20' x2='420' y2='420' stroke='rgba(26,45,90,0.07)' strokeWidth='0.5' strokeDasharray='6 6' />
+        <line x1='420' y1='20' x2='20' y2='420' stroke='rgba(26,45,90,0.07)' strokeWidth='0.5' strokeDasharray='6 6' />
 
         {/* Ruler ticks — left */}
-        <g stroke='rgba(13,27,62,0.12)' strokeWidth='0.5'>
+        <g stroke='rgba(26,45,90,0.15)' strokeWidth='0.5'>
           {Array.from({ length: 20 }).map((_, i) => (
             <line key={`rl${i}`} x1='12' y1={22 + i * 21} x2={i % 5 === 0 ? '24' : '18'} y2={22 + i * 21} />
           ))}
         </g>
         {/* Ruler ticks — top */}
-        <g stroke='rgba(13,27,62,0.12)' strokeWidth='0.5'>
+        <g stroke='rgba(26,45,90,0.15)' strokeWidth='0.5'>
           {Array.from({ length: 20 }).map((_, i) => (
             <line key={`rt${i}`} x1={22 + i * 21} y1='12' x2={22 + i * 21} y2={i % 5 === 0 ? '24' : '18'} />
           ))}
@@ -93,16 +92,16 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
         <path d={`M ${cx} ${cy - r + 50} A ${r - 50} ${r - 50} 0 1 1 ${cx - 0.01} ${cy - r + 50}`} fill='url(#v14-why-hatch)' stroke='none' />
 
         {/* Dimension annotation — radius */}
-        <g stroke='rgba(13,27,62,0.2)' strokeWidth='0.5'>
+        <g stroke='rgba(26,45,90,0.22)' strokeWidth='0.5'>
           <line x1={cx} y1={cy} x2={cx + r} y2={cy} strokeDasharray='2 3' />
           <line x1={cx + r - 4} y1={cy - 3} x2={cx + r + 4} y2={cy + 3} />
         </g>
-        <text x={cx + r / 2} y={cy - 5} fontFamily='var(--font-mono)' fontSize='5.5' fill='rgba(13,27,62,0.25)' textAnchor='middle'>R={r}</text>
+        <text x={cx + r / 2} y={cy - 5} fontFamily='var(--font-mono)' fontSize='5.5' fill='rgba(26,45,90,0.3)' textAnchor='middle'>R={r}</text>
 
         {/* Section marker — bottom */}
         <g>
-          <line x1='60' y1='418' x2='380' y2='418' stroke='rgba(13,27,62,0.1)' strokeWidth='0.5' />
-          <text x='220' y='414' fontFamily='var(--font-mono)' fontSize='5' fill='rgba(13,27,62,0.2)' textAnchor='middle' letterSpacing='1'>SECTION A-A</text>
+          <line x1='60' y1='418' x2='380' y2='418' stroke='rgba(26,45,90,0.12)' strokeWidth='0.5' />
+          <text x='220' y='414' fontFamily='var(--font-mono)' fontSize='5' fill='rgba(26,45,90,0.25)' textAnchor='middle' letterSpacing='1'>SECTION A-A</text>
         </g>
 
         {/* Spokes */}
