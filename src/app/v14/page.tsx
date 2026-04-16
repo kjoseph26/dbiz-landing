@@ -3,30 +3,7 @@
    Capabilities as interactive tabs, SVG diagrams (V5). */
 
 import CapabilitiesSection from './capabilities-section'
-
-
-type Case = { metric: string; title: string; kicker: string; body: string }
-
-const byIndustry: Case[] = [
-  { metric: '38% faster', title: 'Credit decisioning in hours, not weeks', kicker: 'Financial Services', body: 'Agent-driven risk models cut the underwriting cycle time for a tier-1 lender across retail, SME, and corporate books.' },
-  { metric: '$14M saved', title: 'Dispatch, rewritten nightly', kicker: 'Logistics & Fleet', body: 'A national fleet operator replaced static route planning with agentic scheduling across 12,000 vehicles.' },
-  { metric: '6× throughput', title: 'Clinical documentation, automated', kicker: 'Aged Care', body: 'Care teams reclaimed hours per shift with voice-to-record agents compliant with regional reporting standards.' },
-]
-
-const bySolution: Case[] = [
-  { metric: '11 domains', title: 'Industry-ready data cloud', kicker: 'FactWeavers™', body: 'Pre-modelled data products shipped without a six-month clean-up phase.' },
-  { metric: '40+ agents', title: 'Multi-agent orchestration at scale', kicker: 'Agent Studio', body: 'Cross-system agents running order-to-cash for a Fortune 500 manufacturer.' },
-  { metric: '5 days', title: 'Concept to working build', kicker: 'DBiz Canvas', body: 'Product teams move from brief to production code inside a single sprint.' },
-]
-
-type Tech = { cat: string; list: string; note: string }
-
-const techRows: Tech[] = [
-  { cat: 'Cloud & AI', list: 'AWS (Advanced) · Azure (Solutions) · GCP', note: '40+ AWS certified experts' },
-  { cat: 'Data Platforms', list: 'Snowflake · Databricks · Fabric · BigQuery', note: 'FactWeavers™ built on top' },
-  { cat: 'Integration', list: 'Boomi · MuleSoft · Workato · n8n', note: 'No rip & replace' },
-  { cat: 'Business Apps', list: 'Salesforce · Dynamics 365 · Power Platform', note: '200+ Microsoft certifications' },
-]
+import ProvenSection from './proven-section'
 
 const whyReasons = [
   { idx: '01', title: 'Expertise that works together.', body: 'Strategy, cloud, data, platforms, product, design, operations — our teams work across every layer, not within silos. Your transformation is shaped by people who understand the full picture, not just their corner of it.' },
@@ -401,68 +378,8 @@ export default function V14Page() {
 
       {/* STACK is now inside the Capabilities toggle */}
 
-      {/* PROVEN — V4 cards + V5 borders */}
-      <section className='v14-section' id='work'>
-        <div className='v14-container'>
-          <div className='v14-section-head v14-with-diagram'>
-            <div>
-              <div className='num'>N°05 / Proven</div>
-              <h2>Proven where it matters.</h2>
-              <p className='lead'>50+ enterprise deployments across 11 industries.</p>
-            </div>
-            <div><DataFlowDiagram /></div>
-          </div>
-
-          <div className='v14-proven-subhead'>
-            <div className='v14-mono'>By industry</div>
-            <h3>Where AI met the ground.</h3>
-          </div>
-          <div className='v14-proven-cards'>
-            {byIndustry.map((c) => (
-              <div key={c.title} className='v14-proven-card'>
-                <div className='metric'>{c.metric}</div>
-                <div className='kicker'>{c.kicker}</div>
-                <div className='title'>{c.title}</div>
-                <p className='body'>{c.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className='v14-proven-subhead'>
-            <div className='v14-mono'>By solution</div>
-            <h3>Platforms we built and deployed.</h3>
-          </div>
-          <div className='v14-proven-cards'>
-            {bySolution.map((c) => (
-              <div key={c.title} className='v14-proven-card'>
-                <div className='metric'>{c.metric}</div>
-                <div className='kicker'>{c.kicker}</div>
-                <div className='title'>{c.title}</div>
-                <p className='body'>{c.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className='v14-tech'>
-            <div className='v14-proven-subhead' style={{ paddingTop: 0 }}>
-              <div className='v14-mono'>By technology</div>
-              <h3>Partners at every tier.</h3>
-            </div>
-            {techRows.map((t) => (
-              <div key={t.cat} className='v14-tech-row'>
-                <div className='cat'>{t.cat}</div>
-                <div className='list'>{t.list}</div>
-                <div className='note'>{t.note}</div>
-              </div>
-            ))}
-            <div className='v14-tech-models'>
-              <div className='cat'>AI Models</div>
-              <div className='list'>Claude · GPT · Gemini · Bedrock · Azure OpenAI · Vertex AI</div>
-              <div className='note'>Multi-model by design — agents run on the best model for each task.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* PROVEN — tabbed filter cards */}
+      <ProvenSection />
 
       {/* TESTIMONIAL — light surface */}
       <section className='v14-quote-section' data-surface='light'>
