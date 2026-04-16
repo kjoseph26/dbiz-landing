@@ -81,7 +81,7 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
 
           return (
             <g key={`spoke-${node.idx}`}>
-              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#E86A2A' strokeWidth={isActive ? 2.5 : 1.2} strokeDasharray={isActive ? 'none' : '6 4'} opacity={isActive ? 1 : 0.4} className='v14-why-spoke' />
+              <line x1={sx} y1={sy} x2={ex} y2={ey} stroke='#E86A2A' strokeWidth={isActive ? 1.5 : 1} strokeDasharray='6 4' opacity={isActive ? 0.8 : 0.3} className='v14-why-spoke' />
               {/* Data pulse */}
               <circle r='2.5' fill='#E86A2A' opacity={isActive ? 1 : 0.3} filter='url(#v14-why-glow-sm)'>
                 <animateMotion dur={`${2.5 + node.i * 0.2}s`} repeatCount='indefinite'>
