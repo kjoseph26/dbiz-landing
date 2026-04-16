@@ -4,15 +4,7 @@
 
 import CapabilitiesSection from './capabilities-section'
 import ProvenSection from './proven-section'
-
-const whyReasons = [
-  { idx: '01', title: 'Expertise that works together.', body: 'Strategy, cloud, data, platforms, product, design, operations — our teams work across every layer, not within silos. Your transformation is shaped by people who understand the full picture, not just their corner of it.' },
-  { idx: '02', title: 'Transformation at scale.', body: '50+ enterprise clients. 150+ AI solutions. Six countries. Over a decade of enterprise delivery — not a pitch deck.' },
-  { idx: '03', title: 'Time-boxed delivery. Every engagement.', body: 'Outcomes within defined timeframes. Ambiguity is the enemy of delivery — so we don\u2019t allow it.' },
-  { idx: '04', title: 'Production platforms. Not presentations.', body: 'NEXUS, Agent Studio, FactWeavers\u2122, DBiz Canvas — production systems deployed in enterprise environments. We recommend what we\u2019ve already built.' },
-  { idx: '05', title: 'Certified at the highest tiers.', body: 'AWS Advanced, Azure Solutions, Salesforce, Dynamics 365, Snowflake, Databricks, Anthropic, Boomi, MuleSoft — we deliver with the industry\u2019s leading technology providers, not around them.' },
-  { idx: '06', title: 'Sector expertise, engineered.', body: 'Deep domain knowledge shaped by 150+ enterprise engagements — Financial Services, Logistics, Real Estate, Aged Care, Automotive, Government, Retail, Construction, Manufacturing — with FactWeavers\u2122 pre-built for every vertical.' },
-]
+import WhySection from './why-section'
 
 const stats = [
   { coord: '[A·01]', val: '500+', lbl: 'Engineers' },
@@ -400,30 +392,8 @@ export default function V14Page() {
         </div>
       </section>
 
-      {/* WHY — light surface */}
-      <section className='v14-section' id='about' data-surface='light'>
-        <div className='v14-container'>
-          <div className='v14-section-head v14-with-diagram'>
-            <div>
-              <div className='num'>N°08 / Why DBiz</div>
-              <h2>Why enterprises choose DBiz.</h2>
-              <p className='lead'>Six reasons — all evidenced by delivery, not brochures.</p>
-            </div>
-            <div><NetworkDiagram /></div>
-          </div>
-          <div className='v14-why-grid'>
-            {whyReasons.map((r) => (
-              <div key={r.idx} className='v14-why-card'>
-                <div className='idx'>{r.idx}</div>
-                <div>
-                  <h4>{r.title}</h4>
-                  <p>{r.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* WHY — interactive diagram */}
+      <WhySection />
 
       {/* FINAL CTA — V4 asymmetric grid, V5 dark */}
       <section className='v14-cta' id='cta'>
