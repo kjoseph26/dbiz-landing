@@ -86,11 +86,43 @@ type StackRow = {
 
 const stackRows: StackRow[] = [
   {
+    layer: 'Strategy',
+    idx: '01',
+    products: [
+      { name: 'Futures Studio', desc: 'AI ambition, roadmap & use case prioritisation' },
+      { name: 'DBiz Canvas', desc: 'Concept to code in days' },
+    ],
+  },
+  {
+    layer: 'Architecture',
+    idx: '02',
+    products: [
+      { name: 'TechOffice Foundry', desc: 'AI foundation & Well-Architected review' },
+      { name: 'DBiz Adapt', desc: 'Architecting Secure and Sovereign AI' },
+    ],
+  },
+  {
+    layer: 'Cloud',
+    idx: '03',
+    products: [
+      { name: 'Multi-Cloud AI Foundation', desc: 'Enterprise AI Foundation rollout' },
+      { name: 'DBiz Scoop', desc: 'AI-Powered migration pipeline' },
+    ],
+  },
+  {
     layer: 'Data & Insights',
-    idx: '07',
+    idx: '04',
     products: [
       { name: 'Factweavers.ai', desc: 'Domain data cloud & quick insights' },
       { name: 'DBiz Compass', desc: 'AI-infused data engineering' },
+    ],
+  },
+  {
+    layer: 'Agentic Engineering',
+    idx: '05',
+    products: [
+      { name: 'Nexus Platform', desc: 'Enterprise AI dev environment' },
+      { name: 'Perpetual Engineering', desc: 'AI agents across the full SDLC' },
     ],
   },
   {
@@ -103,42 +135,10 @@ const stackRows: StackRow[] = [
   },
   {
     layer: 'Productivity',
-    idx: '05',
+    idx: '07',
     products: [
       { name: 'Productivity Automation', desc: 'Claude Co-work & Copilot' },
       { name: 'AI-Infused BizApps', desc: 'Autonomous agents for SaaS platforms' },
-    ],
-  },
-  {
-    layer: 'Development',
-    idx: '04',
-    products: [
-      { name: 'Nexus Platform', desc: 'Enterprise AI dev environment' },
-      { name: 'Perpetual Engineering', desc: 'AI agents across the full SDLC' },
-    ],
-  },
-  {
-    layer: 'Cloud',
-    idx: '03',
-    products: [
-      { name: 'Multi-Cloud AI Foundation', desc: 'Enterprise AI Foundation rollout' },
-      { name: 'DBiz Scoop', desc: 'AI-Powered migration pipeline' },
-    ],
-  },
-  {
-    layer: 'Architecture',
-    idx: '02',
-    products: [
-      { name: 'TechOffice Foundry', desc: 'AI foundation & Well-Architected review' },
-      { name: 'DBiz Adapt', desc: 'Architecting Secure and Sovereign AI' },
-    ],
-  },
-  {
-    layer: 'Strategy',
-    idx: '01',
-    products: [
-      { name: 'Futures Studio', desc: 'AI ambition, roadmap & use case prioritisation' },
-      { name: 'DBiz Canvas', desc: 'Concept to code in days' },
     ],
   },
 ]
