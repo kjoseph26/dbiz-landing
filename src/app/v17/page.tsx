@@ -12,7 +12,7 @@ import WhySection from './why-section'
 
 const stats = [
   { coord: '[A·01]', val: '500+', lbl: 'Engineers' },
-  { coord: '[A·02]', val: '50+', lbl: 'Clients' },
+  { coord: '[A·02]', val: '50+', lbl: 'Enterprise Clients' },
   { coord: '[A·03]', val: '120', lbl: 'Solutions delivered' },
   { coord: '[A·04]', val: '6', lbl: 'Countries' },
 ]
@@ -341,7 +341,6 @@ export default function V14Page() {
           <div className='v17-hero-grid'>
             <div className='v17-hero-meta'>
               <span className='num'>N°01 / Homepage</span>
-              <span className='num'>Issue 2026</span>
             </div>
             <div className='v17-hero-eyebrow'>
               <span className='bar' />
@@ -359,9 +358,9 @@ export default function V14Page() {
             </p>
             <div className='v17-hero-ctas'>
               <a href='#solutions' className='v17-cta-primary'>
-                See how we build it <span className='arrow'>→</span>
+                Explore our AI stack <span className='arrow'>→</span>
               </a>
-              <a href='#work' className='v17-cta-text'>Explore our AI stack</a>
+              <a href='/contact' className='v17-cta-text'>Talk to our team</a>
             </div>
             <div className='v17-hero-diagram'>
               <div className='v17-diagram-label'>
@@ -384,7 +383,7 @@ export default function V14Page() {
         <div className='v17-container'>
           <div className='v17-section-head'>
             <div className='num'>N°02 / By the numbers</div>
-            <h2>A decade of enterprise <em>delivery.</em></h2>
+            <h2>A track record<br />of enterprise <em>delivery.</em></h2>
             <p className='lead'>Not a pitch deck — measurable, deployed, running in production today.</p>
           </div>
           <div className='v17-stats-grid'>
