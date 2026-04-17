@@ -82,179 +82,284 @@ const capabilities: Capability[] = [
 ]
 
 
-/* ─── Stack Diagram SVG — Angled Exploded Isometric ─── */
+/* ─── Stack Diagram SVG — Deconstructed Assembly (machine reference) ─── */
 function StackDiagram() {
-  /* Angled exploded view matching the reference image */
-  const svgH = 700
+  const svgW = 1400
+  const svgH = 720
 
-  // Define layers from bottom to top in isometric grid
-  // Each layer moves up by 75px and right by 40px to maintain isometric alignment
-  const baseX = 200
-  const baseY = 580
-  const verticalGap = 75
-  const horizontalShift = 40
+  const shaftY = 360
+  const discR = 68
+  // 7 discs evenly spaced along the horizontal shaft
+  const discCenters = [180, 340, 500, 660, 820, 980, 1140]
 
-  const layers = [
-    { label: 'STRATEGY', x: baseX, y: baseY, w: 220, h: 50, products: [
-      { name: 'Futures Studio', desc: ['AI ambition, roadmap &', 'use case prioritisation'], side: 'left' },
-      { name: 'TechOffice Foundry', desc: 'AI foundation & Well-Architected review', side: 'right' }
-    ]},
-    { label: 'ARCHITECTURE', x: baseX + horizontalShift, y: baseY - verticalGap, w: 240, h: 50, products: [
-      { name: 'DBiz Adapt', desc: 'Architecting Secure and Sovereign AI', side: 'right' }
-    ]},
-    { label: 'CLOUD', x: baseX + horizontalShift * 2, y: baseY - verticalGap * 2, w: 260, h: 50, products: [
-      { name: 'DBiz Scoop', desc: 'AI-Powered migration pipeline', side: 'right' }
-    ]},
-    { label: 'DEVELOPMENT', x: baseX + horizontalShift * 3, y: baseY - verticalGap * 3, w: 240, h: 50, products: [
-      { name: 'Perpetual Engineering', desc: 'AI agents across the full SDLC', side: 'right' }
-    ]},
-    { label: 'PRODUCTIVITY', x: baseX + horizontalShift * 4, y: baseY - verticalGap * 4, w: 260, h: 50, products: [
-      { name: 'Productivity Automation', desc: 'Claude Co-work & Copilot', side: 'left' }
-    ]},
-    { label: 'ORCHESTRATION', x: baseX + horizontalShift * 5, y: baseY - verticalGap * 5, w: 280, h: 50, products: [
-      { name: 'Agent Studio', desc: 'Agentic AI & multi-agent orchestration', side: 'left' },
-      { name: 'AI-Infused BizApps', desc: 'Autonomous agents for SaaS platforms', side: 'right' }
-    ]},
-    { label: 'DATA & INSIGHTS', x: baseX + horizontalShift * 6, y: baseY - verticalGap * 6, w: 300, h: 50, products: [
-      { name: 'Factweavers.ai', desc: 'Domain data cloud & quick insights', side: 'left' },
-      { name: 'DBiz Compass', desc: 'AI-infused data engineering', side: 'right' }
-    ]},
+  type Side = { name: string; desc: string }
+  // Order: left-to-right — Strategy (01) first, Data (07) last
+  const layers: { n: string; label: string; top: Side; bottom: Side }[] = [
+    { n: '01', label: 'STRATEGY',
+      top:    { name: 'Futures Studio', desc: 'AI ambition, roadmap & use-case prioritisation' },
+      bottom: { name: 'DBiz Canvas',    desc: 'Concept to code in days' } },
+    { n: '02', label: 'ARCHITECTURE',
+      top:    { name: 'TechOffice Foundry', desc: 'AI foundation & Well-Architected review' },
+      bottom: { name: 'DBiz Adapt',         desc: 'Architecting Secure and Sovereign AI' } },
+    { n: '03', label: 'CLOUD',
+      top:    { name: 'Multi-Cloud AI Foundation', desc: 'Enterprise AI Foundation rollout' },
+      bottom: { name: 'DBiz Scoop',                desc: 'AI-Powered migration pipeline' } },
+    { n: '04', label: 'DEVELOPMENT',
+      top:    { name: 'Perpetual Engineering', desc: 'AI agents across the full SDLC' },
+      bottom: { name: 'Nexus Platform',        desc: 'Enterprise AI dev environment' } },
+    { n: '05', label: 'PRODUCTIVITY',
+      top:    { name: 'AI-Infused BizApps',     desc: 'Autonomous agents for SaaS platforms' },
+      bottom: { name: 'Productivity Automation', desc: 'Claude Co-work & Copilot' } },
+    { n: '06', label: 'ORCHESTRATION',
+      top:    { name: 'Agent Studio',     desc: 'Agentic AI & multi-agent orchestration' },
+      bottom: { name: 'Nexus iConnector', desc: 'No rip & replace integration' } },
+    { n: '07', label: 'DATA & INSIGHTS',
+      top:    { name: 'DBiz Compass',    desc: 'AI-infused data engineering' },
+      bottom: { name: 'Factweavers.ai',  desc: 'Domain data cloud & quick insights' } },
   ]
 
-  return (
-    <svg
-      viewBox='0 0 1000 700'
-      xmlns='http://www.w3.org/2000/svg'
-      className='v18-stack-diagram'
-      aria-label='DBiz AI Transformation Stack — Exploded View'
-    >
-      <defs>
-        <pattern id='v18-ex-dot' patternUnits='userSpaceOnUse' width='12' height='12'>
-          <circle cx='1' cy='1' r='0.6' fill='var(--v18-ink-dot)' />
-        </pattern>
-        <filter id='v18-ex-glow'>
-          <feGaussianBlur stdDeviation='2' result='coloredBlur' />
-          <feMerge><feMergeNode in='coloredBlur' /><feMergeNode in='SourceGraphic' /></feMerge>
-        </filter>
-      </defs>
-
-      {/* Frame + dot background */}
-      <rect x='8' y='8' width='984' height='684' fill='url(#v18-ex-dot)' />
-      <rect x='8' y='8' width='984' height='684' fill='none' stroke='var(--v18-ink-frame)' strokeWidth='1' />
-      <g stroke='var(--v18-ink-corner)' strokeWidth='2'>
-        <line x1='8' y1='8' x2='26' y2='8' /><line x1='8' y1='8' x2='8' y2='26' />
-        <line x1='992' y1='8' x2='974' y2='8' /><line x1='992' y1='8' x2='992' y2='26' />
-        <line x1='8' y1='692' x2='26' y2='692' /><line x1='8' y1='692' x2='8' y2='674' />
-        <line x1='992' y1='692' x2='974' y2='692' /><line x1='992' y1='692' x2='992' y2='674' />
-      </g>
-
-      {/* Drawing label + annotations */}
-      <text x='50' y='28' fontFamily='var(--font-mono)' fontSize='7.5' fill='var(--v18-ink-label-strong)' letterSpacing='2'>SCALE 1:1</text>
-      <text x='500' y='28' fontFamily='var(--font-mono)' fontSize='7.5' fill='var(--v18-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG·STACK-01 &nbsp; EXPLODED VIEW</text>
-      <text x='950' y='28' fontFamily='var(--font-mono)' fontSize='7.5' fill='var(--v18-accent)' textAnchor='end' letterSpacing='1'>SHEET A1</text>
-
-      {/* Layers — angled exploded isometric */}
-      {layers.map((layer, i) => {
-        // Draw 3D box: front face, top face, right side
-        const x1 = layer.x
-        const y1 = layer.y
-        const w = layer.w
-        const h = layer.h
-
-        // Points for isometric projection - matching reference image
-        const topSkewX = 50
-        const topSkewY = 25
-        const sideSkewX = 50
-        const sideSkewY = 25
-
+  // Per-layer inner shape renderer — duotone: grey structure + orange accents
+  const renderShape = (i: number, cx: number, cy: number) => {
+    const acc = 'var(--v18-accent)'
+    const ink = 'rgba(255,255,255,0.38)'
+    switch (i) {
+      case 0: // 01 Strategy — concentric target rings + crosshair
         return (
-          <g key={i} className='v18-stack-layer' style={{ '--layer-index': i } as React.CSSProperties}>
-            {/* Top face */}
-            <polygon
-              points={`${x1},${y1} ${x1 + topSkewX},${y1 - topSkewY} ${x1 + w + topSkewX},${y1 - topSkewY} ${x1 + w},${y1}`}
-              fill='var(--v18-ink-layer-fill)'
-              stroke='var(--v18-ink-corner)'
-              strokeWidth='1.2'
-            />
-
-            {/* Front face */}
-            <rect
-              x={x1}
-              y={y1}
-              width={w}
-              height={h}
-              fill='var(--v18-ink-layer-fill)'
-              stroke='var(--v18-ink-corner)'
-              strokeWidth='1.2'
-            />
-
-            {/* Right side */}
-            <polygon
-              points={`${x1 + w},${y1} ${x1 + w + sideSkewX},${y1 - sideSkewY} ${x1 + w + sideSkewX},${y1 + h - sideSkewY} ${x1 + w},${y1 + h}`}
-              fill='var(--v18-ink-layer-right)'
-              stroke='var(--v18-ink-corner)'
-              strokeWidth='1.2'
-            />
-
-            {/* Layer label */}
-            <text x={x1 + w / 2} y={y1 + h / 2 + 5} fontFamily='var(--font-sans)' fontSize='12' fontWeight='700' fill='#ffffff' textAnchor='middle' letterSpacing='2'>{layer.label}</text>
-
-            {/* Product callouts with right-angled lines */}
-            {layer.products.map((prod, pIdx) => {
-              const isLeft = prod.side === 'left'
-
-              // Dot position at middle of box edge
-              const dotX = isLeft ? x1 : x1 + w + sideSkewX
-              const dotY = y1 + h / 2 - sideSkewY / 2
-
-              // For multiple products, stack them vertically
-              const productOffset = (layer.products.length > 1) ? (pIdx - 0.5) * 30 : 0
-              const textY = dotY + productOffset
-
-              // Right-angled line: horizontal then vertical
-              const horizontalLength = 60
-              const cornerX = isLeft ? dotX - horizontalLength : dotX + horizontalLength
-              const lineEndX = isLeft ? x1 - 80 : x1 + w + sideSkewX + 80
-
-              // Text positioned at end
-              const textX = isLeft ? x1 - 85 : x1 + w + sideSkewX + 85
-              const textAnchor = isLeft ? 'end' : 'start'
-
+          <g>
+            <circle cx={cx} cy={cy} r='48' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' fill='none' />
+            <circle cx={cx} cy={cy} r='34' stroke={ink} strokeWidth='1' fill='none' />
+            <circle cx={cx} cy={cy} r='20' stroke={acc} strokeWidth='1.2' fill='none' />
+            <circle cx={cx} cy={cy} r='8' stroke={acc} strokeWidth='1' fill='none' />
+            <line x1={cx - 58} y1={cy} x2={cx - 42} y2={cy} stroke={ink} strokeWidth='0.8' />
+            <line x1={cx + 42} y1={cy} x2={cx + 58} y2={cy} stroke={ink} strokeWidth='0.8' />
+            <line x1={cx} y1={cy - 58} x2={cx} y2={cy - 42} stroke={ink} strokeWidth='0.8' />
+            <line x1={cx} y1={cy + 42} x2={cx} y2={cy + 58} stroke={ink} strokeWidth='0.8' />
+            <circle cx={cx} cy={cy} r='3' fill={acc} />
+          </g>
+        )
+      case 1: { // 02 Architecture — nested hexagons
+        const hex = (r: number) => `${cx},${cy - r} ${cx + r * 0.866},${cy - r / 2} ${cx + r * 0.866},${cy + r / 2} ${cx},${cy + r} ${cx - r * 0.866},${cy + r / 2} ${cx - r * 0.866},${cy - r / 2}`
+        return (
+          <g>
+            <polygon points={hex(46)} stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' fill='none' />
+            <polygon points={hex(32)} stroke={ink} strokeWidth='1' fill='none' />
+            <polygon points={hex(18)} stroke={acc} strokeWidth='1.3' fill='none' />
+            <circle cx={cx} cy={cy} r='3' fill={acc} />
+          </g>
+        )
+      }
+      case 2: // 03 Cloud — stacked cloud lamellae
+        return (
+          <g>
+            <path d={`M ${cx - 44} ${cy + 18} L ${cx} ${cy - 2} L ${cx + 44} ${cy + 18} L ${cx} ${cy + 38} Z`} stroke={ink} strokeWidth='1' fill='none' />
+            <path d={`M ${cx - 34} ${cy + 6} L ${cx} ${cy - 12} L ${cx + 34} ${cy + 6} L ${cx} ${cy + 24} Z`} stroke={ink} strokeWidth='1' fill='none' />
+            <path d={`M ${cx - 24} ${cy - 6} L ${cx} ${cy - 22} L ${cx + 24} ${cy - 6} L ${cx} ${cy + 10} Z`} stroke={acc} strokeWidth='1.3' fill='none' />
+            <line x1={cx} y1={cy - 22} x2={cx} y2={cy + 38} stroke={ink} strokeWidth='0.6' strokeDasharray='2 2' />
+            <circle cx={cx} cy={cy - 14} r='2.5' fill={acc} />
+          </g>
+        )
+      case 3: // 04 Development — gear teeth ring
+        return (
+          <g>
+            <circle cx={cx} cy={cy} r='32' stroke={ink} strokeWidth='1' fill='none' />
+            {Array.from({ length: 12 }).map((_, t) => {
+              const a = (t / 12) * Math.PI * 2
+              const x1 = cx + Math.cos(a) * 32
+              const y1 = cy + Math.sin(a) * 32
+              const x2 = cx + Math.cos(a) * 44
+              const y2 = cy + Math.sin(a) * 44
+              return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} stroke={ink} strokeWidth='2' />
+            })}
+            <circle cx={cx} cy={cy} r='44' stroke={ink} strokeWidth='0.6' strokeDasharray='3 2' fill='none' />
+            <circle cx={cx} cy={cy} r='22' stroke={acc} strokeWidth='1.2' fill='none' />
+            <circle cx={cx} cy={cy} r='10' stroke={acc} strokeWidth='1' fill='none' />
+            <circle cx={cx} cy={cy} r='3' fill={acc} />
+          </g>
+        )
+      case 4: // 05 Productivity — tri-orbital ellipses
+        return (
+          <g>
+            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={ink} strokeWidth='0.9' fill='none' />
+            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={ink} strokeWidth='0.9' fill='none' transform={`rotate(60 ${cx} ${cy})`} />
+            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={acc} strokeWidth='1.2' fill='none' transform={`rotate(120 ${cx} ${cy})`} />
+            <circle cx={cx + 46} cy={cy} r='2.5' fill={acc} />
+            <circle cx={cx - 46} cy={cy} r='2.5' fill={acc} />
+            <circle cx={cx + 23} cy={cy - 40} r='2.5' fill={acc} opacity='0.7' />
+            <circle cx={cx - 23} cy={cy + 40} r='2.5' fill={acc} opacity='0.7' />
+            <circle cx={cx} cy={cy} r='5' fill={acc} />
+          </g>
+        )
+      case 5: // 06 Orchestration — hub with 6 connected nodes
+        return (
+          <g>
+            <circle cx={cx} cy={cy} r='46' stroke={ink} strokeWidth='0.6' strokeDasharray='3 2' fill='none' />
+            {Array.from({ length: 6 }).map((_, nIdx) => {
+              const a = (nIdx / 6) * Math.PI * 2 - Math.PI / 2
+              const nx = cx + Math.cos(a) * 38
+              const ny = cy + Math.sin(a) * 38
               return (
-                <g key={pIdx}>
-                  {/* Horizontal segment from box */}
-                  <line x1={dotX} y1={dotY} x2={cornerX} y2={dotY} stroke='var(--v18-ink-callout)' strokeWidth='0.8' strokeDasharray='3 2' className='v18-stack-connector' />
-                  {/* Vertical segment to text level */}
-                  <line x1={cornerX} y1={dotY} x2={cornerX} y2={textY} stroke='var(--v18-ink-callout)' strokeWidth='0.8' strokeDasharray='3 2' className='v18-stack-connector' />
-                  {/* Horizontal segment to text */}
-                  <line x1={cornerX} y1={textY} x2={lineEndX} y2={textY} stroke='var(--v18-ink-callout)' strokeWidth='0.8' strokeDasharray='3 2' className='v18-stack-connector' />
-                  <circle cx={dotX} cy={dotY} r='2.5' fill='#F07B2F' className='v18-stack-dot' />
-                  <text x={textX} y={textY - 5} fontFamily='var(--font-sans)' fontSize='11' fontWeight='700' fill='#F07B2F' textAnchor={textAnchor}>{prod.name}</text>
-                  {Array.isArray(prod.desc) ? (
-                    <>
-                      <text x={textX} y={textY + 10} fontFamily='var(--font-sans)' fontSize='7.5' fill='var(--v18-ink-label-strong)' textAnchor={textAnchor}>{prod.desc[0]}</text>
-                      <text x={textX} y={textY + 20} fontFamily='var(--font-sans)' fontSize='7.5' fill='var(--v18-ink-label-strong)' textAnchor={textAnchor}>{prod.desc[1]}</text>
-                    </>
-                  ) : (
-                    <text x={textX} y={textY + 10} fontFamily='var(--font-sans)' fontSize='7.5' fill='var(--v18-ink-label-strong)' textAnchor={textAnchor}>{prod.desc}</text>
-                  )}
+                <g key={nIdx}>
+                  <line x1={cx} y1={cy} x2={nx} y2={ny} stroke={ink} strokeWidth='0.8' strokeDasharray='2 2' />
+                  <circle cx={nx} cy={ny} r='4.5' fill={acc} opacity='0.85' />
                 </g>
               )
             })}
+            <circle cx={cx} cy={cy} r='12' stroke={acc} strokeWidth='1.5' fill={acc} fillOpacity='0.15' />
+            <circle cx={cx} cy={cy} r='3.5' fill={acc} />
+          </g>
+        )
+      case 6: { // 07 Data & Insights — hexagonal data grid
+        const hex = (r: number) => `${cx},${cy - r} ${cx + r * 0.866},${cy - r / 2} ${cx + r * 0.866},${cy + r / 2} ${cx},${cy + r} ${cx - r * 0.866},${cy + r / 2} ${cx - r * 0.866},${cy - r / 2}`
+        return (
+          <g>
+            <polygon points={hex(48)} stroke={ink} strokeWidth='1' fill='none' />
+            <polygon points={hex(24)} stroke={acc} strokeWidth='1.2' fill='none' />
+            {[0, 60, 120, 180, 240, 300].map((a, idx) => {
+              const r = (a - 90) * Math.PI / 180
+              return <circle key={idx} cx={cx + Math.cos(r) * 36} cy={cy + Math.sin(r) * 36} r='2.2' fill={acc} />
+            })}
+            {[30, 90, 150, 210, 270, 330].map((a, idx) => {
+              const r = (a - 90) * Math.PI / 180
+              return <line key={idx} x1={cx} y1={cy} x2={cx + Math.cos(r) * 24} y2={cy + Math.sin(r) * 24} stroke={ink} strokeWidth='0.5' strokeDasharray='1.5 1.5' />
+            })}
+            <circle cx={cx} cy={cy} r='3' fill={acc} />
+          </g>
+        )
+      }
+      default:
+        return null
+    }
+  }
 
-            {/* Connecting dots between layers */}
-            {i < layers.length - 1 && (
-              <>
-                <circle cx={x1 + w / 2 - 20} cy={y1 + h + 10} r='2' fill='#F07B2F' className='v18-stack-blob' style={{ '--blob-delay': `${i * 0.7}s` } as React.CSSProperties} filter='url(#v18-ex-glow)' />
-                <circle cx={x1 + w / 2 + 30} cy={y1 + h + 15} r='1.5' fill='#F07B2F' className='v18-stack-blob' style={{ '--blob-delay': `${i * 0.7 + 0.35}s` } as React.CSSProperties} filter='url(#v18-ex-glow)' />
-              </>
-            )}
+  const layerNameY = 452   // y of layer name (below disc)
+
+  // Uniform positions — all connector lines same length, no stagger
+  // TOP: desc (grey, can wrap) first, then name (orange, up to 2 lines), then dot
+  const tp = { desc: 80, name: 112, dot: 142 }
+  const bp = { dot: 492, name: 514, desc: 545 }
+
+  // Soft-wrap helper — splits a string into up to 2 lines at a char limit
+  const wrapDesc = (text: string, maxChars = 22): string[] => {
+    if (text.length <= maxChars) return [text]
+    const words = text.split(' ')
+    let line1 = '', line2 = ''
+    for (const w of words) {
+      const next = (line1 ? line1 + ' ' : '') + w
+      if (next.length <= maxChars && !line2) line1 = next
+      else line2 = (line2 ? line2 + ' ' : '') + w
+    }
+    return line2 ? [line1, line2] : [line1]
+  }
+
+  return (
+    <svg
+      viewBox={`0 0 ${svgW} ${svgH}`}
+      xmlns='http://www.w3.org/2000/svg'
+      className='v18-stack-diagram'
+      aria-label='DBiz Transformation Assembly — Exploded View'
+    >
+      <defs>
+        <pattern id='v18-ex-dot' patternUnits='userSpaceOnUse' width='14' height='14'>
+          <circle cx='1' cy='1' r='0.6' fill='var(--v18-ink-dot)' />
+        </pattern>
+        <radialGradient id='v18-disc-halo'>
+          <stop offset='0%' stopColor='var(--v18-accent)' stopOpacity='0.85' />
+          <stop offset='35%' stopColor='var(--v18-accent)' stopOpacity='0.45' />
+          <stop offset='70%' stopColor='var(--v18-accent)' stopOpacity='0.15' />
+          <stop offset='100%' stopColor='var(--v18-accent)' stopOpacity='0' />
+        </radialGradient>
+      </defs>
+
+      {/* Frame + dot background */}
+      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='url(#v18-ex-dot)' />
+      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='none' stroke='var(--v18-ink-frame)' strokeWidth='1' />
+      <g stroke='var(--v18-ink-corner)' strokeWidth='2'>
+        <line x1='8' y1='8' x2='26' y2='8' /><line x1='8' y1='8' x2='8' y2='26' />
+        <line x1={svgW - 8} y1='8' x2={svgW - 26} y2='8' /><line x1={svgW - 8} y1='8' x2={svgW - 8} y2='26' />
+        <line x1='8' y1={svgH - 8} x2='26' y2={svgH - 8} /><line x1='8' y1={svgH - 8} x2='8' y2={svgH - 26} />
+        <line x1={svgW - 8} y1={svgH - 8} x2={svgW - 26} y2={svgH - 8} /><line x1={svgW - 8} y1={svgH - 8} x2={svgW - 8} y2={svgH - 26} />
+      </g>
+
+      {/* Title strip */}
+      <text x='50' y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v18-ink-label-strong)' letterSpacing='2'>SCALE 1:1</text>
+      <text x={svgW / 2} y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v18-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG-STACK-01  ·  EXPLODED ASSEMBLY</text>
+      <text x={svgW - 50} y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v18-accent)' textAnchor='end' letterSpacing='1'>SHEET A1</text>
+
+      {/* Central shaft — the spine connecting all components */}
+      <line x1='80' y1={shaftY} x2={svgW - 80} y2={shaftY} stroke='var(--v18-ink-corner)' strokeWidth='1' />
+      <line x1='80' y1={shaftY} x2='80' y2={shaftY - 8} stroke='var(--v18-ink-corner)' strokeWidth='1' />
+      <line x1='80' y1={shaftY} x2='80' y2={shaftY + 8} stroke='var(--v18-ink-corner)' strokeWidth='1' />
+      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY - 8} stroke='var(--v18-ink-corner)' strokeWidth='1' />
+      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY + 8} stroke='var(--v18-ink-corner)' strokeWidth='1' />
+
+
+      {/* Components */}
+      {layers.map((layer, i) => {
+        const cx = discCenters[i]
+        const rotateReverse = i % 2 === 1   // alternating spin direction
+        return (
+          <g key={layer.n} className='v18-stack-layer' style={{ '--layer-index': i } as React.CSSProperties}>
+            {/* Traveling halo — staggered via CSS delay, sweeps across all discs */}
+            <circle cx={cx} cy={shaftY} r={discR + 28} fill='url(#v18-disc-halo)' className='v18-disc-halo' style={{ animationDelay: `${i * 1.4}s` } as React.CSSProperties} />
+
+            {/* Outer housing — dashed ring (grey) */}
+            <circle cx={cx} cy={shaftY} r={discR} stroke='rgba(255,255,255,0.22)' strokeWidth='0.8' strokeDasharray='4 3' fill='var(--v18-paper)' fillOpacity='0.85' />
+            {/* Second housing ring — solid, slightly inset (grey) */}
+            <circle cx={cx} cy={shaftY} r={discR - 6} stroke='rgba(255,255,255,0.16)' strokeWidth='0.6' fill='none' />
+            {/* Inner groove — thin dashed */}
+            <circle cx={cx} cy={shaftY} r={discR - 14} stroke='rgba(255,255,255,0.12)' strokeWidth='0.4' strokeDasharray='1.5 2' fill='none' />
+
+            {/* Inner geometry — rotates slowly (alternating direction) */}
+            <g>
+              <animateTransform
+                attributeName='transform'
+                type='rotate'
+                from={`${rotateReverse ? 360 : 0} ${cx} ${shaftY}`}
+                to={`${rotateReverse ? 0 : 360} ${cx} ${shaftY}`}
+                dur='45s'
+                repeatCount='indefinite'
+              />
+              {renderShape(i, cx, shaftY)}
+            </g>
+
+            {/* Shaft marker — orange dot where disc meets shaft (always on top, doesn't rotate) */}
+            <circle cx={cx} cy={shaftY} r='2.5' fill='var(--v18-accent)' />
+
+            {/* Layer number tag — just above disc */}
+            <text x={cx} y={shaftY - discR - 16} fontFamily='var(--font-mono)' fontSize='10' fontWeight='500' fill='var(--v18-accent)' textAnchor='middle' letterSpacing='2'>N°{layer.n}</text>
+
+            {/* Layer name — just below disc */}
+            <text x={cx} y={layerNameY} fontFamily='var(--font-mono)' fontSize='10' fontWeight='500' fill='#ffffff' textAnchor='middle' letterSpacing='2.5'>{layer.label}</text>
+
+            {/* Top callout — desc (grey) ABOVE, name (orange, emphasised) BELOW */}
+            <line x1={cx} y1={tp.dot + 2} x2={cx} y2={shaftY - discR - 8} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v18-stack-connector' />
+            <circle cx={cx} cy={tp.dot} r='2.8' fill='var(--v18-accent)' className='v18-stack-dot' />
+            {wrapDesc(layer.top.desc).map((line, li) => (
+              <text key={li} x={cx} y={tp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
+            ))}
+            {wrapDesc(layer.top.name.toUpperCase(), 15).map((line, li) => (
+              <text key={li} x={cx} y={tp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v18-accent)' textAnchor='middle'>{line}</text>
+            ))}
+
+            {/* Bottom callout — name (orange, emphasised) ABOVE, desc (grey) BELOW */}
+            <line x1={cx} y1={layerNameY + 14} x2={cx} y2={bp.dot - 2} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v18-stack-connector' />
+            <circle cx={cx} cy={bp.dot} r='2.8' fill='var(--v18-accent)' className='v18-stack-dot' />
+            {wrapDesc(layer.bottom.name.toUpperCase(), 15).map((line, li) => (
+              <text key={li} x={cx} y={bp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v18-accent)' textAnchor='middle'>{line}</text>
+            ))}
+            {wrapDesc(layer.bottom.desc).map((line, li) => (
+              <text key={li} x={cx} y={bp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
+            ))}
           </g>
         )
       })}
 
-      {/* Bottom annotation */}
-      <text x='500' y='680' fontFamily='var(--font-mono)' fontSize='7.5' fill='var(--v18-ink-dim)' textAnchor='middle' letterSpacing='2'>FULL STACK · NO CAPABILITY GAPS · NO VENDOR LOCK-IN</text>
+
+      {/* Bottom anchor strip */}
+      <line x1={svgW / 2 - 260} y1={svgH - 48} x2={svgW / 2 + 260} y2={svgH - 48} stroke='var(--v18-ink-corner)' strokeWidth='0.8' />
+      <line x1={svgW / 2 - 260} y1={svgH - 52} x2={svgW / 2 - 260} y2={svgH - 44} stroke='var(--v18-ink-corner)' strokeWidth='0.8' />
+      <line x1={svgW / 2 + 260} y1={svgH - 52} x2={svgW / 2 + 260} y2={svgH - 44} stroke='var(--v18-ink-corner)' strokeWidth='0.8' />
+      <text x={svgW / 2} y={svgH - 26} fontFamily='var(--font-mono)' fontSize='10' fill='var(--v18-ink-dim)' textAnchor='middle' letterSpacing='3'>FULL STACK  ·  NO CAPABILITY GAPS  ·  NO VENDOR LOCK-IN</text>
     </svg>
   )
 }
@@ -386,7 +491,7 @@ export default function CapabilitiesSection() {
               className={`v18-toggle-btn ${view === 'framework' ? 'active' : ''}`}
               onClick={() => setView('framework')}
             >
-              AI Transformation Framework
+              Our AI Transformation Stack
             </button>
           </div>
         </div>

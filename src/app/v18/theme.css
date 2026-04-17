@@ -1530,6 +1530,20 @@
   opacity: 0;
 }
 
+/* Traveling halo — sweeps across the 7 discs continuously */
+.v18-disc-halo {
+  opacity: 0;
+  animation: v18-disc-halo-sweep 10.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes v18-disc-halo-sweep {
+  0%, 22%, 100% { opacity: 0; transform: scale(1); }
+  5% { opacity: 1; transform: scale(1.12); }
+  10% { opacity: 0.55; transform: scale(1.04); }
+  18% { opacity: 0.1; transform: scale(1); }
+}
+
 /* Responsive */
 @media (max-width: 960px) {
   .v18-stack-diagram-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
