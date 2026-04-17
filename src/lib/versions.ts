@@ -96,4 +96,10 @@ export const versions: Version[] = [
     tagline: 'Clone of V18 with dark-blue hero treatment',
     status: 'draft',
   },
+  {
+    slug: 'v20',
+    name: 'V20 — Blueprint Dark (Lighter Orange)',
+    tagline: 'Clone of V19 with logo-orange accent, lightning-bolt productivity icon',
+    status: 'draft',
+  },
 ]

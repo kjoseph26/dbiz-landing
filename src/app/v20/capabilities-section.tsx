@@ -120,7 +120,7 @@ function StackDiagram() {
 
   // Per-layer inner shape renderer — duotone: grey structure + orange accents
   const renderShape = (i: number, cx: number, cy: number) => {
-    const acc = 'var(--v19-accent)'
+    const acc = 'var(--v20-accent)'
     const ink = 'rgba(255,255,255,0.38)'
     switch (i) {
       case 0: // 01 Strategy — concentric target rings + crosshair
@@ -176,23 +176,20 @@ function StackDiagram() {
             <circle cx={cx} cy={cy} r='3' fill={acc} />
           </g>
         )
-      case 4: // 05 Productivity — tri-orbital ellipses
+      case 4: // 05 Productivity — lightning bolt (speed / Claude co-work)
         return (
           <g>
-            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={ink} strokeWidth='0.9' fill='none' />
-            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={ink} strokeWidth='0.9' fill='none' transform={`rotate(60 ${cx} ${cy})`} />
-            <ellipse cx={cx} cy={cy} rx='46' ry='16' stroke={acc} strokeWidth='1.2' fill='none' transform={`rotate(120 ${cx} ${cy})`} />
-            <circle cx={cx + 46} cy={cy} r='2.5' fill={acc} />
-            <circle cx={cx - 46} cy={cy} r='2.5' fill={acc} />
-            <circle cx={cx + 23} cy={cy - 40} r='2.5' fill={acc} opacity='0.7' />
-            <circle cx={cx - 23} cy={cy + 40} r='2.5' fill={acc} opacity='0.7' />
-            <circle cx={cx} cy={cy} r='5' fill={acc} />
+            <circle cx={cx} cy={cy} r='42' stroke={ink} strokeWidth='0.5' strokeDasharray='2 3' fill='none' />
+            <path d={`M ${cx + 6} ${cy - 32} L ${cx - 16} ${cy + 4} L ${cx - 2} ${cy + 4} L ${cx - 8} ${cy + 32} L ${cx + 16} ${cy - 4} L ${cx + 2} ${cy - 4} Z`}
+              stroke={acc} strokeWidth='1.5' strokeLinejoin='round' fill={acc} fillOpacity='0.14' />
+            <circle cx={cx + 6} cy={cy - 32} r='2.2' fill={acc} />
+            <circle cx={cx - 34} cy={cy} r='2' fill={acc} opacity='0.7' />
+            <circle cx={cx + 34} cy={cy} r='2' fill={acc} opacity='0.7' />
           </g>
         )
-      case 5: // 06 Orchestration — hub with 6 connected nodes
+      case 5: // 06 Orchestration — hub with 6 connected nodes (no outer ring)
         return (
           <g>
-            <circle cx={cx} cy={cy} r='46' stroke={ink} strokeWidth='0.6' strokeDasharray='3 2' fill='none' />
             {Array.from({ length: 6 }).map((_, nIdx) => {
               const a = (nIdx / 6) * Math.PI * 2 - Math.PI / 2
               const nx = cx + Math.cos(a) * 38
@@ -257,28 +254,28 @@ function StackDiagram() {
     <svg
       viewBox={`0 0 ${svgW} ${svgH}`}
       xmlns='http://www.w3.org/2000/svg'
-      className='v19-stack-diagram'
+      className='v20-stack-diagram'
       aria-label='DBiz Transformation Assembly — Exploded View'
     >
       <defs>
-        <pattern id='v19-ex-dot' patternUnits='userSpaceOnUse' width='14' height='14'>
-          <circle cx='1' cy='1' r='0.6' fill='var(--v19-ink-dot)' />
+        <pattern id='v20-ex-dot' patternUnits='userSpaceOnUse' width='14' height='14'>
+          <circle cx='1' cy='1' r='0.6' fill='var(--v20-ink-dot)' />
         </pattern>
-        <pattern id='v19-disc-grid' patternUnits='userSpaceOnUse' width='14' height='14'>
+        <pattern id='v20-disc-grid' patternUnits='userSpaceOnUse' width='14' height='14'>
           <path d='M 14 0 L 0 0 0 14' fill='none' stroke='rgba(255,255,255,0.06)' strokeWidth='0.4' />
         </pattern>
-        <radialGradient id='v19-disc-halo'>
-          <stop offset='0%' stopColor='var(--v19-accent)' stopOpacity='0.85' />
-          <stop offset='35%' stopColor='var(--v19-accent)' stopOpacity='0.45' />
-          <stop offset='70%' stopColor='var(--v19-accent)' stopOpacity='0.15' />
-          <stop offset='100%' stopColor='var(--v19-accent)' stopOpacity='0' />
+        <radialGradient id='v20-disc-halo'>
+          <stop offset='0%' stopColor='var(--v20-accent)' stopOpacity='0.85' />
+          <stop offset='35%' stopColor='var(--v20-accent)' stopOpacity='0.45' />
+          <stop offset='70%' stopColor='var(--v20-accent)' stopOpacity='0.15' />
+          <stop offset='100%' stopColor='var(--v20-accent)' stopOpacity='0' />
         </radialGradient>
       </defs>
 
       {/* Frame + dot background */}
-      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='url(#v19-ex-dot)' />
-      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='none' stroke='var(--v19-ink-frame)' strokeWidth='1' />
-      <g stroke='var(--v19-ink-corner)' strokeWidth='2'>
+      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='url(#v20-ex-dot)' />
+      <rect x='8' y='8' width={svgW - 16} height={svgH - 16} fill='none' stroke='var(--v20-ink-frame)' strokeWidth='1' />
+      <g stroke='var(--v20-ink-corner)' strokeWidth='2'>
         <line x1='8' y1='8' x2='26' y2='8' /><line x1='8' y1='8' x2='8' y2='26' />
         <line x1={svgW - 8} y1='8' x2={svgW - 26} y2='8' /><line x1={svgW - 8} y1='8' x2={svgW - 8} y2='26' />
         <line x1='8' y1={svgH - 8} x2='26' y2={svgH - 8} /><line x1='8' y1={svgH - 8} x2='8' y2={svgH - 26} />
@@ -286,19 +283,19 @@ function StackDiagram() {
       </g>
 
       {/* Top strip — promise anchor (moved up from bottom) */}
-      <text x='50' y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v19-ink-label-strong)' letterSpacing='2'>SCALE 1:1</text>
-      <line x1={svgW / 2 - 260} y1={44} x2={svgW / 2 + 260} y2={44} stroke='var(--v19-ink-corner)' strokeWidth='0.8' />
-      <line x1={svgW / 2 - 260} y1={40} x2={svgW / 2 - 260} y2={48} stroke='var(--v19-ink-corner)' strokeWidth='0.8' />
-      <line x1={svgW / 2 + 260} y1={40} x2={svgW / 2 + 260} y2={48} stroke='var(--v19-ink-corner)' strokeWidth='0.8' />
-      <text x={svgW / 2} y='32' fontFamily='var(--font-mono)' fontSize='10' fill='var(--v19-ink-dim)' textAnchor='middle' letterSpacing='3'>FULL STACK  ·  NO CAPABILITY GAPS  ·  NO VENDOR LOCK-IN</text>
-      <text x={svgW - 50} y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v19-ink-label-strong)' textAnchor='end' letterSpacing='1'>SHEET A1</text>
+      <text x='50' y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v20-ink-label-strong)' letterSpacing='2'>SCALE 1:1</text>
+      <line x1={svgW / 2 - 260} y1={44} x2={svgW / 2 + 260} y2={44} stroke='var(--v20-ink-corner)' strokeWidth='0.8' />
+      <line x1={svgW / 2 - 260} y1={40} x2={svgW / 2 - 260} y2={48} stroke='var(--v20-ink-corner)' strokeWidth='0.8' />
+      <line x1={svgW / 2 + 260} y1={40} x2={svgW / 2 + 260} y2={48} stroke='var(--v20-ink-corner)' strokeWidth='0.8' />
+      <text x={svgW / 2} y='32' fontFamily='var(--font-mono)' fontSize='10' fill='var(--v20-ink-dim)' textAnchor='middle' letterSpacing='3'>FULL STACK  ·  NO CAPABILITY GAPS  ·  NO VENDOR LOCK-IN</text>
+      <text x={svgW - 50} y='32' fontFamily='var(--font-mono)' fontSize='9' fill='var(--v20-ink-label-strong)' textAnchor='end' letterSpacing='1'>SHEET A1</text>
 
       {/* Central shaft — the spine connecting all components */}
-      <line x1='80' y1={shaftY} x2={svgW - 80} y2={shaftY} stroke='var(--v19-ink-corner)' strokeWidth='1' />
-      <line x1='80' y1={shaftY} x2='80' y2={shaftY - 8} stroke='var(--v19-ink-corner)' strokeWidth='1' />
-      <line x1='80' y1={shaftY} x2='80' y2={shaftY + 8} stroke='var(--v19-ink-corner)' strokeWidth='1' />
-      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY - 8} stroke='var(--v19-ink-corner)' strokeWidth='1' />
-      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY + 8} stroke='var(--v19-ink-corner)' strokeWidth='1' />
+      <line x1='80' y1={shaftY} x2={svgW - 80} y2={shaftY} stroke='var(--v20-ink-corner)' strokeWidth='1' />
+      <line x1='80' y1={shaftY} x2='80' y2={shaftY - 8} stroke='var(--v20-ink-corner)' strokeWidth='1' />
+      <line x1='80' y1={shaftY} x2='80' y2={shaftY + 8} stroke='var(--v20-ink-corner)' strokeWidth='1' />
+      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY - 8} stroke='var(--v20-ink-corner)' strokeWidth='1' />
+      <line x1={svgW - 80} y1={shaftY} x2={svgW - 80} y2={shaftY + 8} stroke='var(--v20-ink-corner)' strokeWidth='1' />
 
 
       {/* Components */}
@@ -306,18 +303,18 @@ function StackDiagram() {
         const cx = discCenters[i]
         const rotateReverse = i % 2 === 1   // alternating spin direction
         return (
-          <g key={layer.n} className='v19-stack-layer' style={{ '--layer-index': i } as React.CSSProperties}>
+          <g key={layer.n} className='v20-stack-layer' style={{ '--layer-index': i } as React.CSSProperties}>
             {/* Traveling halo — staggered via CSS delay, sweeps across all discs */}
-            <circle cx={cx} cy={shaftY} r={discR + 28} fill='url(#v19-disc-halo)' className='v19-disc-halo' style={{ animationDelay: `${i * 1.4}s` } as React.CSSProperties} />
+            <circle cx={cx} cy={shaftY} r={discR + 28} fill='url(#v20-disc-halo)' className='v20-disc-halo' style={{ animationDelay: `${i * 1.4}s` } as React.CSSProperties} />
 
             {/* Outer housing — dashed square (grey) */}
-            <rect x={cx - discR} y={shaftY - discR} width={discR * 2} height={discR * 2} stroke='rgba(255,255,255,0.22)' strokeWidth='0.8' strokeDasharray='4 3' fill='var(--v19-paper)' fillOpacity='0.85' />
+            <rect x={cx - discR} y={shaftY - discR} width={discR * 2} height={discR * 2} stroke='rgba(255,255,255,0.22)' strokeWidth='0.8' strokeDasharray='4 3' fill='var(--v20-paper)' fillOpacity='0.85' />
             {/* Second housing — inset square */}
             <rect x={cx - discR + 6} y={shaftY - discR + 6} width={(discR - 6) * 2} height={(discR - 6) * 2} stroke='rgba(255,255,255,0.16)' strokeWidth='0.6' fill='none' />
             {/* Inner groove — thin dashed square */}
             <rect x={cx - discR + 14} y={shaftY - discR + 14} width={(discR - 14) * 2} height={(discR - 14) * 2} stroke='rgba(255,255,255,0.12)' strokeWidth='0.4' strokeDasharray='1.5 2' fill='none' />
             {/* Subtle graph-paper grid inside the housing */}
-            <rect x={cx - discR + 15} y={shaftY - discR + 15} width={(discR - 15) * 2} height={(discR - 15) * 2} fill='url(#v19-disc-grid)' />
+            <rect x={cx - discR + 15} y={shaftY - discR + 15} width={(discR - 15) * 2} height={(discR - 15) * 2} fill='url(#v20-disc-grid)' />
 
             {/* Inner geometry — rotates slowly (alternating direction) */}
             <g>
@@ -333,7 +330,7 @@ function StackDiagram() {
             </g>
 
             {/* Shaft marker — orange dot where disc meets shaft (always on top, doesn't rotate) */}
-            <circle cx={cx} cy={shaftY} r='2.5' fill='var(--v19-accent)' />
+            <circle cx={cx} cy={shaftY} r='2.5' fill='var(--v20-accent)' />
 
             {/* Layer number tag — just above disc */}
             <text x={cx - 14} y={shaftY - discR - 16} fontFamily='var(--font-mono)' fontSize='10' fontWeight='500' fill='rgba(255,255,255,0.5)' textAnchor='end' letterSpacing='2'>L{layer.n}</text>
@@ -342,20 +339,20 @@ function StackDiagram() {
             <text x={cx} y={layerNameY} fontFamily='var(--font-mono)' fontSize='10' fontWeight='500' fill='#ffffff' textAnchor='middle' letterSpacing='2.5'>{layer.label}</text>
 
             {/* Top callout — name (orange, emphasised) ABOVE, desc (grey) BELOW */}
-            <line x1={cx} y1={tp.dot + 2} x2={cx} y2={shaftY - discR - 8} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v19-stack-connector' />
-            <circle cx={cx} cy={tp.dot} r='2.8' fill='var(--v19-accent)' className='v19-stack-dot' />
+            <line x1={cx} y1={tp.dot + 2} x2={cx} y2={shaftY - discR - 8} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v20-stack-connector' />
+            <circle cx={cx} cy={tp.dot} r='2.8' fill='var(--v20-accent)' className='v20-stack-dot' />
             {wrapDesc(layer.top.name.toUpperCase(), 15).map((line, li) => (
-              <text key={li} x={cx} y={tp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v19-accent)' textAnchor='middle'>{line}</text>
+              <text key={li} x={cx} y={tp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v20-accent)' textAnchor='middle'>{line}</text>
             ))}
             {wrapDesc(layer.top.desc).map((line, li) => (
               <text key={li} x={cx} y={tp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
             ))}
 
             {/* Bottom callout — name (orange, emphasised) ABOVE, desc (grey) BELOW */}
-            <line x1={cx} y1={layerNameY + 14} x2={cx} y2={bp.dot - 2} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v19-stack-connector' />
-            <circle cx={cx} cy={bp.dot} r='2.8' fill='var(--v19-accent)' className='v19-stack-dot' />
+            <line x1={cx} y1={layerNameY + 14} x2={cx} y2={bp.dot - 2} stroke='rgba(255,255,255,0.18)' strokeWidth='0.7' strokeDasharray='3 2' className='v20-stack-connector' />
+            <circle cx={cx} cy={bp.dot} r='2.8' fill='var(--v20-accent)' className='v20-stack-dot' />
             {wrapDesc(layer.bottom.name.toUpperCase(), 15).map((line, li) => (
-              <text key={li} x={cx} y={bp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v19-accent)' textAnchor='middle'>{line}</text>
+              <text key={li} x={cx} y={bp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v20-accent)' textAnchor='middle'>{line}</text>
             ))}
             {wrapDesc(layer.bottom.desc).map((line, li) => (
               <text key={li} x={cx} y={bp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
@@ -366,7 +363,7 @@ function StackDiagram() {
 
 
       {/* Bottom strip — drawing metadata (moved down from top) */}
-      <text x={svgW / 2} y={svgH - 26} fontFamily='var(--font-mono)' fontSize='9' fill='var(--v19-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG-STACK-01  ·  EXPLODED ASSEMBLY</text>
+      <text x={svgW / 2} y={svgH - 26} fontFamily='var(--font-mono)' fontSize='9' fill='var(--v20-ink-label-strong)' textAnchor='middle' letterSpacing='2'>DWG-STACK-01  ·  EXPLODED ASSEMBLY</text>
     </svg>
   )
 }
@@ -374,7 +371,7 @@ function StackDiagram() {
 /* Geometric SVG icons — mirror the stack-diagram layer shapes (scaled for 80×80) */
 function CapIcon({ index }: { index: number }) {
   const ink = 'rgba(255,255,255,0.38)'
-  const acc = 'var(--v19-accent)'
+  const acc = 'var(--v20-accent)'
 
   const hex = (r: number) => {
     const a = r * 0.866
@@ -385,42 +382,42 @@ function CapIcon({ index }: { index: number }) {
   const icons = [
     /* 0 Strategy — target concentric rings + crosshair */
     <svg key={0} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
-      <circle cx='40' cy='40' r='25' stroke={ink} strokeWidth='1' className='v19-icon-circle-draw v19-icon-delay-2' />
-      <circle cx='40' cy='40' r='15' stroke={acc} strokeWidth='1.2' className='v19-icon-circle-draw v19-icon-delay-3' />
-      <circle cx='40' cy='40' r='6' stroke={acc} strokeWidth='1' className='v19-icon-circle-draw v19-icon-delay-4' />
-      <line x1='2' y1='40' x2='13' y2='40' stroke={ink} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-3' />
-      <line x1='67' y1='40' x2='78' y2='40' stroke={ink} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-3' />
-      <line x1='40' y1='2' x2='40' y2='13' stroke={ink} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-3' />
-      <line x1='40' y1='67' x2='40' y2='78' stroke={ink} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-3' />
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
+      <circle cx='40' cy='40' r='25' stroke={ink} strokeWidth='1' className='v20-icon-circle-draw v20-icon-delay-2' />
+      <circle cx='40' cy='40' r='15' stroke={acc} strokeWidth='1.2' className='v20-icon-circle-draw v20-icon-delay-3' />
+      <circle cx='40' cy='40' r='6' stroke={acc} strokeWidth='1' className='v20-icon-circle-draw v20-icon-delay-4' />
+      <line x1='2' y1='40' x2='13' y2='40' stroke={ink} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-3' />
+      <line x1='67' y1='40' x2='78' y2='40' stroke={ink} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-3' />
+      <line x1='40' y1='2' x2='40' y2='13' stroke={ink} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-3' />
+      <line x1='40' y1='67' x2='40' y2='78' stroke={ink} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-3' />
+      <circle cx='40' cy='40' r='2.5' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
     /* 1 Cloud — server rack with 3 blades (mechanical infrastructure) */
     <svg key={1} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
       {/* Outer dashed housing */}
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
       {/* Rack chassis */}
-      <rect x='14' y='16' width='52' height='48' stroke={ink} strokeWidth='1' fill='rgba(255,255,255,0.03)' className='v19-icon-rect-draw v19-icon-delay-2' />
+      <rect x='14' y='16' width='52' height='48' stroke={ink} strokeWidth='1' fill='rgba(255,255,255,0.03)' className='v20-icon-rect-draw v20-icon-delay-2' />
       {/* Mounting holes at the 4 corners */}
       {[[18, 20], [62, 20], [18, 60], [62, 60]].map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v19-icon-scale-in' style={{ animationDelay: `${0.3 + i * 0.05}s` }} />
+        <circle key={i} cx={x} cy={y} r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v20-icon-scale-in' style={{ animationDelay: `${0.3 + i * 0.05}s` }} />
       ))}
       {/* Blade 1 — idle */}
-      <rect x='22' y='23' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v19-icon-rect-draw v19-icon-delay-3' />
+      <rect x='22' y='23' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v20-icon-rect-draw v20-icon-delay-3' />
       <rect x='24.5' y='25' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
       <rect x='29' y='25' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
       <line x1='47' y1='26' x2='55' y2='26' stroke={ink} strokeWidth='0.4' />
       <line x1='47' y1='28' x2='55' y2='28' stroke={ink} strokeWidth='0.4' />
       <circle cx='56' cy='27' r='0.9' fill={ink} />
       {/* Blade 2 — ACTIVE (orange) */}
-      <rect x='22' y='36' width='36' height='8' stroke={acc} strokeWidth='1.1' fill='rgba(240,123,47,0.1)' className='v19-icon-rect-draw v19-icon-delay-4' />
+      <rect x='22' y='36' width='36' height='8' stroke={acc} strokeWidth='1.1' fill='rgba(240,123,47,0.1)' className='v20-icon-rect-draw v20-icon-delay-4' />
       <rect x='24.5' y='38' width='3.5' height='4' stroke={acc} strokeWidth='0.5' fill='none' />
       <rect x='29' y='38' width='3.5' height='4' stroke={acc} strokeWidth='0.5' fill='none' />
       <line x1='47' y1='39' x2='55' y2='39' stroke={acc} strokeWidth='0.5' />
       <line x1='47' y1='41' x2='55' y2='41' stroke={acc} strokeWidth='0.5' />
-      <circle cx='56' cy='40' r='1.2' fill={acc} className='v19-icon-pulse v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='56' cy='40' r='1.2' fill={acc} className='v20-icon-pulse v20-icon-scale-in v20-icon-delay-5' />
       {/* Blade 3 — idle */}
-      <rect x='22' y='49' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v19-icon-rect-draw v19-icon-delay-3' />
+      <rect x='22' y='49' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v20-icon-rect-draw v20-icon-delay-3' />
       <rect x='24.5' y='51' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
       <rect x='29' y='51' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
       <line x1='47' y1='52' x2='55' y2='52' stroke={ink} strokeWidth='0.4' />
@@ -429,87 +426,87 @@ function CapIcon({ index }: { index: number }) {
     </svg>,
     /* 2 Data — hex grid (mirrors stack-layer 07) */
     <svg key={2} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
-      <polygon points={hex(32)} stroke={ink} strokeWidth='1' className='v19-icon-polygon-draw v19-icon-delay-2' />
-      <polygon points={hex(16)} stroke={acc} strokeWidth='1.2' className='v19-icon-polygon-draw v19-icon-delay-3' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
+      <polygon points={hex(32)} stroke={ink} strokeWidth='1' className='v20-icon-polygon-draw v20-icon-delay-2' />
+      <polygon points={hex(16)} stroke={acc} strokeWidth='1.2' className='v20-icon-polygon-draw v20-icon-delay-3' />
       {[0, 60, 120, 180, 240, 300].map((a, i) => {
         const r = (a - 90) * Math.PI / 180
-        return <circle key={i} cx={40 + Math.cos(r) * 24} cy={40 + Math.sin(r) * 24} r='2' fill={acc} className='v19-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.06}s` }} />
+        return <circle key={i} cx={40 + Math.cos(r) * 24} cy={40 + Math.sin(r) * 24} r='2' fill={acc} className='v20-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.06}s` }} />
       })}
       {[30, 90, 150, 210, 270, 330].map((a, i) => {
         const r = (a - 90) * Math.PI / 180
-        return <line key={i} x1='40' y1='40' x2={40 + Math.cos(r) * 16} y2={40 + Math.sin(r) * 16} stroke={ink} strokeWidth='0.4' strokeDasharray='1.5 1.5' className='v19-icon-line-draw v19-icon-delay-4' />
+        return <line key={i} x1='40' y1='40' x2={40 + Math.cos(r) * 16} y2={40 + Math.sin(r) * 16} stroke={ink} strokeWidth='0.4' strokeDasharray='1.5 1.5' className='v20-icon-line-draw v20-icon-delay-4' />
       })}
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='2.5' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
     /* 3 Connected — hub with 6 nodes (mirrors stack-layer 06 Orchestration) */
     <svg key={3} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
       {[0, 1, 2, 3, 4, 5].map((i) => {
         const a = (i / 6) * Math.PI * 2 - Math.PI / 2
         const nx = 40 + Math.cos(a) * 26
         const ny = 40 + Math.sin(a) * 26
         return (
           <g key={i}>
-            <line x1='40' y1='40' x2={nx} y2={ny} stroke={ink} strokeWidth='0.8' strokeDasharray='2 2' className='v19-icon-line-draw v19-icon-delay-3' />
-            <circle cx={nx} cy={ny} r='3' fill={acc} className='v19-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.07}s` }} />
+            <line x1='40' y1='40' x2={nx} y2={ny} stroke={ink} strokeWidth='0.8' strokeDasharray='2 2' className='v20-icon-line-draw v20-icon-delay-3' />
+            <circle cx={nx} cy={ny} r='3' fill={acc} className='v20-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.07}s` }} />
           </g>
         )
       })}
-      <circle cx='40' cy='40' r='8' stroke={acc} strokeWidth='1.3' fill={acc} fillOpacity='0.15' className='v19-icon-circle-draw v19-icon-delay-4' />
-      <circle cx='40' cy='40' r='3' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='8' stroke={acc} strokeWidth='1.3' fill={acc} fillOpacity='0.15' className='v20-icon-circle-draw v20-icon-delay-4' />
+      <circle cx='40' cy='40' r='3' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
     /* 4 AI Engineering — CPU chip with pins and AI core */
     <svg key={4} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
       {/* Outer housing */}
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
       {/* Chip pins — 3 per side */}
       {[22, 36, 50].map((coord, i) => (
         <g key={i}>
-          <line x1={coord} y1='14' x2={coord} y2='20' stroke={ink} strokeWidth='1' className='v19-icon-line-draw' style={{ animationDelay: `${0.3 + i * 0.04}s` }} />
-          <line x1={coord} y1='60' x2={coord} y2='66' stroke={ink} strokeWidth='1' className='v19-icon-line-draw' style={{ animationDelay: `${0.35 + i * 0.04}s` }} />
-          <line x1='14' y1={coord} x2='20' y2={coord} stroke={ink} strokeWidth='1' className='v19-icon-line-draw' style={{ animationDelay: `${0.4 + i * 0.04}s` }} />
-          <line x1='60' y1={coord} x2='66' y2={coord} stroke={ink} strokeWidth='1' className='v19-icon-line-draw' style={{ animationDelay: `${0.45 + i * 0.04}s` }} />
+          <line x1={coord} y1='14' x2={coord} y2='20' stroke={ink} strokeWidth='1' className='v20-icon-line-draw' style={{ animationDelay: `${0.3 + i * 0.04}s` }} />
+          <line x1={coord} y1='60' x2={coord} y2='66' stroke={ink} strokeWidth='1' className='v20-icon-line-draw' style={{ animationDelay: `${0.35 + i * 0.04}s` }} />
+          <line x1='14' y1={coord} x2='20' y2={coord} stroke={ink} strokeWidth='1' className='v20-icon-line-draw' style={{ animationDelay: `${0.4 + i * 0.04}s` }} />
+          <line x1='60' y1={coord} x2='66' y2={coord} stroke={ink} strokeWidth='1' className='v20-icon-line-draw' style={{ animationDelay: `${0.45 + i * 0.04}s` }} />
         </g>
       ))}
       {/* Chip body — main square with notched corner indicator */}
-      <rect x='20' y='20' width='40' height='40' stroke={ink} strokeWidth='1.2' fill='rgba(255,255,255,0.04)' className='v19-icon-rect-draw v19-icon-delay-2' />
+      <rect x='20' y='20' width='40' height='40' stroke={ink} strokeWidth='1.2' fill='rgba(255,255,255,0.04)' className='v20-icon-rect-draw v20-icon-delay-2' />
       {/* Orientation notch — small circle in top-left corner of the chip */}
-      <circle cx='24' cy='24' r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v19-icon-scale-in v19-icon-delay-3' />
+      <circle cx='24' cy='24' r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v20-icon-scale-in v20-icon-delay-3' />
       {/* AI core — inner orange square with diagonal trace */}
-      <rect x='30' y='30' width='20' height='20' stroke={acc} strokeWidth='1.3' fill='rgba(240,123,47,0.12)' className='v19-icon-rect-draw v19-icon-delay-4' />
+      <rect x='30' y='30' width='20' height='20' stroke={acc} strokeWidth='1.3' fill='rgba(240,123,47,0.12)' className='v20-icon-rect-draw v20-icon-delay-4' />
       {/* Circuit traces inside core */}
-      <line x1='30' y1='35' x2='35' y2='35' stroke={acc} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-5' />
-      <line x1='35' y1='35' x2='35' y2='40' stroke={acc} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-5' />
-      <line x1='45' y1='40' x2='45' y2='45' stroke={acc} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-5' />
-      <line x1='45' y1='45' x2='50' y2='45' stroke={acc} strokeWidth='0.8' className='v19-icon-line-draw v19-icon-delay-5' />
+      <line x1='30' y1='35' x2='35' y2='35' stroke={acc} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-5' />
+      <line x1='35' y1='35' x2='35' y2='40' stroke={acc} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-5' />
+      <line x1='45' y1='40' x2='45' y2='45' stroke={acc} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-5' />
+      <line x1='45' y1='45' x2='50' y2='45' stroke={acc} strokeWidth='0.8' className='v20-icon-line-draw v20-icon-delay-5' />
       {/* Register dots — 4 corner markers on the core */}
-      <circle cx='33' cy='33' r='1.2' fill={acc} className='v19-icon-scale-in v19-icon-delay-6' />
-      <circle cx='47' cy='33' r='1.2' fill={acc} className='v19-icon-scale-in v19-icon-delay-6' />
-      <circle cx='33' cy='47' r='1.2' fill={acc} className='v19-icon-scale-in v19-icon-delay-6' />
-      <circle cx='47' cy='47' r='1.2' fill={acc} className='v19-icon-scale-in v19-icon-delay-6' />
+      <circle cx='33' cy='33' r='1.2' fill={acc} className='v20-icon-scale-in v20-icon-delay-6' />
+      <circle cx='47' cy='33' r='1.2' fill={acc} className='v20-icon-scale-in v20-icon-delay-6' />
+      <circle cx='33' cy='47' r='1.2' fill={acc} className='v20-icon-scale-in v20-icon-delay-6' />
+      <circle cx='47' cy='47' r='1.2' fill={acc} className='v20-icon-scale-in v20-icon-delay-6' />
       {/* Center activity dot */}
-      <circle cx='40' cy='40' r='2' fill={acc} className='v19-icon-pulse v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='2' fill={acc} className='v20-icon-pulse v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
     /* 5 Design — tri-orbital ellipses (mirrors stack-layer 05 Productivity) */
     <svg key={5} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' className='v19-icon-circle-draw v19-icon-delay-2' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' transform='rotate(60 40 40)' className='v19-icon-circle-draw v19-icon-delay-3' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={acc} strokeWidth='1.2' transform='rotate(120 40 40)' className='v19-icon-circle-draw v19-icon-delay-4' />
-      <circle cx='72' cy='40' r='2' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
-      <circle cx='8' cy='40' r='2' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
-      <circle cx='56' cy='12' r='2' fill={acc} opacity='0.7' className='v19-icon-scale-in v19-icon-delay-6' />
-      <circle cx='24' cy='68' r='2' fill={acc} opacity='0.7' className='v19-icon-scale-in v19-icon-delay-6' />
-      <circle cx='40' cy='40' r='4' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
+      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' className='v20-icon-circle-draw v20-icon-delay-2' />
+      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' transform='rotate(60 40 40)' className='v20-icon-circle-draw v20-icon-delay-3' />
+      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={acc} strokeWidth='1.2' transform='rotate(120 40 40)' className='v20-icon-circle-draw v20-icon-delay-4' />
+      <circle cx='72' cy='40' r='2' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
+      <circle cx='8' cy='40' r='2' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
+      <circle cx='56' cy='12' r='2' fill={acc} opacity='0.7' className='v20-icon-scale-in v20-icon-delay-6' />
+      <circle cx='24' cy='68' r='2' fill={acc} opacity='0.7' className='v20-icon-scale-in v20-icon-delay-6' />
+      <circle cx='40' cy='40' r='4' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
     /* 6 Operations — nested hexagons (mirrors stack-layer 02 Architecture) */
     <svg key={6} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-circle-draw v19-icon-delay-1' />
-      <polygon points={hex(32)} stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v19-icon-polygon-draw v19-icon-delay-2' />
-      <polygon points={hex(22)} stroke={ink} strokeWidth='1' className='v19-icon-polygon-draw v19-icon-delay-3' />
-      <polygon points={hex(12)} stroke={acc} strokeWidth='1.3' className='v19-icon-polygon-draw v19-icon-delay-4' />
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v19-icon-scale-in v19-icon-delay-5' />
+      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-circle-draw v20-icon-delay-1' />
+      <polygon points={hex(32)} stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v20-icon-polygon-draw v20-icon-delay-2' />
+      <polygon points={hex(22)} stroke={ink} strokeWidth='1' className='v20-icon-polygon-draw v20-icon-delay-3' />
+      <polygon points={hex(12)} stroke={acc} strokeWidth='1.3' className='v20-icon-polygon-draw v20-icon-delay-4' />
+      <circle cx='40' cy='40' r='2.5' fill={acc} className='v20-icon-scale-in v20-icon-delay-5' />
     </svg>,
   ]
   return icons[index] || icons[0]
@@ -537,23 +534,23 @@ export default function CapabilitiesSection() {
   }
 
   return (
-    <section className='v19-section' id='solutions'>
-      <div className='v19-container'>
-        <div className='v19-cap-head'>
-          <div className='v19-cap-head-left'>
+    <section className='v20-section' id='solutions'>
+      <div className='v20-container'>
+        <div className='v20-cap-head'>
+          <div className='v20-cap-head-left'>
             <div className='num'>N°03 / What we do</div>
-            <h2>Six layers. <span style={{ color: 'var(--v19-accent)' }}>One partner.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
+            <h2>Six layers. <span style={{ color: 'var(--v20-accent)' }}>One partner.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
             <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
           </div>
-          <div className='v19-cap-toggle'>
+          <div className='v20-cap-toggle'>
             <button
-              className={`v19-toggle-btn ${view === 'capabilities' ? 'active' : ''}`}
+              className={`v20-toggle-btn ${view === 'capabilities' ? 'active' : ''}`}
               onClick={() => setView('capabilities')}
             >
               Our Capabilities
             </button>
             <button
-              className={`v19-toggle-btn ${view === 'framework' ? 'active' : ''}`}
+              className={`v20-toggle-btn ${view === 'framework' ? 'active' : ''}`}
               onClick={() => setView('framework')}
             >
               Our AI Transformation Stack
@@ -562,15 +559,15 @@ export default function CapabilitiesSection() {
         </div>
 
         {view === 'capabilities' ? (
-          <div className='v19-cap-interactive'>
+          <div className='v20-cap-interactive'>
             {/* Desktop: left sidebar tab list */}
-            <div className='v19-cap-tabs' role='tablist'>
+            <div className='v20-cap-tabs' role='tablist'>
               {capabilities.map((c, i) => (
                 <button
                   key={c.num}
                   role='tab'
                   aria-selected={i === active}
-                  className={`v19-cap-tab ${i === active ? 'active' : ''}`}
+                  className={`v20-cap-tab ${i === active ? 'active' : ''}`}
                   onClick={() => selectTab(i)}
                 >
                   <span className='tab-num'>{c.num}</span>
@@ -579,7 +576,7 @@ export default function CapabilitiesSection() {
                     <span className='tab-kicker'>{c.kicker}</span>
                   </span>
                   <span
-                    className='v19-cap-tab-progress'
+                    className='v20-cap-tab-progress'
                     style={i === active ? { animationDuration: `${cycleMs}ms` } : undefined}
                   />
                 </button>
@@ -587,15 +584,15 @@ export default function CapabilitiesSection() {
             </div>
 
             {/* Mobile: compact prev/next navigator */}
-            <div className='v19-cap-mobile-nav'>
+            <div className='v20-cap-mobile-nav'>
               <button
-                className='v19-cap-arrow'
+                className='v20-cap-arrow'
                 onClick={() => selectTab((active - 1 + capabilities.length) % capabilities.length)}
                 aria-label='Previous capability'
               >
                 ←
               </button>
-              <div className='v19-cap-mobile-label'>
+              <div className='v20-cap-mobile-label'>
                 <span className='mob-num'>{cap.num}</span>
                 <span className='mob-title'>{cap.title}</span>
                 <span className='mob-dots'>
@@ -605,32 +602,32 @@ export default function CapabilitiesSection() {
                 </span>
               </div>
               <button
-                className='v19-cap-arrow'
+                className='v20-cap-arrow'
                 onClick={() => selectTab((active + 1) % capabilities.length)}
                 aria-label='Next capability'
               >
                 →
               </button>
-              <span className='v19-cap-mobile-progress' />
+              <span className='v20-cap-mobile-progress' />
             </div>
 
             {/* Detail panel — content left, icon column right */}
-            <div className='v19-cap-detail' role='tabpanel'>
-              <div className='v19-cap-detail-content'>
-                <div className='v19-cap-detail-meta'>
+            <div className='v20-cap-detail' role='tabpanel'>
+              <div className='v20-cap-detail-content'>
+                <div className='v20-cap-detail-meta'>
                   <span className='detail-kicker'>{cap.kicker}</span>
                   <h3>{cap.title}</h3>
                   <span className='detail-subtitle'>{cap.subtitle}</span>
                 </div>
                 <p>{cap.body}</p>
-                <div className='v19-cap-pills'>
+                <div className='v20-cap-pills'>
                   {cap.tags.map((tag) => (
-                    <span key={tag} className='v19-cap-pill'>{tag}</span>
+                    <span key={tag} className='v20-cap-pill'>{tag}</span>
                   ))}
                 </div>
               </div>
-              <div className='v19-cap-detail-icon'>
-                <div className='v19-cap-icon-ring'>
+              <div className='v20-cap-detail-icon'>
+                <div className='v20-cap-icon-ring'>
                   <CapIcon index={active} />
                 </div>
               </div>
@@ -638,7 +635,7 @@ export default function CapabilitiesSection() {
           </div>
         ) : (
           /* AI Transformation Framework — animated schematic */
-          <div className='v19-stack-diagram-wrap'>
+          <div className='v20-stack-diagram-wrap'>
             <StackDiagram />
           </div>
         )}
