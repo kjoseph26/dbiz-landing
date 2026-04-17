@@ -43,18 +43,6 @@ export const versions: Version[] = [
     status: 'ready',
   },
   {
-    slug: 'v7',
-    name: 'V7 — Monument',
-    tagline: 'Architectural tiles, stacked display, Pentagram-scale type',
-    status: 'ready',
-  },
-  {
-    slug: 'v8',
-    name: 'V8 — Broadsheet (Sans)',
-    tagline: 'V6 broadsheet structure, rendered entirely in DM Sans',
-    status: 'ready',
-  },
-  {
     slug: 'v9',
     name: 'V9 — Foundry',
     tagline: 'v5 illustrations, v4 content, navy/light handshake',
@@ -82,6 +70,30 @@ export const versions: Version[] = [
     slug: 'v14',
     name: 'V14 — Swiss Blueprint',
     tagline: 'V4 grid precision on V5 dark blueprint canvas',
+    status: 'draft',
+  },
+  {
+    slug: 'v16',
+    name: 'V16 — Swiss Blueprint',
+    tagline: 'Complete Swiss Blueprint with all sections and interactions',
+    status: 'ready',
+  },
+  {
+    slug: 'v17',
+    name: 'V17 — Swiss Blueprint',
+    tagline: 'Clone of V16 — working copy for further iterations',
+    status: 'draft',
+  },
+  {
+    slug: 'v18',
+    name: 'V18 — Swiss Blueprint',
+    tagline: 'Clone of V17 — working copy for further iterations',
+    status: 'draft',
+  },
+  {
+    slug: 'v19',
+    name: 'V19 — Swiss Blueprint Dark',
+    tagline: 'Clone of V18 with dark-blue hero treatment',
     status: 'draft',
   },
 ]
