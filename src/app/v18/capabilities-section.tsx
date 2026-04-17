@@ -30,7 +30,7 @@ const capabilities: Capability[] = [
     kicker: 'Cloud',
     title: 'AI-Ready Infrastructure',
     subtitle: 'Multi-hyperscaler · Purpose-built',
-    tags: ['AWS', 'Azure', 'GCP', 'GPU Orchestration'],
+    tags: ['DBiz Scoop', 'Multi-Hyperscaler', 'Sovereign Cloud', 'GPU Orchestration', 'FinOps'],
     body: 'Cloud built for AI workloads, not retrofitted for them. Environments purpose-built for agents, data pipelines, and AI models, with governance, cost controls, and observability enterprise IT requires.',
     cta: 'Talk to a cloud architect',
   },
