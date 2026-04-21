@@ -546,26 +546,24 @@ export default function CapabilitiesSection() {
   return (
     <section className='v22-section' id='solutions'>
       <div className='v22-container'>
-        <div className='v22-cap-head'>
-          <div className='v22-cap-head-left'>
-            <div className='num'>N°03 / What we do</div>
-            <h2>Six layers. <span style={{ color: 'var(--v22-accent)' }}>One partner.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
-            <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
-          </div>
-          <div className='v22-cap-toggle'>
-            <button
-              className={`v22-toggle-btn ${view === 'capabilities' ? 'active' : ''}`}
-              onClick={() => setView('capabilities')}
-            >
-              Our Capabilities
-            </button>
-            <button
-              className={`v22-toggle-btn ${view === 'framework' ? 'active' : ''}`}
-              onClick={() => setView('framework')}
-            >
-              Our AI Transformation Stack
-            </button>
-          </div>
+        <div className='v22-section-head'>
+          <div className='num'>N°03 / What we do</div>
+          <h2>Six layers. <span style={{ color: 'var(--v22-accent)' }}>One partner.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
+          <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
+        </div>
+        <div className='v22-cap-toggle'>
+          <button
+            className={`v22-toggle-btn ${view === 'capabilities' ? 'active' : ''}`}
+            onClick={() => setView('capabilities')}
+          >
+            Our Capabilities
+          </button>
+          <button
+            className={`v22-toggle-btn ${view === 'framework' ? 'active' : ''}`}
+            onClick={() => setView('framework')}
+          >
+            Our AI Transformation Stack
+          </button>
         </div>
 
         {view === 'capabilities' ? (
