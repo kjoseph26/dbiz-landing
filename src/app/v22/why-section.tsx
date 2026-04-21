@@ -58,7 +58,7 @@ function WhyDiagram({ active, onSelect }: { active: number; onSelect: (i: number
         <line x1='430' y1='430' x2='412' y2='430' /><line x1='430' y1='430' x2='430' y2='412' />
       </g>
       {/* Drawing number */}
-      <text x='220' y='26' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(26,45,90,0.35)' textAnchor='middle' letterSpacing='1.5'>DWG·WHY-01</text>
+      <text x='220' y='26' fontFamily='var(--font-mono)' fontSize='6' fill='rgba(26,45,90,0.65)' textAnchor='middle' letterSpacing='1.5'>DWG·WHY-01</text>
 
       <g clipPath='url(#v22-why-clip)'>
         {/* Crosshatch texture fill behind orbit */}

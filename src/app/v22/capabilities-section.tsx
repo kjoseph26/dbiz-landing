@@ -355,7 +355,7 @@ function StackDiagram() {
               <text key={li} x={cx} y={tp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v22-accent)' textAnchor='middle'>{line}</text>
             ))}
             {wrapDesc(layer.top.desc).map((line, li) => (
-              <text key={li} x={cx} y={tp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
+              <text key={li} x={cx} y={tp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.62)' textAnchor='middle'>{line}</text>
             ))}
 
             {/* Bottom callout — name (orange, emphasised) ABOVE, desc (grey) BELOW */}
@@ -365,7 +365,7 @@ function StackDiagram() {
               <text key={li} x={cx} y={bp.name + li * 13} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='2' fill='var(--v22-accent)' textAnchor='middle'>{line}</text>
             ))}
             {wrapDesc(layer.bottom.desc).map((line, li) => (
-              <text key={li} x={cx} y={bp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.38)' textAnchor='middle'>{line}</text>
+              <text key={li} x={cx} y={bp.desc + li * 11} fontFamily='var(--font-sans)' fontSize='9' fill='rgba(255,255,255,0.62)' textAnchor='middle'>{line}</text>
             ))}
           </g>
         )
