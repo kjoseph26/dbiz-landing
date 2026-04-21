@@ -450,7 +450,14 @@
   padding: 48px 0 56px;
   border-bottom: 1px solid var(--v22-hair);
   position: relative;
-  background-color: var(--brand-navy-deep);
+  background-color: var(--brand-navy-deep);        /* fallback */
+  background-image: linear-gradient(
+    180deg,
+    var(--brand-navy) 0%,                          /* top edge — 16.9:1 */
+    #0A1530 18%,                                   /* quick fade into mid */
+    #091430 50%,                    /* dark dominates from mid down */
+    #091430 100%                    /* bottom — 19.1:1 */
+  );
   color: var(--v22-ink);
 }
 /* Dots + grid, BOTH faded at edges via radial mask */
@@ -610,7 +617,7 @@
   gap: 14px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--brand-navy-deep);     /* a11y: navy-on-orange = 5.7:1, was inheriting white (3.4:1 FAIL) */
@@ -1657,12 +1664,37 @@
   color: var(--v22-ink-2);
 }
 
+/* ---------- What we do (Capabilities) — gradient matches hero/proven ---------- */
+.v22-scope section#solutions {
+  background-color: var(--brand-navy-deep);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0),  /* grid dots */
+    linear-gradient(
+      180deg,
+      var(--brand-navy) 0%,                          /* top — 16.9:1 */
+      #0A1530 18%,                                    /* quick fade into mid */
+      #091430 50%,                     /* dark dominates from mid down */
+      #091430 100%                     /* bottom — 19.1:1 */
+    );
+  background-size: 24px 24px, 100% 100%;
+  padding: var(--v22-rhythm) 0;
+  position: relative;
+}
+
 /* ---------- PROVEN (carousel with image cards) ---------- */
 .v22-proven {
   overflow: hidden;
-  background: #0e1e42;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
-  background-size: 24px 24px;
+  background-color: var(--brand-navy-deep);        /* fallback */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0),
+    linear-gradient(
+      180deg,
+      var(--brand-navy) 0%,                        /* top — 16.9:1 */
+      #0A1530 18%,                                  /* quick fade into mid */
+      #091430 50%,                   /* dark dominates from mid down */
+      #091430 100%                   /* bottom — 19.1:1 */
+    );
+  background-size: 24px 24px, 100% 100%;
   padding: var(--v22-rhythm) 0;
   position: relative;
 }
@@ -2487,7 +2519,7 @@
   padding: 0;
   border-bottom: 1px solid var(--v22-hair);
   position: relative;
-  background-color: #0e1e42;
+  background-color: var(--v22-paper);     /* a11y: match scope paper (--brand-navy) */
   background-image:
     radial-gradient(ellipse 80% 80% at center, transparent 35%, rgba(4, 10, 28, 0.85) 100%),
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
