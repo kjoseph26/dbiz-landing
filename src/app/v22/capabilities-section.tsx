@@ -390,6 +390,8 @@ export default function CapabilitiesSection() {
   const [active, setActive] = useState(0)
   const [locked, setLocked] = useState(false)
   const [showStack, setShowStack] = useState(false)
+  // Mobile accordion open row — independent of desktop active so taps can toggle
+  const [mobileOpen, setMobileOpen] = useState<number | null>(0)
   const c = capabilities[active]
 
   // Auto-cycle through capabilities; hover/click/modal-open locks
@@ -400,6 +402,14 @@ export default function CapabilitiesSection() {
   }, [active, locked, showStack])
 
   const select = (i: number) => {
+    setLocked(true)
+    setActive(i)
+  }
+
+  // Mobile accordion tap — toggle open/close on the tapped row
+  const toggleMobile = (i: number) => {
+    setMobileOpen((cur) => (cur === i ? null : i))
+    // Also sync the desktop active state so a later resize shows the same layer
     setLocked(true)
     setActive(i)
   }
@@ -607,17 +617,17 @@ export default function CapabilitiesSection() {
         </div>
         </div>{/* /v22-cs-desktop */}
 
-        {/* Mobile accordion — full 7-row stack, tap to expand inline */}
+        {/* Mobile accordion — full 7-row stack, tap to expand/collapse inline */}
         <div className='v22-cs-mobile-acc' role='list'>
           {capabilities.map((cap, i) => {
-            const isOpen = i === active
+            const isOpen = i === mobileOpen
             const stroke = 'var(--v22-accent)'
             const sw = isOpen ? 1.6 : 1
             return (
               <div key={cap.num} className={`v22-csm-row ${isOpen ? 'is-open' : ''}`} role='listitem'>
                 <button
                   className='v22-csm-trigger'
-                  onClick={() => select(i)}
+                  onClick={() => toggleMobile(i)}
                   aria-expanded={isOpen}
                   aria-controls={`v22-csm-body-${i}`}
                 >
