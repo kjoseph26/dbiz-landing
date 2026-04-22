@@ -2820,21 +2820,110 @@
    CAPABILITIES SECTION — Exploded stack layout (promoted from Option A preview)
    ========================================================================== */
 
-/* Head block — adds the stack CTA button below the 12-col head */
+/* Head block */
 .v22-cs-head {
   position: relative;
   margin-bottom: 28px;
 }
-.v22-cs-stack-cta {
+
+/* Header CTA — quiet text link that sits directly under the lead descriptor
+   in the right-hand column (matches .lead grid position). */
+.v22-cs-stack-link {
   grid-column: 10 / 13;
-  align-self: end;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  color: var(--v22-ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(240, 123, 47, 0.55);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.v22-cs-stack-link:hover {
+  color: var(--v22-accent);
+  border-color: var(--v22-accent);
+}
+.v22-cs-stack-link-icon {
+  display: inline-flex;
+  width: 22px;
+  height: 16px;
+  color: var(--v22-accent);
+}
+.v22-cs-stack-link-icon svg { width: 100%; height: 100%; }
+
+/* Bookend CTA — prominent closing action below the capabilities grid */
+.v22-cs-bookend {
+  margin-top: 56px;
+  padding: 28px var(--v22-gutter) 28px;
+  border: 1px solid var(--v22-hair-strong);
+  background:
+    radial-gradient(ellipse 80% 120% at 50% 50%, rgba(240, 123, 47, 0.06) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.v22-cs-bookend::before,
+.v22-cs-bookend::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--v22-accent);
+  pointer-events: none;
+}
+.v22-cs-bookend::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.v22-cs-bookend::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.v22-cs-bookend-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 260px;
+}
+.v22-cs-bookend-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--v22-accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.v22-cs-bookend-sep {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--v22-hair-strong);
+}
+.v22-cs-bookend-text {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--v22-ink);
+  line-height: 1.4;
+}
+
+/* The prominent bordered button, re-used in the bookend */
+.v22-cs-stack-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px 10px 14px;
+  padding: 14px 20px 14px 18px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.76rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--v22-ink);
@@ -2842,18 +2931,18 @@
   border: 1px solid var(--v22-accent);
   cursor: pointer;
   position: relative;
-  transition: background 0.25s ease, border-color 0.25s ease, letter-spacing 0.25s ease, transform 0.15s ease;
-  justify-self: end;
+  transition: background 0.25s ease, color 0.25s ease, letter-spacing 0.25s ease, transform 0.15s ease;
+  white-space: nowrap;
 }
 .v22-cs-stack-cta::before,
 .v22-cs-stack-cta::after {
   content: '';
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border: 1px solid var(--v22-accent);
   pointer-events: none;
-  transition: top 0.25s ease, left 0.25s ease, bottom 0.25s ease, right 0.25s ease;
+  transition: top 0.25s ease, left 0.25s ease, bottom 0.25s ease, right 0.25s ease, border-color 0.25s ease;
 }
 .v22-cs-stack-cta::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
 .v22-cs-stack-cta::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
@@ -2867,11 +2956,11 @@
 .v22-cs-stack-cta:hover::after {
   border-color: #fff;
 }
-.v22-cs-stack-cta:hover::before { top: -3px; left: -3px; }
-.v22-cs-stack-cta:hover::after  { bottom: -3px; right: -3px; }
+.v22-cs-stack-cta:hover::before { top: -4px; left: -4px; }
+.v22-cs-stack-cta:hover::after  { bottom: -4px; right: -4px; }
 .v22-cs-stack-cta-icon {
   display: inline-flex;
-  width: 22px;
+  width: 24px;
   height: 16px;
 }
 .v22-cs-stack-cta-icon svg { width: 100%; height: 100%; }

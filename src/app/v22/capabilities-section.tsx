@@ -435,23 +435,8 @@ export default function CapabilitiesSection() {
       <div className='v22-container'>
         <div className='v22-section-head v22-cs-head'>
           <div className='num'>N°03 / What we do</div>
-          <h2>Every layer.<br /><span style={{ color: 'var(--v22-accent)' }}>In motion.</span></h2>
-          <p className='lead'>Particles flow between every pair of layers; the highlight auto-cycles. Click any layer to lock, or open the full stack diagram.</p>
-          <button
-            className='v22-cs-stack-cta'
-            onClick={() => setShowStack(true)}
-            aria-haspopup='dialog'
-          >
-            <span className='v22-cs-stack-cta-icon' aria-hidden='true'>
-              <svg viewBox='0 0 24 16' fill='none'>
-                <polygon points='2,6 16,6 22,2 8,2' stroke='currentColor' strokeWidth='1.2' />
-                <rect x='2' y='6' width='14' height='8' stroke='currentColor' strokeWidth='1.2' fill='none' />
-                <polygon points='16,6 22,2 22,10 16,14' stroke='currentColor' strokeWidth='1.2' fill='none' />
-              </svg>
-            </span>
-            See our AI Transformation Stack
-            <span className='v22-cs-stack-cta-arrow' aria-hidden='true'>→</span>
-          </button>
+          <h2>Seven capabilities. <span style={{ color: 'var(--v22-accent)' }}>Re&#8209;architected,</span> not retrofitted.</h2>
+          <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
         </div>
 
         <div className='v22-cs-grid'>
@@ -618,6 +603,32 @@ export default function CapabilitiesSection() {
               </button>
             )}
           </div>
+        </div>
+
+        {/* Bookend CTA — the full-stack reveal sits as the section's closing action */}
+        <div className='v22-cs-bookend'>
+          <div className='v22-cs-bookend-meta'>
+            <span className='v22-cs-bookend-num'>DWG · STACK-01</span>
+            <span className='v22-cs-bookend-sep' aria-hidden='true' />
+            <span className='v22-cs-bookend-text'>
+              Every capability above maps to a layer of the stack.
+            </span>
+          </div>
+          <button
+            className='v22-cs-stack-cta'
+            onClick={() => setShowStack(true)}
+            aria-haspopup='dialog'
+          >
+            <span className='v22-cs-stack-cta-icon' aria-hidden='true'>
+              <svg viewBox='0 0 24 16' fill='none'>
+                <polygon points='2,6 16,6 22,2 8,2' stroke='currentColor' strokeWidth='1.2' />
+                <rect x='2' y='6' width='14' height='8' stroke='currentColor' strokeWidth='1.2' fill='none' />
+                <polygon points='16,6 22,2 22,10 16,14' stroke='currentColor' strokeWidth='1.2' fill='none' />
+              </svg>
+            </span>
+            See our AI Transformation Stack
+            <span className='v22-cs-stack-cta-arrow' aria-hidden='true'>→</span>
+          </button>
         </div>
       </div>
 
