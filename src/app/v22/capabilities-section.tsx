@@ -435,10 +435,11 @@ export default function CapabilitiesSection() {
       <div className='v22-container'>
         <div className='v22-section-head v22-cs-head'>
           <div className='num'>N°03 / What we do</div>
-          <h2>Seven capabilities. <span style={{ color: 'var(--v22-accent)' }}>Re&#8209;architected,</span> not retrofitted.</h2>
-          <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
+          <h2>Seven layers. <span style={{ color: 'var(--v22-accent)' }}>One Frontier.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
+          <p className='lead'>We re&#8209;architect every layer for the agentic enterprise. No retrofits, no silos.</p>
         </div>
 
+        <div className='v22-cs-desktop'>
         <div className='v22-cs-grid'>
           <div className='v22-cs-stack-wrap'>
             <svg viewBox={`0 0 ${svgW} ${svgH}`} xmlns='http://www.w3.org/2000/svg' className='v22-cs-stack' aria-label='Capabilities stack'>
@@ -603,6 +604,51 @@ export default function CapabilitiesSection() {
               </button>
             )}
           </div>
+        </div>
+        </div>{/* /v22-cs-desktop */}
+
+        {/* Mobile accordion — full 7-row stack, tap to expand inline */}
+        <div className='v22-cs-mobile-acc' role='list'>
+          {capabilities.map((cap, i) => {
+            const isOpen = i === active
+            const stroke = 'var(--v22-accent)'
+            const sw = isOpen ? 1.6 : 1
+            return (
+              <div key={cap.num} className={`v22-csm-row ${isOpen ? 'is-open' : ''}`} role='listitem'>
+                <button
+                  className='v22-csm-trigger'
+                  onClick={() => select(i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`v22-csm-body-${i}`}
+                >
+                  <svg viewBox='0 0 72 44' className='v22-csm-mark' aria-hidden='true'>
+                    <rect x='2' y='14' width='56' height='26' fill={isOpen ? 'rgba(240,123,47,0.16)' : 'transparent'} />
+                    <rect x='2' y='14' width='56' height='26' fill={texturedLayers.has(i) ? `url(#v22-cs-tex-${i})` : 'transparent'} />
+                    <rect x='2' y='14' width='56' height='26' fill='none' stroke={stroke} strokeOpacity={isOpen ? 1 : 0.55} strokeWidth={sw} />
+                    <polygon points='2,14 58,14 70,2 14,2' fill='transparent' stroke={stroke} strokeOpacity={isOpen ? 1 : 0.55} strokeWidth={sw} />
+                    <polygon points='58,14 70,2 70,28 58,40' fill='transparent' stroke={stroke} strokeOpacity={isOpen ? 1 : 0.55} strokeWidth={sw} />
+                    <text x='30' y='32' fontFamily='var(--font-mono)' fontSize='11' fontWeight='700' letterSpacing='0.8' fill='var(--v22-accent)' opacity={isOpen ? 1 : 0.8} textAnchor='middle'>L{cap.num}</text>
+                  </svg>
+                  <span className='v22-csm-labels'>
+                    <span className='v22-csm-kicker'>{cap.kicker.toUpperCase()}</span>
+                    <span className='v22-csm-alt'>{cap.altLabel.toUpperCase()}</span>
+                  </span>
+                  <span className='v22-csm-chevron' aria-hidden='true'>{isOpen ? '−' : '+'}</span>
+                </button>
+                <div id={`v22-csm-body-${i}`} className='v22-csm-body' hidden={!isOpen}>
+                  <h3 className='v22-csm-title'>{cap.title}</h3>
+                  <p className='v22-csm-sub'>{cap.subtitle}</p>
+                  <p className='v22-csm-copy'>{cap.body}</p>
+                  <div className='v22-csm-tags'>
+                    {cap.tags.slice(0, 4).map((t) => (
+                      <span key={t} className='v22-csm-tag'>{t}</span>
+                    ))}
+                  </div>
+                  <a href='#' className='v22-csm-cta'>{cap.cta} <span>→</span></a>
+                </div>
+              </div>
+            )
+          })}
         </div>
 
         {/* Bookend CTA — the full-stack reveal sits as the section's closing action */}
