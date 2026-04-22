@@ -436,7 +436,7 @@ export default function CapabilitiesSection() {
         <div className='v22-section-head v22-cs-head'>
           <div className='num'>N°03 / What we do</div>
           <h2>Seven layers. <span style={{ color: 'var(--v22-accent)' }}>One Frontier.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
-          <p className='lead'>We re&#8209;architect every layer for the agentic enterprise. No retrofits, no silos.</p>
+          <p className='lead'>We re&#8209;architect every layer for the AI&#8209;native enterprise. No retrofits, no silos.</p>
         </div>
 
         <div className='v22-cs-desktop'>
