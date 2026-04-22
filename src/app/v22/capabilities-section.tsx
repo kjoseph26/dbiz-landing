@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react'
 
-const CYCLE_MS = 5000
-const PAUSE_MS = 15000
+const CYCLE_MS = 4500
 
 type Capability = {
   num: string
-  kicker: string
+  kicker: string          // architectural name (e.g., INTELLIGENCE)
+  altLabel: string        // familiar service-area name (e.g., DATA & AI)
   title: string
   subtitle: string
   tags: string[]
@@ -19,6 +19,7 @@ const capabilities: Capability[] = [
   {
     num: '01',
     kicker: 'AI Strategy & Architecture',
+    altLabel: 'Tech Advisory',
     title: 'Strategy for AI, Architecture for Scale',
     subtitle: 'Futures Studio · TechOffice Foundry',
     tags: ['AI Vision & Roadmap', 'Architecture-as-a-Service', 'AI Readiness', 'DBiz Canvas'],
@@ -28,6 +29,7 @@ const capabilities: Capability[] = [
   {
     num: '02',
     kicker: 'AI-Ready Infrastructure',
+    altLabel: 'Cloud',
     title: 'Purpose-built for AI Workloads',
     subtitle: 'Multi-hyperscaler · Sovereign · Governed',
     tags: ['DBiz Scoop', 'Multi-Hyperscaler', 'Sovereign Cloud', 'GPU Orchestration', 'FinOps'],
@@ -37,6 +39,7 @@ const capabilities: Capability[] = [
   {
     num: '03',
     kicker: 'Intelligence',
+    altLabel: 'Data & AI',
     title: 'The Intelligence Layer',
     subtitle: 'FactWeavers\u2122 · Domain Data Cloud',
     tags: ['FactWeavers\u2122', 'Domain Data Cloud', 'Data Mesh'],
@@ -46,6 +49,7 @@ const capabilities: Capability[] = [
   {
     num: '04',
     kicker: 'Orchestration',
+    altLabel: 'Business Apps & Integration',
     title: 'Connected Systems, Not Silos',
     subtitle: 'No rip and replace',
     tags: ['Salesforce', 'Dynamics 365', 'Boomi', 'MuleSoft'],
@@ -54,7 +58,8 @@ const capabilities: Capability[] = [
   },
   {
     num: '05',
-    kicker: 'Development',
+    kicker: 'AI Engineering',
+    altLabel: 'Product & AI Engineering',
     title: 'Engineered with AI, Shipped Continuously',
     subtitle: 'Agent Studio \u00b7 Nexus \u00b7 Perpetual Engineering',
     tags: ['AI-Native Apps', 'Agent Studio', 'Nexus Platform', 'Perpetual Engineering'],
@@ -63,7 +68,8 @@ const capabilities: Capability[] = [
   },
   {
     num: '06',
-    kicker: 'Experience',
+    kicker: 'Human Experience',
+    altLabel: 'Research & Design',
     title: 'Designed for Humans, Trusted by Agents',
     subtitle: 'Research-led · Experience engineering',
     tags: ['Agentic UX', 'Design Systems', 'DBiz Canvas', 'AI in Design Workflows'],
@@ -73,6 +79,7 @@ const capabilities: Capability[] = [
   {
     num: '07',
     kicker: 'AI Operations',
+    altLabel: 'Managed Services',
     title: 'AI-First Operations',
     subtitle: 'The team that built it runs it',
     tags: ['Monitoring', 'Governance', 'Continuous Improvement'],
@@ -378,276 +385,259 @@ function StackDiagram() {
   )
 }
 
-/* Geometric SVG icons — mirror the stack-diagram layer shapes (scaled for 80×80) */
-function CapIcon({ index }: { index: number }) {
-  const ink = 'rgba(255,255,255,0.38)'
-  const acc = 'var(--v22-accent)'
-
-  const hex = (r: number) => {
-    const a = r * 0.866
-    const b = r * 0.5
-    return `40,${40 - r} ${40 + a},${40 - b} ${40 + a},${40 + b} 40,${40 + r} ${40 - a},${40 + b} ${40 - a},${40 - b}`
-  }
-
-  const icons = [
-    /* 0 Strategy — target concentric rings + crosshair */
-    <svg key={0} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      <circle cx='40' cy='40' r='25' stroke={ink} strokeWidth='1' className='v22-icon-circle-draw v22-icon-delay-2' />
-      <circle cx='40' cy='40' r='15' stroke={acc} strokeWidth='1.2' className='v22-icon-circle-draw v22-icon-delay-3' />
-      <circle cx='40' cy='40' r='6' stroke={acc} strokeWidth='1' className='v22-icon-circle-draw v22-icon-delay-4' />
-      <line x1='2' y1='40' x2='13' y2='40' stroke={ink} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-3' />
-      <line x1='67' y1='40' x2='78' y2='40' stroke={ink} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-3' />
-      <line x1='40' y1='2' x2='40' y2='13' stroke={ink} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-3' />
-      <line x1='40' y1='67' x2='40' y2='78' stroke={ink} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-3' />
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-    /* 1 Cloud — server rack with 3 blades (mechanical infrastructure) */
-    <svg key={1} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      {/* Outer dashed housing */}
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      {/* Rack chassis */}
-      <rect x='14' y='16' width='52' height='48' stroke={ink} strokeWidth='1' fill='rgba(255,255,255,0.03)' className='v22-icon-rect-draw v22-icon-delay-2' />
-      {/* Mounting holes at the 4 corners */}
-      {[[18, 20], [62, 20], [18, 60], [62, 60]].map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v22-icon-scale-in' style={{ animationDelay: `${0.3 + i * 0.05}s` }} />
-      ))}
-      {/* Blade 1 — idle */}
-      <rect x='22' y='23' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v22-icon-rect-draw v22-icon-delay-3' />
-      <rect x='24.5' y='25' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
-      <rect x='29' y='25' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
-      <line x1='47' y1='26' x2='55' y2='26' stroke={ink} strokeWidth='0.4' />
-      <line x1='47' y1='28' x2='55' y2='28' stroke={ink} strokeWidth='0.4' />
-      <circle cx='56' cy='27' r='0.9' fill={ink} />
-      {/* Blade 2 — ACTIVE (orange) */}
-      <rect x='22' y='36' width='36' height='8' stroke={acc} strokeWidth='1.1' fill='rgba(240,123,47,0.1)' className='v22-icon-rect-draw v22-icon-delay-4' />
-      <rect x='24.5' y='38' width='3.5' height='4' stroke={acc} strokeWidth='0.5' fill='none' />
-      <rect x='29' y='38' width='3.5' height='4' stroke={acc} strokeWidth='0.5' fill='none' />
-      <line x1='47' y1='39' x2='55' y2='39' stroke={acc} strokeWidth='0.5' />
-      <line x1='47' y1='41' x2='55' y2='41' stroke={acc} strokeWidth='0.5' />
-      <circle cx='56' cy='40' r='1.2' fill={acc} className='v22-icon-pulse v22-icon-scale-in v22-icon-delay-5' />
-      {/* Blade 3 — idle */}
-      <rect x='22' y='49' width='36' height='8' stroke={ink} strokeWidth='0.8' fill='rgba(255,255,255,0.04)' className='v22-icon-rect-draw v22-icon-delay-3' />
-      <rect x='24.5' y='51' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
-      <rect x='29' y='51' width='3.5' height='4' stroke={ink} strokeWidth='0.4' fill='none' />
-      <line x1='47' y1='52' x2='55' y2='52' stroke={ink} strokeWidth='0.4' />
-      <line x1='47' y1='54' x2='55' y2='54' stroke={ink} strokeWidth='0.4' />
-      <circle cx='56' cy='53' r='0.9' fill={ink} />
-    </svg>,
-    /* 2 Data — hex grid (mirrors stack-layer 07) */
-    <svg key={2} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      <polygon points={hex(32)} stroke={ink} strokeWidth='1' className='v22-icon-polygon-draw v22-icon-delay-2' />
-      <polygon points={hex(16)} stroke={acc} strokeWidth='1.2' className='v22-icon-polygon-draw v22-icon-delay-3' />
-      {[0, 60, 120, 180, 240, 300].map((a, i) => {
-        const r = (a - 90) * Math.PI / 180
-        return <circle key={i} cx={40 + Math.cos(r) * 24} cy={40 + Math.sin(r) * 24} r='2' fill={acc} className='v22-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.06}s` }} />
-      })}
-      {[30, 90, 150, 210, 270, 330].map((a, i) => {
-        const r = (a - 90) * Math.PI / 180
-        return <line key={i} x1='40' y1='40' x2={40 + Math.cos(r) * 16} y2={40 + Math.sin(r) * 16} stroke={ink} strokeWidth='0.4' strokeDasharray='1.5 1.5' className='v22-icon-line-draw v22-icon-delay-4' />
-      })}
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-    /* 3 Connected — hub with 6 nodes (mirrors stack-layer 06 Orchestration) */
-    <svg key={3} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      {[0, 1, 2, 3, 4, 5].map((i) => {
-        const a = (i / 6) * Math.PI * 2 - Math.PI / 2
-        const nx = 40 + Math.cos(a) * 26
-        const ny = 40 + Math.sin(a) * 26
-        return (
-          <g key={i}>
-            <line x1='40' y1='40' x2={nx} y2={ny} stroke={ink} strokeWidth='0.8' strokeDasharray='2 2' className='v22-icon-line-draw v22-icon-delay-3' />
-            <circle cx={nx} cy={ny} r='3' fill={acc} className='v22-icon-scale-in' style={{ animationDelay: `${0.5 + i * 0.07}s` }} />
-          </g>
-        )
-      })}
-      <circle cx='40' cy='40' r='8' stroke={acc} strokeWidth='1.3' fill={acc} fillOpacity='0.15' className='v22-icon-circle-draw v22-icon-delay-4' />
-      <circle cx='40' cy='40' r='3' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-    /* 4 AI Engineering — CPU chip with pins and AI core */
-    <svg key={4} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      {/* Outer housing */}
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      {/* Chip pins — 3 per side */}
-      {[22, 36, 50].map((coord, i) => (
-        <g key={i}>
-          <line x1={coord} y1='14' x2={coord} y2='20' stroke={ink} strokeWidth='1' className='v22-icon-line-draw' style={{ animationDelay: `${0.3 + i * 0.04}s` }} />
-          <line x1={coord} y1='60' x2={coord} y2='66' stroke={ink} strokeWidth='1' className='v22-icon-line-draw' style={{ animationDelay: `${0.35 + i * 0.04}s` }} />
-          <line x1='14' y1={coord} x2='20' y2={coord} stroke={ink} strokeWidth='1' className='v22-icon-line-draw' style={{ animationDelay: `${0.4 + i * 0.04}s` }} />
-          <line x1='60' y1={coord} x2='66' y2={coord} stroke={ink} strokeWidth='1' className='v22-icon-line-draw' style={{ animationDelay: `${0.45 + i * 0.04}s` }} />
-        </g>
-      ))}
-      {/* Chip body — main square with notched corner indicator */}
-      <rect x='20' y='20' width='40' height='40' stroke={ink} strokeWidth='1.2' fill='rgba(255,255,255,0.04)' className='v22-icon-rect-draw v22-icon-delay-2' />
-      {/* Orientation notch — small circle in top-left corner of the chip */}
-      <circle cx='24' cy='24' r='1.4' fill='none' stroke={ink} strokeWidth='0.7' className='v22-icon-scale-in v22-icon-delay-3' />
-      {/* AI core — inner orange square with diagonal trace */}
-      <rect x='30' y='30' width='20' height='20' stroke={acc} strokeWidth='1.3' fill='rgba(240,123,47,0.12)' className='v22-icon-rect-draw v22-icon-delay-4' />
-      {/* Circuit traces inside core */}
-      <line x1='30' y1='35' x2='35' y2='35' stroke={acc} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-5' />
-      <line x1='35' y1='35' x2='35' y2='40' stroke={acc} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-5' />
-      <line x1='45' y1='40' x2='45' y2='45' stroke={acc} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-5' />
-      <line x1='45' y1='45' x2='50' y2='45' stroke={acc} strokeWidth='0.8' className='v22-icon-line-draw v22-icon-delay-5' />
-      {/* Register dots — 4 corner markers on the core */}
-      <circle cx='33' cy='33' r='1.2' fill={acc} className='v22-icon-scale-in v22-icon-delay-6' />
-      <circle cx='47' cy='33' r='1.2' fill={acc} className='v22-icon-scale-in v22-icon-delay-6' />
-      <circle cx='33' cy='47' r='1.2' fill={acc} className='v22-icon-scale-in v22-icon-delay-6' />
-      <circle cx='47' cy='47' r='1.2' fill={acc} className='v22-icon-scale-in v22-icon-delay-6' />
-      {/* Center activity dot */}
-      <circle cx='40' cy='40' r='2' fill={acc} className='v22-icon-pulse v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-    /* 5 Design — tri-orbital ellipses (mirrors stack-layer 05 Productivity) */
-    <svg key={5} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' className='v22-icon-circle-draw v22-icon-delay-2' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={ink} strokeWidth='0.9' transform='rotate(60 40 40)' className='v22-icon-circle-draw v22-icon-delay-3' />
-      <ellipse cx='40' cy='40' rx='32' ry='12' stroke={acc} strokeWidth='1.2' transform='rotate(120 40 40)' className='v22-icon-circle-draw v22-icon-delay-4' />
-      <circle cx='72' cy='40' r='2' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-      <circle cx='8' cy='40' r='2' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-      <circle cx='56' cy='12' r='2' fill={acc} opacity='0.7' className='v22-icon-scale-in v22-icon-delay-6' />
-      <circle cx='24' cy='68' r='2' fill={acc} opacity='0.7' className='v22-icon-scale-in v22-icon-delay-6' />
-      <circle cx='40' cy='40' r='4' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-    /* 6 Operations — nested hexagons (mirrors stack-layer 02 Architecture) */
-    <svg key={6} viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <circle cx='40' cy='40' r='35' stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-circle-draw v22-icon-delay-1' />
-      <polygon points={hex(32)} stroke={ink} strokeWidth='0.8' strokeDasharray='3 2' className='v22-icon-polygon-draw v22-icon-delay-2' />
-      <polygon points={hex(22)} stroke={ink} strokeWidth='1' className='v22-icon-polygon-draw v22-icon-delay-3' />
-      <polygon points={hex(12)} stroke={acc} strokeWidth='1.3' className='v22-icon-polygon-draw v22-icon-delay-4' />
-      <circle cx='40' cy='40' r='2.5' fill={acc} className='v22-icon-scale-in v22-icon-delay-5' />
-    </svg>,
-  ]
-  return icons[index] || icons[0]
-}
 
 export default function CapabilitiesSection() {
   const [active, setActive] = useState(0)
-  const [view, setView] = useState<'capabilities' | 'framework'>('capabilities')
-  const [cycleMs, setCycleMs] = useState(CYCLE_MS)
-  const cap = capabilities[active]
+  const [locked, setLocked] = useState(false)
+  const [showStack, setShowStack] = useState(false)
+  const c = capabilities[active]
 
-  // Auto-cycle through capabilities — honors extended pause after a manual click
+  // Auto-cycle through capabilities; hover/click/modal-open locks
   useEffect(() => {
-    if (view !== 'capabilities') return
-    const id = setTimeout(() => {
-      setActive((i) => (i + 1) % capabilities.length)
-      setCycleMs(CYCLE_MS)
-    }, cycleMs)
+    if (locked || showStack) return
+    const id = setTimeout(() => setActive((i) => (i + 1) % capabilities.length), CYCLE_MS)
     return () => clearTimeout(id)
-  }, [active, view, cycleMs])
+  }, [active, locked, showStack])
 
-  const selectTab = (i: number) => {
-    setCycleMs(PAUSE_MS)
+  const select = (i: number) => {
+    setLocked(true)
     setActive(i)
   }
+
+  // ESC closes the stack modal
+  useEffect(() => {
+    if (!showStack) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowStack(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [showStack])
+
+  // Stack geometry (Option A — grid-aligned 40px, centred front face)
+  const svgW = 560
+  const svgH = 640
+  const baseX = 120
+  const boxW = 320
+  const boxH = 46
+  const rowGap = 66
+  const skew = 20
+  const firstY = 40
+  const stackTop = firstY - 16
+  const stackBot = firstY + (capabilities.length - 1) * rowGap + boxH + 16
+
+  // Scattered textured layers (grey, subtle)
+  const texturedLayers = new Set([0, 3, 5])
+  const patternForLayer = (i: number) => (texturedLayers.has(i) ? `url(#v22-cs-tex-${i})` : 'transparent')
 
   return (
     <section className='v22-section' id='solutions'>
       <div className='v22-container'>
-        <div className='v22-section-head'>
+        <div className='v22-section-head v22-cs-head'>
           <div className='num'>N°03 / What we do</div>
-          <h2>Six layers. <span style={{ color: 'var(--v22-accent)' }}>One partner.</span>{' '}<span style={{ whiteSpace: 'nowrap' }}>No handoff.</span></h2>
-          <p className='lead'>Every enterprise transformation stalls at the seams between strategy, data, and delivery. We work across every layer, not within silos.</p>
-        </div>
-        <div className='v22-cap-toggle'>
+          <h2>Every layer.<br /><span style={{ color: 'var(--v22-accent)' }}>In motion.</span></h2>
+          <p className='lead'>Particles flow between every pair of layers; the highlight auto-cycles. Click any layer to lock, or open the full stack diagram.</p>
           <button
-            className={`v22-toggle-btn ${view === 'capabilities' ? 'active' : ''}`}
-            onClick={() => setView('capabilities')}
+            className='v22-cs-stack-cta'
+            onClick={() => setShowStack(true)}
+            aria-haspopup='dialog'
           >
-            Our Capabilities
-          </button>
-          <button
-            className={`v22-toggle-btn ${view === 'framework' ? 'active' : ''}`}
-            onClick={() => setView('framework')}
-          >
-            Our AI Transformation Stack
+            <span className='v22-cs-stack-cta-icon' aria-hidden='true'>
+              <svg viewBox='0 0 24 16' fill='none'>
+                <polygon points='2,6 16,6 22,2 8,2' stroke='currentColor' strokeWidth='1.2' />
+                <rect x='2' y='6' width='14' height='8' stroke='currentColor' strokeWidth='1.2' fill='none' />
+                <polygon points='16,6 22,2 22,10 16,14' stroke='currentColor' strokeWidth='1.2' fill='none' />
+              </svg>
+            </span>
+            See our AI Transformation Stack
+            <span className='v22-cs-stack-cta-arrow' aria-hidden='true'>→</span>
           </button>
         </div>
 
-        {view === 'capabilities' ? (
-          <div className='v22-cap-interactive'>
-            {/* Desktop: left sidebar tab list */}
-            <div className='v22-cap-tabs' role='tablist'>
-              {capabilities.map((c, i) => (
-                <button
-                  key={c.num}
-                  role='tab'
-                  aria-selected={i === active}
-                  className={`v22-cap-tab ${i === active ? 'active' : ''}`}
-                  onClick={() => selectTab(i)}
+        <div className='v22-cs-grid'>
+          <div className='v22-cs-stack-wrap'>
+            <svg viewBox={`0 0 ${svgW} ${svgH}`} xmlns='http://www.w3.org/2000/svg' className='v22-cs-stack' aria-label='Capabilities stack'>
+              <defs>
+                <pattern id='v22-cs-grid-pat' patternUnits='userSpaceOnUse' width='40' height='40'>
+                  <path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(240,123,47,0.08)' strokeWidth='0.5' />
+                </pattern>
+                <pattern id='v22-cs-dot-pat' patternUnits='userSpaceOnUse' width='10' height='10'>
+                  <circle cx='1' cy='1' r='0.6' fill='rgba(240,123,47,0.18)' />
+                </pattern>
+                <pattern id='v22-cs-tex-0' patternUnits='userSpaceOnUse' width='6' height='6' patternTransform='rotate(45)'>
+                  <line x1='0' y1='0' x2='0' y2='6' stroke='rgba(255,255,255,0.22)' strokeWidth='0.8' />
+                </pattern>
+                <pattern id='v22-cs-tex-3' patternUnits='userSpaceOnUse' width='16' height='16'>
+                  <path d='M 0 0 L 16 16 M 16 0 L 0 16' stroke='rgba(255,255,255,0.1)' strokeWidth='0.5' />
+                </pattern>
+                <pattern id='v22-cs-tex-5' patternUnits='userSpaceOnUse' width='18' height='14'>
+                  <circle cx='1' cy='1' r='0.7' fill='rgba(255,255,255,0.18)' />
+                </pattern>
+                <filter id='v22-cs-particle-glow' x='-50%' y='-50%' width='200%' height='200%'>
+                  <feGaussianBlur stdDeviation='1.6' result='blur' />
+                  <feMerge><feMergeNode in='blur' /><feMergeNode in='SourceGraphic' /></feMerge>
+                </filter>
+              </defs>
+
+              <rect x='0' y='0' width={svgW} height={svgH} fill='url(#v22-cs-grid-pat)' />
+              <rect x='0' y='0' width={svgW} height={svgH} fill='url(#v22-cs-dot-pat)' />
+
+              {/* Corner crop marks */}
+              <g stroke='rgba(255,255,255,0.35)' strokeWidth='0.8'>
+                <line x1='8' y1='8' x2='28' y2='8' /><line x1='8' y1='8' x2='8' y2='28' />
+                <line x1={svgW - 28} y1='8' x2={svgW - 8} y2='8' /><line x1={svgW - 8} y1='8' x2={svgW - 8} y2='28' />
+                <line x1='8' y1={svgH - 8} x2='28' y2={svgH - 8} /><line x1='8' y1={svgH - 8} x2='8' y2={svgH - 28} />
+                <line x1={svgW - 28} y1={svgH - 8} x2={svgW - 8} y2={svgH - 8} /><line x1={svgW - 8} y1={svgH - 8} x2={svgW - 8} y2={svgH - 28} />
+              </g>
+
+              {/* Left-edge tick marks */}
+              <g stroke='rgba(255,255,255,0.15)' strokeWidth='0.5'>
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <line key={i} x1='62' y1={40 + i * 40} x2={i % 2 === 0 ? 72 : 68} y2={40 + i * 40} />
+                ))}
+              </g>
+
+              {/* FRONTIER ORGANISATION vertical label */}
+              <g>
+                <line x1='56' y1={stackTop} x2='56' y2={stackBot} stroke='rgba(240,123,47,0.45)' strokeWidth='1' />
+                <line x1='50' y1={stackTop} x2='62' y2={stackTop} stroke='rgba(240,123,47,0.45)' strokeWidth='1' />
+                <line x1='50' y1={stackBot} x2='62' y2={stackBot} stroke='rgba(240,123,47,0.45)' strokeWidth='1' />
+                <text
+                  x='40'
+                  y={(stackTop + stackBot) / 2}
+                  fontFamily='var(--font-mono)'
+                  fontSize='11'
+                  fontWeight='700'
+                  letterSpacing='3'
+                  fill='var(--v22-accent)'
+                  textAnchor='middle'
+                  transform={`rotate(-90 40 ${(stackTop + stackBot) / 2})`}
                 >
-                  <span className='tab-num'>{c.num}</span>
-                  <span className='tab-label'>
-                    <span className='tab-title'>{c.title}</span>
-                    <span className='tab-kicker'>{c.kicker}</span>
-                  </span>
-                  <span
-                    className='v22-cap-tab-progress'
-                    style={i === active ? { animationDuration: `${cycleMs}ms` } : undefined}
-                  />
-                </button>
+                  FRONTIER ORGANISATION
+                </text>
+              </g>
+
+              {/* Particles — organic flow, 3/1/2/3/1/2 across 6 gaps */}
+              {(() => {
+                const gapCounts = [3, 1, 2, 3, 1, 2]
+                const xPools = [
+                  [baseX + 80, baseX + 160, baseX + 250],
+                  [baseX + 180],
+                  [baseX + 100, baseX + 230],
+                  [baseX + 60, baseX + 150, baseX + 260],
+                  [baseX + 200],
+                  [baseX + 110, baseX + 220],
+                ]
+                return capabilities.slice(0, -1).map((_, i) => {
+                  const fromY = firstY + i * rowGap + boxH
+                  const toY = firstY + (i + 1) * rowGap
+                  const count = gapCounts[i]
+                  const xs = xPools[i].slice(0, count)
+                  const gapDelay = i * 0.55
+                  return (
+                    <g key={`flow-${i}`}>
+                      {xs.map((x, pIdx) => (
+                        <circle
+                          key={pIdx}
+                          cx={x}
+                          cy={fromY}
+                          r={2.2 + (pIdx % 2) * 0.4}
+                          fill='var(--v22-accent)'
+                          className='v22-cs-flow-particle'
+                          filter='url(#v22-cs-particle-glow)'
+                          style={{
+                            '--cs-flow-distance': `${toY - fromY}px`,
+                            '--cs-flow-delay': `${gapDelay + pIdx * 0.42}s`,
+                          } as React.CSSProperties}
+                        />
+                      ))}
+                    </g>
+                  )
+                })
+              })()}
+
+              {/* Layers */}
+              {capabilities.map((cap, i) => {
+                const y = firstY + i * rowGap
+                const isActive = i === active
+                const stroke = isActive ? 'var(--v22-accent)' : 'rgba(255,255,255,0.32)'
+                const sw = isActive ? 1.6 : 1
+                const x = baseX
+                return (
+                  <g
+                    key={cap.num}
+                    className={`v22-cs-layer ${isActive ? 'is-active' : ''}`}
+                    onClick={() => select(i)}
+                    onMouseEnter={() => select(i)}
+                    role='button'
+                    aria-label={`Select ${cap.kicker}`}
+                    tabIndex={0}
+                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && select(i)}
+                  >
+                    <polygon points={`${x},${y} ${x + boxW},${y} ${x + boxW + skew},${y - 14} ${x + skew},${y - 14}`} fill='transparent' stroke={stroke} strokeWidth={sw} />
+                    <rect x={x} y={y} width={boxW} height={boxH} fill={isActive ? 'rgba(240,123,47,0.1)' : 'transparent'} stroke='none' />
+                    <rect x={x} y={y} width={boxW} height={boxH} fill={patternForLayer(i)} stroke={stroke} strokeWidth={sw} opacity={isActive ? 1 : 0.85} />
+                    <polygon points={`${x + boxW},${y} ${x + boxW + skew},${y - 14} ${x + boxW + skew},${y + boxH - 14} ${x + boxW},${y + boxH}`} fill='transparent' stroke={stroke} strokeWidth={sw} />
+                    <text x={x - 12} y={y + boxH / 2 + 4} fontFamily='var(--font-mono)' fontSize='11' fontWeight='500' letterSpacing='1' fill={isActive ? 'var(--v22-accent)' : 'rgba(255,255,255,0.55)'} textAnchor='end'>L{cap.num}</text>
+                    {/* Eyebrow — familiar service name */}
+                    <text x={x + 18} y={y + boxH / 2 - 6} fontFamily='var(--font-mono)' fontSize='8' fontWeight='500' letterSpacing='1.6' fill={isActive ? 'var(--v22-accent)' : 'rgba(255,255,255,0.5)'}>
+                      {cap.altLabel.toUpperCase()}
+                    </text>
+                    {/* Main kicker — architectural name */}
+                    <text x={x + 18} y={y + boxH / 2 + 12} fontFamily='var(--font-mono)' fontSize='12' fontWeight='600' letterSpacing='1.6' fill={isActive ? 'var(--v22-accent)' : 'rgba(255,255,255,0.92)'}>
+                      {cap.kicker.toUpperCase()}
+                    </text>
+                  </g>
+                )
+              })}
+
+              {/* Bottom dimension marker */}
+              <g stroke='rgba(255,255,255,0.22)' strokeWidth='0.6'>
+                <line x1={baseX} y1={stackBot + 6} x2={baseX + boxW} y2={stackBot + 6} />
+                <line x1={baseX} y1={stackBot + 2} x2={baseX} y2={stackBot + 10} />
+                <line x1={baseX + boxW} y1={stackBot + 2} x2={baseX + boxW} y2={stackBot + 10} />
+              </g>
+              <text x={baseX + boxW / 2} y={stackBot + 20} fontFamily='var(--font-mono)' fontSize='8' fill='rgba(255,255,255,0.55)' textAnchor='middle' letterSpacing='1.5'>7 × LAYER · ONE ENTERPRISE</text>
+            </svg>
+          </div>
+
+          <div className='v22-cs-detail' key={active}>
+            <div className='v22-cs-detail-kicker'>L{c.num} · {c.kicker.toUpperCase()}</div>
+            <h3 className='v22-cs-detail-title'>{c.title}</h3>
+            <p className='v22-cs-detail-sub'>{c.subtitle}</p>
+            <p className='v22-cs-detail-body'>{c.body}</p>
+            <div className='v22-cs-detail-tags'>
+              {c.tags.slice(0, 4).map((t) => (
+                <span key={t} className='v22-cs-tag'>{t}</span>
               ))}
             </div>
-
-            {/* Mobile: compact prev/next navigator */}
-            <div className='v22-cap-mobile-nav'>
-              <button
-                className='v22-cap-arrow'
-                onClick={() => selectTab((active - 1 + capabilities.length) % capabilities.length)}
-                aria-label='Previous capability'
-              >
-                ←
+            <a href='#' className='v22-cs-detail-cta'>{c.cta} <span>→</span></a>
+            {locked && (
+              <button className='v22-cs-resume' onClick={() => setLocked(false)}>
+                Resume auto-cycle →
               </button>
-              <div className='v22-cap-mobile-label'>
-                <span className='mob-num'>{cap.num}</span>
-                <span className='mob-title'>{cap.title}</span>
-                <span className='mob-dots'>
-                  {capabilities.map((_, i) => (
-                    <span key={i} className={`mob-dot ${i === active ? 'active' : ''}`} onClick={() => selectTab(i)} />
-                  ))}
-                </span>
-              </div>
-              <button
-                className='v22-cap-arrow'
-                onClick={() => selectTab((active + 1) % capabilities.length)}
-                aria-label='Next capability'
-              >
-                →
-              </button>
-              <span className='v22-cap-mobile-progress' />
-            </div>
-
-            {/* Detail panel — content left, icon column right */}
-            <div className='v22-cap-detail' role='tabpanel'>
-              <div className='v22-cap-detail-content'>
-                <div className='v22-cap-detail-meta'>
-                  <span className='detail-kicker'>{cap.kicker}</span>
-                  <h3>{cap.title}</h3>
-                  <span className='detail-subtitle'>{cap.subtitle}</span>
-                </div>
-                <p>{cap.body}</p>
-                <div className='v22-cap-pills'>
-                  {cap.tags.map((tag) => (
-                    <span key={tag} className='v22-cap-pill'>{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <div className='v22-cap-detail-icon'>
-                <div className='v22-cap-icon-ring'>
-                  <CapIcon index={active} />
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-        ) : (
-          /* AI Transformation Framework — animated schematic */
-          <div className='v22-stack-diagram-wrap'>
-            <StackDiagram />
-          </div>
-        )}
+        </div>
       </div>
+
+      {/* Full-stack lightbox modal */}
+      {showStack && (
+        <div className='v22-stack-modal' role='dialog' aria-modal='true' aria-label='AI Transformation Stack'>
+          <div className='v22-stack-modal-backdrop' onClick={() => setShowStack(false)} />
+          <div className='v22-stack-modal-inner'>
+            <div className='v22-stack-modal-head'>
+              <div className='v22-stack-modal-kicker'>N°03 · AI TRANSFORMATION STACK</div>
+              <button className='v22-stack-modal-close' onClick={() => setShowStack(false)} aria-label='Close'>
+                <span aria-hidden='true'>×</span>
+              </button>
+            </div>
+            <div className='v22-stack-modal-body'>
+              <StackDiagram />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
