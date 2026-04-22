@@ -3,6 +3,7 @@
 
 import Link from 'next/link'
 import { OptionA } from './option-a'
+import { OptionAMobile } from './option-a-mobile'
 import { OptionB } from './option-b'
 import { OptionC } from './option-c'
 import './preview.css'
@@ -14,6 +15,7 @@ export default function CapabilitiesPreview() {
         <Link href='/v22'>← Back to v22</Link>
         <div className='capX-preview-nav-links'>
           <a href='#cap-a'>A · Exploded</a>
+          <a href='#cap-a-mobile'>A · Mobile</a>
           <a href='#cap-b'>B · Cascade</a>
           <a href='#cap-c'>C · Orbital</a>
         </div>
@@ -21,6 +23,10 @@ export default function CapabilitiesPreview() {
       <OptionA />
       <div className='capX-divider'>
         <span>End of Option A</span>
+      </div>
+      <OptionAMobile />
+      <div className='capX-divider'>
+        <span>End of Option A · Mobile</span>
       </div>
       <OptionB />
       <div className='capX-divider'>

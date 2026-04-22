@@ -59,6 +59,7 @@
 
 /* Apply v22 section gradient to each option section */
 .v22-scope section#cap-a,
+.v22-scope section#cap-a-mobile,
 .v22-scope section#cap-b,
 .v22-scope section#cap-c {
   background-color: var(--brand-navy-deep);
@@ -84,6 +85,7 @@
   justify-content: center;
 }
 .v22-scope section#cap-a .v22-section-head,
+.v22-scope section#cap-a-mobile .v22-section-head,
 .v22-scope section#cap-b .v22-section-head,
 .v22-scope section#cap-c .v22-section-head {
   border-bottom: none;
@@ -96,40 +98,79 @@
 }
 
 /* ============================================================
-   OPTION A — Exploded isometric stack
+   OPTION A — Exploded isometric stack (organic, side-positioned)
    ============================================================ */
+/* Section designed to fit one viewport */
+.v22-scope section#cap-a {
+  padding: 36px 0 44px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.v22-scope section#cap-a .v22-section-head {
+  margin-bottom: 18px;
+}
+
 .capA-grid {
   display: grid;
-  grid-template-columns: minmax(360px, 520px) 1fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: minmax(340px, 440px) 1fr;  /* stack left, detail right */
+  gap: 56px;
+  align-items: center;
 }
 .capA-stack-wrap {
   position: relative;
+  width: 100%;
+  max-width: 440px;
+  justify-self: start;
 }
 .capA-stack {
   width: 100%;
   height: auto;
   display: block;
 }
+
+/* Layer interaction */
 .capA-layer {
   cursor: pointer;
-  transform-origin: center;
-  animation: capA-float 6s ease-in-out infinite;
-  animation-delay: calc(var(--layer-i, 0) * 0.4s);
   transition: filter 0.3s ease;
 }
-.capA-layer:hover {
-  filter: brightness(1.2);
-}
+.capA-layer:hover { filter: brightness(1.15); }
 .capA-layer.is-active {
-  filter: drop-shadow(0 0 14px rgba(240, 123, 47, 0.4));
-  animation-play-state: paused;
+  filter: drop-shadow(0 0 12px rgba(240, 123, 47, 0.35));
 }
-@keyframes capA-float {
-  0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-3px); }
+
+/* Particle flow between adjacent layers — mirrors hero stack pattern */
+.capA-flow-particle {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: capA-flow 2.4s ease-in-out infinite;
+  animation-delay: var(--capA-flow-delay, 0s);
 }
+@keyframes capA-flow {
+  0%   { opacity: 0; transform: translateY(0); }
+  15%  { opacity: 1; transform: translateY(4px); }
+  85%  { opacity: 1; transform: translateY(calc(var(--capA-flow-distance) - 4px)); }
+  100% { opacity: 0; transform: translateY(var(--capA-flow-distance)); }
+}
+
+/* Resume auto-cycle link — small mono link below CTA */
+.capA-resume {
+  display: block;
+  margin-top: 22px;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: var(--v22-ink-3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.capA-resume:hover { color: var(--v22-accent); }
 .capA-layer:focus { outline: none; }
 .capA-layer:focus-visible rect:nth-child(2) {
   stroke: var(--v22-accent);
@@ -137,7 +178,7 @@
 }
 
 .capA-detail {
-  padding: 12px 0;
+  padding: 0;
   animation: capA-slide-in 0.35s ease-out;
 }
 @keyframes capA-slide-in {
@@ -146,32 +187,34 @@
 }
 .capA-detail-kicker {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
   color: var(--v22-accent);
+  text-transform: uppercase;
 }
 .capA-detail-title {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin: 10px 0 8px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);     /* hero text */
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin: 14px 0 12px;
 }
 .capA-detail-sub {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   color: var(--v22-ink-2);
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 .capA-detail-body {
-  color: var(--v22-ink-2);
+  color: var(--v22-ink);
   line-height: 1.6;
-  margin-bottom: 20px;
-  max-width: 52ch;
+  font-size: 1.02rem;
+  margin-bottom: 24px;
+  max-width: 62ch;
 }
 .capA-detail-tags {
   display: flex;
@@ -601,4 +644,163 @@
 @media (max-width: 960px) {
   .capC-orbit-grid { grid-template-columns: 1fr; }
   .capC-detail { position: relative; top: 0; }
+}
+
+/* ============================================================
+   OPTION A — Mobile accordion (vertical stack, tap to expand)
+   ============================================================ */
+.v22-scope section#cap-a-mobile {
+  padding: 36px 0 48px;
+  min-height: auto;
+  display: block;
+}
+.v22-scope section#cap-a-mobile .v22-section-head {
+  margin-bottom: 24px;
+}
+
+.capAm-accordion {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+  margin: 0 auto;
+  border-top: 1px solid var(--v22-hair);
+}
+.capAm-row {
+  border-bottom: 1px solid var(--v22-hair);
+  transition: background 0.25s ease;
+}
+.capAm-row.is-open {
+  background: rgba(240, 123, 47, 0.04);
+}
+.capAm-row-trigger {
+  display: grid;
+  grid-template-columns: 72px 1fr 24px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 16px;
+  background: transparent;
+  border: none;
+  color: var(--v22-ink);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.capAm-row-trigger:hover { background: rgba(255, 255, 255, 0.02); }
+.capAm-row-trigger:focus-visible {
+  outline: 2px solid var(--v22-accent);
+  outline-offset: -2px;
+}
+
+.capAm-row-mark {
+  width: 72px;
+  height: 44px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.capAm-row-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.capAm-row-kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.capAm-row-alt {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+.capAm-row.is-open .capAm-row-kicker { color: var(--v22-accent); }
+.capAm-row.is-open .capAm-row-alt { color: var(--v22-accent); opacity: 0.75; }
+
+.capAm-row-chevron {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
+  justify-self: end;
+}
+.capAm-row.is-open .capAm-row-chevron { color: var(--v22-accent); }
+
+.capAm-row-body {
+  padding: 4px 20px 24px;              /* even margins; natural reading width */
+  animation: capAm-slide-in 0.3s ease-out;
+}
+@keyframes capAm-slide-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.capAm-body-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+}
+.capAm-body-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--v22-ink-2);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.capAm-body-copy {
+  color: var(--v22-ink);
+  line-height: 1.6;
+  font-size: 0.98rem;
+  margin: 0 0 18px;
+}
+.capAm-body-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.capAm-body-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--v22-hair-strong);
+  color: var(--v22-ink-2);
+}
+.capAm-body-cta {
+  display: inline-flex;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v22-accent);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--v22-accent);
+}
+
+@media (max-width: 480px) {
+  .capAm-row-trigger { grid-template-columns: 60px 1fr 22px; gap: 12px; padding: 16px 12px; }
+  .capAm-row-mark { width: 60px; height: 38px; }
+  .capAm-row-body { padding: 4px 16px 20px; }
+  .capAm-row-kicker { font-size: 11.5px; }
 }
